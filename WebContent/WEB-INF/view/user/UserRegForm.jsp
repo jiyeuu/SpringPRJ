@@ -58,7 +58,47 @@
 </script>
 </head>
 <body>
-
+	<!--
+<br/>
+<br/>
+<form name="f" method="post" action="/user/insertUserInfo.do" onsubmit="return doRegUserCheck(this); ">
+	  <div>
+     	<font size="4" color="#000000">아이디</font>
+		<input type="text" name="user_id" oninput="checkId()">
+  	</div>
+ 	 <div>
+      	<font size="4" color="#000000">이름</font>
+      	<input type="text" name="user_name" >
+  	</div>
+  	<div>
+     	<font size="4" color="#000000">비밀번호</font>
+		<input type="password" name="password" id="pwd1" >
+  	</div>
+ 	 <div>
+      	<font size="4" color="#000000">비밀번호 확인</font>
+      	<input type="password" name="password2" id="pwd2" oninput="checkPw()" >
+      	<div id="alert-success">비밀번호 사용가능</div>
+      	<div id="alert-danger">비밀번호 불가능</div>
+  	</div>
+  	 <div>
+      	<font size="4" color="#000000">이메일</font>
+      	<input type="text" name="email" >
+  	</div>
+  	 <div>
+      	<font size="4" color="#000000">주소</font>
+      	<input type="text" name="addr1" >
+  	</div>
+  	 <div>
+      	<font size="4" color="#000000">상세</font>
+      	<input type="text" name="addr2">
+  	</div> 
+   
+  <div class="button">
+      <button type="submit" id="submit">회원가입</button>
+      <button type="submit" id="checkId" onclick="checkId();">중복확인</button>
+  </div>
+ 
+</form>-->
 
 	<form name="f" method="post" action="/user/insertUserInfo.do">
 

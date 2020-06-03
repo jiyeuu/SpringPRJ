@@ -7,12 +7,5 @@
 	<typeAlias type="poly.dto.NoticeDTO" alias="NoticeDTO" />
 	<typeAlias type="poly.dto.MyJsonDTO" alias="MyJsonDTO" />
 	<typeAlias alias="UserInfoDTO" type="poly.dto.UserInfoDTO" />
-	<typeAlias alias="MovieDTO" type="poly.dto.MovieDTO" />
-	<typeAlias alias="FoodDTO" type="poly.dto.FoodDTO" />
-	<typeAlias alias="BoardDTO" type="poly.dto.BoardDTO" />
-	<typeAlias alias="UserDTO" type="poly.dto.UserDTO" />
-	<typeAlias alias="OcrDTO" type="poly.dto.OcrDTO" />
-	<typeAlias alias="NlpDTO" type="poly.dto.NlpDTO" />
-	<typeAlias alias="PagingDTO" type="poly.dto.PagingDTO" />
     </typeAliases>
 </configuration>

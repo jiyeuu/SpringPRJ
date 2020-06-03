@@ -13,6 +13,8 @@ public interface IMyRedisMapper {
 	public void doSaveDataforSet() throws Exception;
 	
 	public void doSaveDataforZSet() throws Exception;
+	
+
 }
 
 

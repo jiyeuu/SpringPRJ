@@ -11,7 +11,7 @@
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://192.168.136.130:3306/MyDB?serverTimezone=Asia/Seoul&amp;useSSL=false&amp;allowPublicKeyRetrieval=true" />
+			value="jdbc:mysql://192.168.136.131:3306/MyDB?serverTimezone=Asia/Seoul&amp;useSSL=false&amp;allowPublicKeyRetrieval=true" />
 		<property name="username" value="web_user" />
 		<property name="password" value="WebUser01#" />
 

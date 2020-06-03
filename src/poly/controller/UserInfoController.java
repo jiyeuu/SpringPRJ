@@ -87,15 +87,13 @@ public class UserInfoController {
 			String user_name = CmmUtil.nvl(request.getParameter("user_name"));
 			String password = CmmUtil.nvl(request.getParameter("password"));
 			String email = CmmUtil.nvl(request.getParameter("email"));
-			String addr1 = CmmUtil.nvl(request.getParameter("addr1"));
-			String addr2 = CmmUtil.nvl(request.getParameter("addr2"));
+			
 
 			log.info("user_id : " + user_id);
 			log.info("user_name : " + user_name);
 			log.info("password : " + password);
 			log.info("email : " + email);
-			log.info("addr1 : " + addr1);
-			log.info("addr2 : " + addr2);
+		
 
 			pDTO = new UserInfoDTO();
 
@@ -103,8 +101,7 @@ public class UserInfoController {
 			pDTO.setUser_name(user_name);
 			pDTO.setPassword(EncryptUtil.encHashSHA256(password));
 			pDTO.setEmail(EncryptUtil.encAES128CBC(email));
-			pDTO.setAddr1(addr1);
-			pDTO.setAddr2(addr2);
+			
 
 			int res = userInfoService.insertUserInfo(pDTO);
 

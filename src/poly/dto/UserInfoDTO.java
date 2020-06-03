@@ -6,8 +6,6 @@ public class UserInfoDTO {
 	private String user_name;
 	private String password;
 	private String email;
-	private String addr1;
-	private String addr2;
 	private String reg_id;
 	private String reg_dt;
 	private String chg_id;
@@ -48,22 +46,6 @@ public class UserInfoDTO {
 		this.email = email;
 	}
 
-	public String getAddr1() {
-		return addr1;
-	}
-
-	public void setAddr1(String addr1) {
-		this.addr1 = addr1;
-	}
-
-	public String getAddr2() {
-		return addr2;
-	}
-
-	public void setAddr2(String addr2) {
-		this.addr2 = addr2;
-	}
-
 	public String getReg_id() {
 		return reg_id;
 	}
@@ -96,6 +78,14 @@ public class UserInfoDTO {
 		this.chg_dt = chg_dt;
 	}
 
+	public String getUser_author() {
+		return user_author;
+	}
+
+	public void setUser_author(String user_author) {
+		this.user_author = user_author;
+	}
+
 	public String getExists_yn() {
 		return exists_yn;
 	}
@@ -104,12 +94,5 @@ public class UserInfoDTO {
 		this.exists_yn = exists_yn;
 	}
 
-	public String getUser_author() {
-		return user_author;
-	}
-
-	public void setUser_author(String user_author) {
-		this.user_author = user_author;
-	}
 	
 }

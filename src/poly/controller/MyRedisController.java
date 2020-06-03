@@ -34,6 +34,7 @@ public class MyRedisController {
 		
 	}
 	
+	//리스트
 	@RequestMapping(value="myRedis/test02")
 	@ResponseBody
 	public String test02(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -45,6 +46,7 @@ public class MyRedisController {
 		
 	}
 	
+	//리스트 구조에 JSON
 	@RequestMapping(value="myRedis/test03")
 	@ResponseBody
 	public String test03(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -56,7 +58,7 @@ public class MyRedisController {
 		
 	}
 	
-	
+	//HashTable
 	@RequestMapping(value="myRedis/test04")
 	@ResponseBody
 	public String test04(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -68,6 +70,7 @@ public class MyRedisController {
 		
 	}
 	
+	//set
 	@RequestMapping(value="myRedis/test05")
 	@ResponseBody
 	public String test05(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -79,6 +82,8 @@ public class MyRedisController {
 		
 	}
 	
+	
+	//zset
 	@RequestMapping(value="myRedis/test06")
 	@ResponseBody
 	public String test06(HttpServletRequest request, HttpServletResponse response) throws Exception {

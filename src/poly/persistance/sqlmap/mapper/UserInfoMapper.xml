@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- JAVA와 연결할 Mapper 파일 설정 -->
+<mapper namespace="poly.persistance.mapper.UserInfoMapper">
+	<!-- 회원 가입하기(회원정보 등록하기) -->
+	<insert id="insertUserInfo" parameterType="UserInfoDTO">
+		INSERT INTO USER_INFO
+		(
+		USER_ID,
+		USER_NAME,
+		PASSWORD,
+		EMAIL,
+		REG_ID,
+		REG_DT,
+		CHG_ID,
+		CHG_DT,
+		USER_AUTHOR
+		)
+		VALUES(
+		#{user_id},
+		#{user_name},
+		#{password},
+		#{email},
+		#{user_id},
+		CURDATE(),
+		#{user_id},
+		CURDATE(),
+		0
+		)
+	</insert>
+
+	<!-- 이메일로 회원 가입 중복 방지하기 -->
+	<select id="getUserExists" parameterType="UserInfoDTO"
+		resultType="UserInfoDTO">
+		SELECT COUNT(*)
+		FROM USER_INFO
+		WHERE EMAIL = #{email}
+	</select>
+
+	<!-- 로그인을 위해 아이디와 비밀번호가 일치하는지 확인하기 -->
+	<select id="getUserLoginCheck" parameterType="UserInfoDTO"
+		resultType="UserInfoDTO">
+		SELECT USER_ID, USER_NAME, EMAIL, USER_AUTHOR
+		FROM USER_INFO
+		WHERE USER_ID = #{user_id} AND PASSWORD = #{password}
+	</select>
+	
+	<!-- 아이디 중복체크 -->
+	<select id="ckeckId" parameterType="UserInfoDTO"
+		resultType="int">
+		SELECT COUNT(*)
+		FROM USER_INFO
+		WHERE USER_ID = #{user_id}
+	</select>
+	
+	<!-- 아이디 찾기 -->
+	<select id="findId" parameterType="UserInfoDTO"
+		resultType="String">
+		SELECT USER_ID
+		FROM USER_INFO
+		WHERE USER_NAME = #{user_name} AND EMAIL = #{email}
+	</select>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="findPw" parameterType="UserInfoDTO"
+		resultType="UserInfoDTO">
+		SELECT USER_ID
+		FROM USER_INFO
+		WHERE USER_ID = #{user_id} AND EMAIL = #{email}
+	</select>
+	<update id="findPwNew" parameterType="UserInfoDTO">
+		UPDATE USER_INFO 
+		SET PASSWORD = #{password}
+		WHERE USER_ID = #{user_id}
+	</update>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="chPw" parameterType="UserInfoDTO">
+		UPDATE USER_INFO 
+		SET PASSWORD = #{password}
+		WHERE USER_ID = #{user_id}
+	</update>
+	
+	<!-- 회원 탈퇴  -->
+	<delete id="delUser" parameterType="String">
+		DELETE
+		FROM USER_INFO
+		WHERE USER_ID = #{user_id}
+	</delete>
+	
+	<!-- 이메일 중복체크 -->
+	<select id="checkEmail" parameterType="UserInfoDTO"
+		resultType="int">
+		SELECT COUNT(*)
+		FROM USER_INFO
+		WHERE EMAIL = #{email}
+	</select>
+
+	
+
+
+</mapper>
+	

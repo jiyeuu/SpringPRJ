@@ -7,6 +7,10 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -32,16 +36,21 @@ private Logger log = Logger.getLogger(this.getClass());
 		String redisKey = "Test01";
 		String saveData = "난 저장되는 데이터이다.";
 
+		//redis 저장 및 읽기에 대한 데이터 타입지정 (String타입으로)
 		redisDB.setKeySerializer(new StringRedisSerializer());
 		redisDB.setValueSerializer(new StringRedisSerializer());
 		
-		if(redisDB.hasKey(redisKey)) {
+		//데이터가 존재하면 바로 반환
+		if(redisDB.hasKey(redisKey)) { //key가 존개하면 데이터 읽기
 			String res = (String) redisDB.opsForValue().get(redisKey);
 			
 			log.info("res : " + res);
+			
 		}else {
 			redisDB.opsForValue().getAndSet(redisKey, saveData);
 			
+			//TTL설정을 위한 함수 실행
+			//redisKey로 저장되는 데이터는 2일동안 유효시간을 가짐
 			redisDB.expire(redisKey, 2, TimeUnit.DAYS);
 			
 			log.info("No Data!!");
@@ -50,47 +59,113 @@ private Logger log = Logger.getLogger(this.getClass());
 		
 	}
 
-	@Override
-	public void doSaveDataforList() throws Exception {
 	
-		
-		log.info("doSaveDataforList start!!");
-		
-		String redisKey = "Test02-List";
-
+	/* 리스트형태 데이터 저장하기 */
+	/*
+	 * @Override public void doSaveDataforList() throws Exception {
+	 * 
+	 * log.info("doSaveDataforList start!!");
+	 * 
+	 * String redisKey = "멜론차트 TOP-100";
+	 * 
+	 * 
+	 * redisDB.setKeySerializer(new StringRedisSerializer());
+	 * redisDB.setValueSerializer(new StringRedisSerializer());
+	 * 
+	 * if(redisDB.hasKey(redisKey)) {
+	 * 
+	 * List<String> pList = (List) redisDB.opsForList().range(redisKey, 0, -1);
+	 * 
+	 * Iterator<String> it = pList.iterator();
+	 * 
+	 * while (it.hasNext()) 
+	 * { String data = (String) it.next();
+	 * 
+	 * log.info("data : " + data);
+	 * 
+	 * }
+	 * 
+	 * } else { for(int i=0; i<10; i++) {
+	 * 
+	 * 
+	 * //오름차순 저장 rightPush redisDB.opsForList().rightPush(redisKey, "[" + i +
+	 * "] 번째 데이터입니다."); //내림차순 저장 leftPush //redisDB.opsForList().leftPush(redisKey,
+	 * "[" + i + "] 번째 데이터입니다.");
+	 * 
+	 * 
+	 * }
+	 * 
+	 * //5시간 redisDB.expire(redisKey, 5, TimeUnit.HOURS);
+	 * 
+	 * log.info("Save Data!!");
+	 * 
+	 * } }
+	 */
+	
+	//https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=
+	 @Override
+	 public void doSaveDataforList() throws Exception {
+		 
+		String redisKey = "멜론차트 TOP-100";
 
 		redisDB.setKeySerializer(new StringRedisSerializer());
 		redisDB.setValueSerializer(new StringRedisSerializer());
-		
-		if(redisDB.hasKey(redisKey)) {
+		try {
 			
-			List<String> pList = (List) redisDB.opsForList().range(redisKey, 0, -1);
+			if(redisDB.hasKey(redisKey)) {
+				  
+				  List<String> pList = (List) redisDB.opsForList().range(redisKey, 0, -1);
+				 
+				  Iterator<String> it = pList.iterator();
+				  
+				  while (it.hasNext()) 
+				  { 
+					 String data = (String) it.next();
+				  
+				  	log.info("노래 제목 : " + data);
+				  
+				  }
+				  
+				  } else { 
 			
-			Iterator<String> it = pList.iterator();
-			
-			while (it.hasNext()) {
-				String data = (String) it.next();
-				
-				log.info("data : " + data);
-				
-			}
-		}else {
-			for(int i=0;i<10;i++) {
-				
-				//redisDB.opsForList().rightPush(redisKey, "[" + i + "] 번째 데이터입니다.");
-				redisDB.opsForList().leftPush(redisKey, "[" + i + "] 번째 데이터입니다.");
-				
-			}
-			
-			redisDB.expire(redisKey, 5, TimeUnit.HOURS);
-			
-			log.info("Save Data!!");
-			
+					  String url2 = "https://www.melon.com/chart/";
+				      String url3 = "https://www.melon.com/chart/#params%5Bidx%5D=51";
+				      
+				      Document doc2 = Jsoup.connect(url2).get();
+				      Document doc3 = Jsoup.connect(url3).get();
+				      
+				      Elements rowElements = doc2.select("table > tbody > tr#lst50 > td:nth-child(6) > div > div > div.ellipsis.rank01 > span");
+				      Elements rowElements1 = doc3.select("table > tbody > tr#lst100 > td:nth-child(6) > div > div > div.ellipsis.rank01 > span");
+				      
+				      for(Element row : rowElements) {
+					         
+					         Elements tdElements = row.getElementsByTag("a");
+					         redisDB.opsForList().rightPush(redisKey, tdElements.get(0).text());
+					      }
+				      
+				      for(Element row1 : rowElements1 )
+				      {
+				    	  Elements tdElements1 = row1.getElementsByTag("a");
+				    	  redisDB.opsForList().rightPush(redisKey, tdElements1.get(0).text());     
+				      }	 
+				      
+				      redisDB.expire(redisKey, 5, TimeUnit.HOURS);
+				  }
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
-		
-		
+		log.info("Save Data!!");
 	}
+	
+
+	
+
+	/*
+	 * DTO를 활용한 JSON 데이터 저장 
+	 * Redis는 값에 저장되는 데이터 타입은 String으로 
+	 * JSON 데이터를 문자열로 변환하여 저장할 수 있음
+	 */
 
 	@Override
 	public void doSaveDataforListJSON() throws Exception {
@@ -100,12 +175,15 @@ private Logger log = Logger.getLogger(this.getClass());
 		String redisKey = "Test02-List-JSON";
 		
 		redisDB.setKeySerializer(new StringRedisSerializer());
+		
+		//DTO를 JSON 구조로 변경
 		redisDB.setValueSerializer(new Jackson2JsonRedisSerializer<>(MyJsonDTO.class));
 		
 		MyJsonDTO pDTO = null;
 		
 		if(redisDB.hasKey(redisKey)) {
 			
+			//redis에 저장된 데이터 전체 가져오기
 			List<MyJsonDTO> pList = (List) redisDB.opsForList().range(redisKey, 0, -1);
 			
 			Iterator<MyJsonDTO> it = pList.iterator();
@@ -156,6 +234,8 @@ private Logger log = Logger.getLogger(this.getClass());
 		
 	}
 
+	/* HashtTable 형태로 키와 값이 존재하는 구조로 저장 */
+
 	@Override
 	public void doSaveDataforHashTable() throws Exception {
 		// TODO Auto-generated method stub
@@ -191,6 +271,10 @@ private Logger log = Logger.getLogger(this.getClass());
 		
 	}
 
+	/* Set은 중복을 허용하지 않기 때문에 데이터 저장 속도는 List에 비해 느림 
+	 * 순서상관없음
+	 */
+
 	@Override
 	public void doSaveDataforSet() throws Exception {
 		
@@ -224,6 +308,8 @@ private Logger log = Logger.getLogger(this.getClass());
 		}
 		
 	}
+
+	/* Zset은 저장 순서를 지정할 수 있는 데이터 구조 */
 
 	@Override
 	public void doSaveDataforZSet() throws Exception {
