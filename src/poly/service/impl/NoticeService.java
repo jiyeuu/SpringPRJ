@@ -7,48 +7,69 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import poly.dto.NoticeDTO;
+import poly.dto.UserInfoDTO;
 import poly.persistance.mapper.NoticeMapper;
 import poly.service.INoticeService;
 
 @Service("NoticeService")
-public class NoticeService implements INoticeService{
-	
-	@Resource(name="NoticeMapper")
+public class NoticeService implements INoticeService {
+
+	@Resource(name = "NoticeMapper")
 	private NoticeMapper noticeMapper;
-	
+
 	@Override
-	public List<NoticeDTO> getNoticeList() throws Exception {
-		return noticeMapper.getNoticeList();
-		
+	public int insertNoticeInfo(NoticeDTO bDTO) throws Exception {
+		return noticeMapper.insertNoticeInfo(bDTO);
 	}
 	
 	@Override
-	public void InsertNoticeInfo(NoticeDTO pDTO) throws Exception {
-		noticeMapper.InsertNoticeInfo(pDTO);;
-		
+	public List<NoticeDTO> getNoticeList(NoticeDTO bDTO) throws Exception{
+		return noticeMapper.getNoticeList(bDTO);
+	}
+
+	@Override
+	public NoticeDTO getNoticeDetail(String seq) throws Exception {
+		return noticeMapper.getNoticeDetail(seq);
 	}
 	
 	@Override
-	public NoticeDTO getNoticeInfo(NoticeDTO pDTO) throws Exception {
-		return noticeMapper.getNoticeInfo(pDTO);
-		
+	public NoticeDTO getNoticeModify(String seq) throws Exception {
+		return noticeMapper.getNoticeModify(seq);
 	}
-	
+
 	@Override
-	public void updateNoticeReadCnt(NoticeDTO pDTO) throws Exception {
-		noticeMapper.updateNoticeReadCnt(pDTO);;
-		
+	public int updateNotice(NoticeDTO bDTO) throws Exception {
+		return noticeMapper.updateNotice(bDTO);
 	}
-	
+
 	@Override
-	public void updateNoticeInfo(NoticeDTO pDTO) throws Exception {
-		noticeMapper.updateNoticeInfo(pDTO);
-		
+	public int deleteNotice(String seq) throws Exception {
+		return noticeMapper.deleteNotice(seq);
 	}
-	
+
 	@Override
-	public void deleteNoticeInfo(NoticeDTO pDTO) throws Exception {
-		noticeMapper.deleteNoticeInfo(pDTO);
-		
+	public int updateNoticeReadCnt(NoticeDTO bDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return noticeMapper.updateNoticeReadCnt(bDTO);
 	}
+
+	@Override
+	public UserInfoDTO getNoticeDetail2(UserInfoDTO uDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return noticeMapper.getNoticeDetail2(uDTO);
+	}
+
+	@Override
+	public int listall1() throws Exception {
+		// TODO Auto-generated method stub
+		return noticeMapper.listall1();
+	}
+
+
+
+
+
+
+
+
 }

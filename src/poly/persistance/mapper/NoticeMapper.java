@@ -4,26 +4,27 @@ import java.util.List;
 
 import config.Mapper;
 import poly.dto.NoticeDTO;
+import poly.dto.UserInfoDTO;
 
 @Mapper("NoticeMapper")
 public interface NoticeMapper {
+	
+	int insertNoticeInfo(NoticeDTO bDTO)throws Exception;
+	
+	List<NoticeDTO> getNoticeList(NoticeDTO bDTO) throws Exception;
 
-	//게시판 리스트
-	List<NoticeDTO> getNoticeList() throws Exception;
+	NoticeDTO getNoticeDetail(String seq) throws Exception;
 	
-	//게시판 글 등록
-	void InsertNoticeInfo(NoticeDTO pDTO) throws Exception;
-	
-	//게시판 상세보기
-	NoticeDTO getNoticeInfo(NoticeDTO pDTO) throws Exception;
+	NoticeDTO getNoticeModify(String seq) throws Exception;
 
-	//게시판 조회수 업데이트
-	void updateNoticeReadCnt(NoticeDTO pDTO) throws Exception;
+	int updateNotice(NoticeDTO bDTO) throws Exception;
+
+	int deleteNotice(String seq) throws Exception;
+
+	int updateNoticeReadCnt(NoticeDTO bDTO) throws Exception;
+
+	UserInfoDTO getNoticeDetail2(UserInfoDTO uDTO)throws Exception;
 	
-	//게시판 글 수정
-	void updateNoticeInfo(NoticeDTO pDTO) throws Exception;
-	
-	//게시판 글 삭제
-	void deleteNoticeInfo(NoticeDTO pDTO) throws Exception;
-	
+	//총리스트 개수
+	int listall1() throws Exception;
 }

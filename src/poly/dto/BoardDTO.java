@@ -1,6 +1,6 @@
 package poly.dto;
 
-public class NoticeDTO {
+public class BoardDTO {
 
 	private String title;
 	private String content;
@@ -10,11 +10,12 @@ public class NoticeDTO {
 	private String userSeq;
 	private String user_name;
 	private String read_cnt;
-	
-	private String starCheck;
+	private String board_satisfy;
 	
 	private int startIndex;
 	private int endIndex;
+	
+	private String starCheck;
 	
 	public String getTitle() {
 		return title;
@@ -58,11 +59,11 @@ public class NoticeDTO {
 	public void setRead_cnt(String read_cnt) {
 		this.read_cnt = read_cnt;
 	}
-	public String getStarCheck() {
-		return starCheck;
+	public String getBoard_satisfy() {
+		return board_satisfy;
 	}
-	public void setStarCheck(String starCheck) {
-		this.starCheck = starCheck;
+	public void setBoard_satisfy(String board_satisfy) {
+		this.board_satisfy = board_satisfy;
 	}
 	public int getStartIndex() {
 		return startIndex;
@@ -76,7 +77,13 @@ public class NoticeDTO {
 	public void setEndIndex(int endIndex) {
 		this.endIndex = endIndex;
 	}
+	public String getStarCheck() {
+		return starCheck;
+	}
+	public void setStarCheck(String starCheck) {
+		this.starCheck = starCheck;
+	}
 	
 	
-
+	
 }
