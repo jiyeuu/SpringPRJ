@@ -156,12 +156,12 @@ public class BoardController {
 	@RequestMapping(value = "board/boardDetail")
 	public String BoardDetail(HttpServletRequest request, Model model, HttpSession session) throws Exception {
 		log.info(this.getClass().getName());
-/*
+
 		if (session.getAttribute("SS_USER_ID") == null) {
 	         model.addAttribute("msg", "로그인 후 다시 시도해주세요");
 	         model.addAttribute("url", "/user/LoginForm.do");
 	         return "/redirect";
-	     }*/
+	     }
 		
 		String seq = request.getParameter("seq");
 

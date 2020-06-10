@@ -7,37 +7,37 @@
 	String user_Author = (String) session.getAttribute("user_Author");
 %>
 <!DOCTYPE html>
-<html lang="zxx" class="no-js">
+<html lang="UTF-8">
 <head>
-<!-- Mobile Specific Meta -->
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Favicon-->
-<link rel="shortcut icon" href="img/fav.png">
-<!-- Author Meta -->
-<meta name="author" content="codepixer">
-<!-- Meta Description -->
-<meta name="description" content="">
-<!-- Meta Keyword -->
-<meta name="keywords" content="">
+
 <!-- meta character set -->
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Site Title -->
-<title>로그인/회원가입</title>
+<title>로그인</title>
 
-<link
-	href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
-	rel="stylesheet">
-<!--CSS============================================= -->
-<link rel="stylesheet" href="/css/linearicons.css">
-<link rel="stylesheet" href="/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/bootstrap.css">
-<link rel="stylesheet" href="/css/magnific-popup.css">
-<link rel="stylesheet" href="/css/nice-select.css">
-<link rel="stylesheet" href="/css/animate.min.css">
-<link rel="stylesheet" href="/css/owl.carousel.css">
-<link rel="stylesheet" href="/css/main.css">
-<link rel="stylesheet" href="/css/style.css">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+<!--===============================================================================================-->
 <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 <script type="text/javascript">
 	//아이디 중복체크
@@ -180,78 +180,53 @@
 		}
 	%>
 
-	<!-- #header -->
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-50 p-b-90">
+				<form class="login100-form validate-form flex-sb flex-w"
+				id="login" name="Loginf" action="/user/getUserLoginCheck.do"
+				onsubmit="return doLoginUserCheck(this);">
+					<span class="login100-form-title p-b-51">
+						Login
+					</span>
 
-	<!-- start banner Area -->
-	<section class="banner-area relative" id="home">
-		<div class="container">
-			<div class="overlay overlay-bg"></div>
-			<div
-				class="row fullscreen d-flex align-items-center justify-content-start">
-				<div class="banner-content col-lg-8">
-					<h3 class="text-uppercase">
-						<br>
+					<!--아이디-->
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
+						<input class="input100" type="text" name="user_id" placeholder="ID">
+						<span class="focus-input100"></span>
+					</div>
+					
+					<!--비밀번호-->
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
+						<input class="input100" type="password" name="password" placeholder="Password">
+						<span class="focus-input100"></span>
+					</div>
 
-					</h3>
+					<!--로그인 버튼-->
+					<div class="container-login100-form-btn m-t-17">
+						<button class="login100-form-btn">
+							로그인
+						</button>
+						
+					</div>
 
-
-				</div>
+					<!--아이디/비번찾기/회원가입-->
+					<div class="find_info" style="margin: auto auto; ">
+						<a target="_blank" id="idinquiry" href="https://nid.naver.com/user2/api/route.nhn?m=routeIdInquiry&amp;lang=ko_KR">아이디 찾기</a> 
+						<span class="bar" aria-hidden="true">|</span> 
+						<a target="_blank" id="pwinquiry" href="https://nid.naver.com/user2/api/route.nhn?m=routePwInquiry&amp;lang=ko_KR">비밀번호 찾기</a> 
+						<span class="bar" aria-hidden="true">|</span> 
+						<a target="_blank" id="join" href="https://nid.naver.com/user2/V2Join.nhn?m=agree&amp;lang=ko_KR">회원가입</a>
+					</div>
+				</form>
 			</div>
 		</div>
-	</section>
-	<!-- End banner Area -->
+	</div>
+	
 
-	<!-- Start callto-top Area -->
-	<section class="callto-top-area section-gap">
-		<div class="container">
-			<div class="row justify-content-between callto-top-wrap pt-40 pb-40">
-				<div class="col-lg-12 callto-top">
-					<div class="forms">
-						<ul class="tab-group">
-							<li class="tab active"><a href="#login">로그인</a></li>
-							<li class="tab"><a href="#signup">회원가입</a></li>
-						</ul>
-						<form id="login" name="Loginf" action="/user/getUserLoginCheck.do"
-							onsubmit="return doLoginUserCheck(this);">
-							<div class="input-field">
-								<label for="text">아이디</label> <input type="text" name="user_id"
-									required /> <label for="password">비밀번호</label> <input
-									type="password" name="password" required /> <input
-									type="submit" value="로그인" class="button" /> <input
-									type="button" value="아이디찾기/비밀번호찾기" class="button"
-									onclick="window.location='/user/FindForm.do'" />
-							</div>
-						</form>
-						<!-- 회원 -->
-						<form name="Regf" id="signup" action="/user/insertUserInfo.do"
-							onsubmit="return submitTest();">
-							<div class="input-field">
-								<label for="user_name">이름</label> <input type="text"
-									name="user_name" oninput="test_name()" required />
-								<div id="name-success" style="display: none;">이름 형식이 아닙니다.(한글로 작성해 주세요)</div>
+	<div id="dropDownSelect1"></div>
+	
 
-								<label for="user_id">아이디</label> 
-								<input type="text" name="user_id" oninput="test();"  required /> 
-								<div id="checkid"></div>
-									<!--  <input type="button" value="중복확인" class="button" id="checkId" onclick="test();" />-->
-							<labelfor="password">비밀번호</label>
-								<div id="alert-danger1" style="display: none;">형식 올바르지
-									않습니다(영문소문자, 숫자8~16)</div>
-								<input type="password" name="password" id="pwd1" required /> <label
-									for="password">비밀번호 확인</label>
-
-								<div id="alert-success" style="display: none;">비밀번호 사용가능</div>
-								<div id="alert-danger" style="display: none;">비밀번호 불가능(비밀번호가 일치하지 않습니다)</div>
-								<input type="password" name="password" id="pwd2"
-									oninput="checkPw()" required /> <label for="email">Email</label>
-								<input type="email"  id="checkEmail"  oninput="test_email();" name="email" required/>
-								<div id="check"></div>
-								<input type="hidden" id="submitinput" value="0">
-								 <input type="hidden" id="emailinput" value="0">
-								 <input type="submit" value="회원가입" class="button" id="submitbtn" />
-							</div>
-						</form>
-					</div>
 					<script
 						src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 					<script type="text/javascript">
@@ -286,50 +261,27 @@
 						
 					}
 					</script>
-				</div>
-			</div>
-		</div>
-	</section>
+
 	<!-- End callto-top Area -->
 
-
-	<!-- start footer Area -->
-	<footer class="footer-area">
-		<div class="container">
-			<!-- <div class="row pt-120 pb-80"></div> -->
-		</div>
-		<div class="copyright-text">
-			<div class="container">
-				<div class="row footer-bottom d-flex justify-content-between">
-					<p class="col-lg-8 col-sm-6 footer-text m-0 text-white">
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;<!-- <script>document.write(new Date().getFullYear());
-                                </script> --> 1920110002 |  by 강지연 <a href="https://colorlib.com" target="_blank"></a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- End footer Area -->
-
-	<script src="/js/vendor/jquery-2.2.4.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-		crossorigin="anonymous"></script>
-	<script src="/js/vendor/bootstrap.min.js"></script>
-	<script type="text/javascript"
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-	<script src="/js/easing.min.js"></script>
-	<script src="/js/hoverIntent.js"></script>
-	<script src="/js/superfish.min.js"></script>
-	<script src="/js/jquery.ajaxchimp.min.js"></script>
-	<script src="/js/jquery.magnific-popup.min.js"></script>
-	<script src="/js/owl.carousel.min.js"></script>
-	<script src="/js/jquery.nice-select.min.js"></script>
-	<script src="/js/mail-script.js"></script>
+<!--===============================================================================================-->
+	<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/vendor/bootstrap/js/popper.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/vendor/daterangepicker/moment.min.js"></script>
+	<script src="/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
 	<script src="/js/main.js"></script>
+	
+
 
 </body>
 </html>
