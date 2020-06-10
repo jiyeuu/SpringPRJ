@@ -11,8 +11,8 @@
 			</div>
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">
-					<li class="menu-active"><a href="/MainForm.do"></a></li>
-					<li><a href="/user/LoginForm.do"></a></li>
+					<li class="menu-active"><a href="/MainForm.do">홈</a></li>
+					<li><a href="/user/LoginForm.do">로그인</a></li>
 				</ul>
 			</nav>
 			<!-- #nav-menu-container -->

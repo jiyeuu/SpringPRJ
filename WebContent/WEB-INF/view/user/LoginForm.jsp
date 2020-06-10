@@ -13,9 +13,9 @@
 <!-- meta character set -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Site Title -->
 <title>로그인</title>
 
+<!-- Site Title -->
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -39,122 +39,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 <!--===============================================================================================-->
 <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
-<script type="text/javascript">
-	//아이디 중복체크
-	 function test() {
-			var inputed = Regf.user_id.value;
-			var CheckForm = /^[a-z0-9]{4,12}$/;
 
-			if (!CheckForm.test(inputed)) {
-				$("#checkid").text("형식이 올바르지 않습니다.(영문소문자, 숫자 4~12글자)");
-				$('#submitinput').val("0");
-			} else {
-				$.ajax({
-					data : {
-						user_id : inputed
-					},
-					url : "checkId.do",
-					success : function(data) {
-						if (data == '0') {
-							$("#checkid").text('사용가능한 아이디 입니다.');
-							$('#submitinput').val("1");
-						} else if (data == '1') {
-							$("#checkid").text('사용불가능한 아이디 입니다.');
-							$('#submitinput').val("0");
-						}
-					}
-				});
-			}
-		} 
-	/*
-						if (data == '0') {
-							alert("사용가능 아이디 입니다.")
-							$('#submitinput').val("1");
-						} else if (data == '1') {
-							alert("중복된 아이디 입니다.")
-							$('#submitinput').val("0");
-						}
-	*/
-	
-	//이메일 중복체크
-	 function test_email() {
-			var inputed = Regf.email.value;
-			var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-
-			if (!regex.test(inputed)) {
-				$("#check").text('이메일 형식이 올바르지 않습니다.');
-				$('#emailinput').val("0");
-			} else {
-				$.ajax({
-					data : {
-						email : inputed
-					},
-					url : "checkEmail.do",
-					success : function(data) {
-						if (data == '0') {
-							$("#check").text('사용가능한 이메일 입니다.');
-							$('#emailinput').val("1");
-						} else if (data == '1') {
-							$("#check").text('사용불가능한 이메일 입니다.');
-							$('#emailinput').val("0");
-						}
-					}
-				});
-			}
-		} 
-	
-	
-	//비밀번호 일치 체크
-	$(function checkPw() {
-		$("#alert-success").hide();
-		$("#alert-danger").hide();
-		$("input").keyup(function() {
-			var pwd1 = $("#pwd1").val();
-			var pwd2 = $("#pwd2").val();
-			var CheckForm = /^[a-z0-9]{8,16}$/;
-			if (!CheckForm.test(pwd1)) {
-				$('#submitbtn').prop("disabled", true);
-				
-			if(pwd1!=""){	
-				$("#alert-danger1").show();
-			}
-			
-			} else{
-			 	if (pwd1 != "" || pwd2 != "") {
-					if (pwd1 == pwd2) {
-						$("#alert-danger1").hide();
-						$("#alert-success").show();
-						$("#alert-danger").hide();
-						$("#submitbtn").removeAttr("disabled");
-					} else {
-						$("#alert-danger1").hide();
-						$("#alert-success").hide();
-						$("#alert-danger").show();
-						$("#submitbtn").attr("disabled", "disabled");
-					}
-			  	}
-			}
-		});
-	});
-	
-	
-	//이름 형식 체크
-	function test_name() {
-		var name = Regf.user_name.value;
-		var CheckForm = /^[가-힣]+$/;
-
-		if (!CheckForm.test(name)) {
-			$("#name-success").show();
-			$('#submitbtn').prop("disabled", true);
-
-		} else {
-			$("#name-success").hide();
-		}
-	}
-	
-	
-	
-</script>
 </head>
 <body>
 	<!-- #header -->
@@ -212,11 +97,11 @@
 
 					<!--아이디/비번찾기/회원가입-->
 					<div class="find_info" style="margin: auto auto; ">
-						<a target="_blank" id="idinquiry" href="https://nid.naver.com/user2/api/route.nhn?m=routeIdInquiry&amp;lang=ko_KR">아이디 찾기</a> 
+						<a target="_blank" id="idinquiry" href="/user/FindForm.do">아이디 찾기</a> 
 						<span class="bar" aria-hidden="true">|</span> 
-						<a target="_blank" id="pwinquiry" href="https://nid.naver.com/user2/api/route.nhn?m=routePwInquiry&amp;lang=ko_KR">비밀번호 찾기</a> 
+						<a target="_blank" id="pwinquiry" href="/user/FindForm.do">비밀번호 찾기</a> 
 						<span class="bar" aria-hidden="true">|</span> 
-						<a target="_blank" id="join" href="https://nid.naver.com/user2/V2Join.nhn?m=agree&amp;lang=ko_KR">회원가입</a>
+						<a target="_blank" id="join" href="/user/UserRegForm.do">회원가입</a>
 					</div>
 				</form>
 			</div>
@@ -227,40 +112,7 @@
 	<div id="dropDownSelect1"></div>
 	
 
-					<script
-						src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-					<script type="text/javascript">
-						
-					$(document)
-						.ready(function() {
-							$('.tab a').on(
-								'click',function(e) {
-									e.preventDefault();
-									$(this).parent().addClass('active');
-									$(this).parent().siblings().removeClass('active');
-
-									var href = $(this).attr('href');
-									$('.forms > form').hide();
-									$(href).fadeIn(500);
-								});
-							});
-					</script>
-					<script type="text/javascript">
-					function submitTest(){
-						var subinput = $("#submitinput").val();
-						var emailinput = $("#emailinput").val();
-						if(subinput=='0'){
-							alert("아이디 중복 체크를 해주세요.");
-							return false;
-						}
-						if(emailinput=='0'){
-							alert("이메일 중복 체크를 해주세요.");
-							return false;
-						}
-						return true;
-						
-					}
-					</script>
+					
 
 	<!-- End callto-top Area -->
 
