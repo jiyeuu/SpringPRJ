@@ -54,7 +54,7 @@
 					url : "checkId.do",
 					success : function(data) {
 						if (data == '0') {
-							$("#checkid").text('사용가능한 아이디 입니다.');
+							$("#checkId").text('사용가능한 아이디 입니다.');
 							$('#submitinput').val("1");
 						} else if (data == '1') {
 							$("#checkid").text('사용불가능한 아이디 입니다.');
@@ -64,15 +64,7 @@
 				});
 			}
 		} 
-	/*
-						if (data == '0') {
-							alert("사용가능 아이디 입니다.")
-							$('#submitinput').val("1");
-						} else if (data == '1') {
-							alert("중복된 아이디 입니다.")
-							$('#submitinput').val("0");
-						}
-	*/
+
 	
 	//이메일 중복체크
 	 function test_email() {
@@ -183,33 +175,36 @@
 			<div class="wrap-login100 p-t-50 p-b-90">
 				<form class="login100-form validate-form flex-sb flex-w"
 				name="Regf" id="signup" action="/user/insertUserInfo.do" onsubmit="return submitTest();">
-					<span class="login100-form-title p-b-51"></span>
-
+					<span class="login100-form-title p-b-51">
+						Sign Up
+					</span>
 					<!--이름-->
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
-						<input class="input100" type="text" name="user_name" oninput="test_name()" placeholder="name">
-						<span class="focus-input100"></span>
-						<div id="name-success" style="display: none;">이름 형식이 아닙니다.(한글로 작성해 주세요)</div>
+					<div class="wrap-input100 validate-input m-b-16">
+						<input class="input100" type="text" name="user_name" oninput="test_name()" placeholder="name" required >
+						<span class="focus-input100"></span>	
 					</div>
-
-					<!--아이디-->
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
-						<input class="input100" type="text" name="user_id" oninput="test();" placeholder="ID">
-						<span class="focus-input100"></span>
-						<div id="checkid"></div>
-					</div>
+					<div 
+					id="name-success" style="display: none;">이름 형식이 아닙니다. (한글로 작성해 주세요)</div>
 					
-					<!--비밀번호-->
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-						<input class="input100"  id="pwd1" type="password" name="password" placeholder="Password">
+					<!--아이디-->
+					<div class="wrap-input100 validate-input m-b-16">
+						<input class="input100" type="text" name="user_id" oninput="test();" placeholder="ID" required >
 						<span class="focus-input100"></span>
-						<div id="alert-danger1" style="display: none;">
-							형식 올바르지 않습니다(영문소문자, 숫자8~16)</div>
-						
 					</div>
+						<div id="checkid"></div>
+						
+				
+					<!--비밀번호-->
+					<div class="wrap-input100 validate-input m-b-16">
+						<input class="input100"  id="pwd1" type="password" name="password" placeholder="Password" required >
+						<span class="focus-input100"></span>
+					</div>
+					<div 
+						id="alert-danger1" style="display: none;">형식 올바르지 않습니다(영문소문자, 숫자8~16)</div>
+						
 					<!--비밀번호 확인-->
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-						<input class="input100"  id="pwd2" type="password" name="password" oninput="checkPw()" placeholder="Password check">
+					<div class="wrap-input100 validate-input m-b-16">
+						<input class="input100"  id="pwd2" type="password" name="password" oninput="checkPw()" placeholder="Password check" required >
 						<span class="focus-input100"></span>
 					</div>
 					<div id="alert-success" style="display: none;">
@@ -218,11 +213,12 @@
 						비밀번호 불가능(비밀번호가 일치하지 않습니다)</div>
 
 					<!--이메일-->
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "email is required">
-						<input class="input100" id="checkEmail" type="email" name="email" oninput="test_email();" placeholder="email">
+					<div class="wrap-input100 validate-input m-b-16">
+						<input class="input100" id="checkEmail" type="email" name="email" oninput="test_email();" placeholder="email" required >
 						<span class="focus-input100"></span>
-						<div id="check"></div>	
 					</div>
+					<div id="check"></div>	
+					
 					<input type="hidden" id="submitinput" value="0">
 					<input type="hidden" id="emailinput" value="0">
 					<!--로그인 버튼-->
@@ -231,7 +227,10 @@
 							type="submit" value="회원가입" >
 					</div>
 
-					
+					<div class="find_info" style="margin-left: 81%;">
+						<a target="_blank" id="idinquiry" href="/user/LoginForm.do">뒤로가기</a> 
+						<span class="bar" aria-hidden="true">|</span> 
+					</div>
 				</form>
 			</div>
 		</div>
@@ -256,7 +255,7 @@
 					});
 				});
 		</script>
-		<script type="text/javascript">
+	<!-- 	<script type="text/javascript">
 		function submitTest(){
 			var subinput = $("#submitinput").val();
 			var emailinput = $("#emailinput").val();
@@ -271,7 +270,7 @@
 			return true;
 			
 		}
-		</script>
+		</script> -->
 <!--===============================================================================================-->
 	<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

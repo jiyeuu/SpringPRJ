@@ -55,11 +55,20 @@ public class UserInfoController {
 	}
 
 	/* 아이디찾기 화면으로 이동 */
-	@RequestMapping(value = "/user/FindForm")
-	public String findForm() {
+	@RequestMapping(value = "/user/IDFindForm")
+	public String idfindForm() {
 		log.info(this.getClass().getName() + ".user/findIdForm ok!");
 
-		return "/user/FindForm";
+		return "/user/IDFindForm";
+
+	}
+	
+	/* 비밀번호찾기 화면으로 이동 */
+	@RequestMapping(value = "/user/PWFindForm")
+	public String pwfindForm() {
+		log.info(this.getClass().getName() + ".user/findIdForm ok!");
+
+		return "/user/PWFindForm";
 
 	}
 

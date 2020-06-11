@@ -1,21 +1,16 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+	
 <%
-	String user_id = (String) session.getAttribute("SS_USER_ID");
-	String user_Author = (String) session.getAttribute("user_Author");
+	String user_id = (String)session.getAttribute("SS_USER_ID");
+	String user_Author = (String)session.getAttribute("user_Author");
 %>
 <!DOCTYPE html>
-<html lang="UTF-8">
+<html>
 <head>
-
-<!-- meta character set -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>로그인</title>
-
-<!-- Site Title -->
+	<title>비밀번호 찾기</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -38,41 +33,47 @@
 	<link rel="stylesheet" type="text/css" href="/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 <!--===============================================================================================-->
-<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 
+	
+   
+
+<script type="text/javascript">
+  
+	/*function pw_search(){
+	    var f = document.pw_f;
+	  if(f.mem_id.value==""){
+	            alert("ID를 입력해주세요.");
+	            f.mem_id.focus();
+	            return;
+	        }
+	        if(f.mem_email.value=="") {
+	            alert("E-mail을 입력해주세요.");
+	            f.mem_email.focus();
+	            return;
+	        }
+	f.submit();
+	}*/
+</script>
 </head>
 <body>
-	<!-- #header -->
-	<%
-		if (user_id != null) {
-	%>
-	<%
-		if (user_Author.equals("1")) {
-	%>
-	<%@include file="/WEB-INF/view/frame/topbar-admin.jsp"%>
-	<%
-		} else {
-	%>
-	<%@include file="/WEB-INF/view/frame/topbar-login.jsp"%>
-	<%
-		}
-	%>
-	<%
-		} else {
-	%>
-	<%@include file="/WEB-INF/view/frame/topbar-logout.jsp"%>
-	<%
-		}
-	%>
-
-	<div class="limiter">
+<!-- #header -->
+	<%if(user_id!=null){ %>
+		<%if(user_Author.equals("1")) {%>
+			<%@include file="/WEB-INF/view/frame/topbar-admin.jsp" %>
+		<%} else { %>
+			<%@include file="/WEB-INF/view/frame/topbar-login.jsp" %>
+		<%} %>
+	<%} else {%>
+		<%@include file="/WEB-INF/view/frame/topbar-logout.jsp" %>
+	<%} %>
+	
+		<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-50 p-b-90">
 				<form class="login100-form validate-form flex-sb flex-w"
-				id="login" name="Loginf" action="/user/getUserLoginCheck.do"
-				onsubmit="return doLoginUserCheck(this);">
+				name="Regf" id="pwf" action="/user/findingPw.do" onsubmit="return findPw(this)">
 					<span class="login100-form-title p-b-51">
-						Login
+						password Find
 					</span>
 
 					<!--아이디-->
@@ -80,29 +81,26 @@
 						<input class="input100" type="text" name="user_id" placeholder="ID">
 						<span class="focus-input100"></span>
 					</div>
-					
-					<!--비밀번호-->
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
+
+					<!--이메일-->
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "email is required">
+						<input class="input100" id="checkEmail" type="email" name="email" oninput="test_email();" placeholder="email">
 						<span class="focus-input100"></span>
+						<div id="check"></div>	
 					</div>
-
-					<!--로그인 버튼-->
+					<input type="hidden" id="submitinput" value="0">
+					<input type="hidden" id="emailinput" value="0">
+					<!--버튼-->
 					<div class="container-login100-form-btn m-t-17">
-						<button class="login100-form-btn">
-							로그인
-						</button>
-						
+						<input class="login100-form-btn button" id="submitbtn"  
+							type="submit" value="비밀번호 찾기" >
 					</div>
-
-					<!--아이디/비번찾기/회원가입-->
-					<div class="find_info" style="margin: auto auto; ">
-						<a target="_blank" id="idinquiry" href="/user/IDFindForm.do">아이디 찾기</a> 
+					
+					<div class="find_info" style="margin-left: 81%;">
+						<a target="_blank" id="idinquiry" href="/user/LoginForm.do">뒤로가기</a> 
 						<span class="bar" aria-hidden="true">|</span> 
-						<a target="_blank" id="pwinquiry" href="/user/PWFindForm.do">비밀번호 찾기</a> 
-						<span class="bar" aria-hidden="true">|</span> 
-						<a target="_blank" id="join" href="/user/UserRegForm.do">회원가입</a>
 					</div>
+					
 				</form>
 			</div>
 		</div>
@@ -111,11 +109,6 @@
 
 	<div id="dropDownSelect1"></div>
 	
-
-					
-
-	<!-- End callto-top Area -->
-
 <!--===============================================================================================-->
 	<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
@@ -133,7 +126,6 @@
 <!--===============================================================================================-->
 	<script src="/js/main.js"></script>
 	
-
-
+	
 </body>
 </html>
