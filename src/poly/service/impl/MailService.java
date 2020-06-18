@@ -71,7 +71,7 @@ public class MailService implements IMailService {
          Transport.send(message);
 
       } catch (MessagingException e) {
-         res = 0;
+         res = 0; // 메일 발송이 실패해기 때문에 0으로 변경
          log.info("[ERROR]" + this.getClass().getName() + ".doSendMail : " + e);
       } catch (Exception e) {
          res = 0;

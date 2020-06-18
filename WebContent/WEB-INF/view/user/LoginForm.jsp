@@ -76,13 +76,13 @@
 					</span>
 
 					<!--아이디-->
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
+					<div class="wrap-input100 validate-input m-b-16">
 						<input class="input100" type="text" name="user_id" placeholder="ID">
 						<span class="focus-input100"></span>
 					</div>
 					
 					<!--비밀번호-->
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
+					<div class="wrap-input100 validate-input m-b-16" >
 						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100"></span>
 					</div>

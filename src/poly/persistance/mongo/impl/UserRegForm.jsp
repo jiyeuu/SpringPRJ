@@ -39,7 +39,7 @@
 <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 <script type="text/javascript">
 	//아이디 중복체크
-	 function test() {
+	/*  function test() {
 			var inputed = Regf.user_id.value;
 			var CheckForm = /^[a-z0-9]{4,12}$/;
 
@@ -64,7 +64,7 @@
 				});
 			}
 		} 
-
+ */
 	
 	//이메일 중복체크
 	 function test_email() {
@@ -142,6 +142,19 @@
 		}
 	}
 	
+	function test() {
+		var id = Regf.user_id.value;
+		var CheckForm = /^[a-z0-9]{4,12}$/;
+
+		if (!CheckForm.test(id)) {
+			$("#id-success").show();
+			$('#submitbtn').prop("disabled", true);
+
+		} else {
+			$("#id-success").text('사용가능한 아이디 입니다.');
+		}
+	}
+	
 	
 	
 </script>
@@ -184,14 +197,16 @@
 						<span class="focus-input100"></span>	
 					</div>
 					<div 
-					id="name-success" style="display: none;">이름 형식이 아닙니다. (한글로 작성해 주세요)</div>
+					id="name-success" style="display: none;">이름 형식이 올바르지 않습니다. (한글로 작성해 주세요)</div>
 					
 					<!--아이디-->
 					<div class="wrap-input100 validate-input m-b-16">
 						<input class="input100" type="text" name="user_id" oninput="test();" placeholder="ID" required >
 						<span class="focus-input100"></span>
 					</div>
-						<div id="checkid"></div>
+					<!-- 	<div id="checkid"></div> -->
+					<div 
+					id="id-success" style="display: none;">형식이 올바르지 않습니다. (영문소문자, 숫자 4~12글자)</div>
 						
 				
 					<!--비밀번호-->
@@ -255,7 +270,7 @@
 					});
 				});
 		</script>
-	<!-- 	<script type="text/javascript">
+	 	<script type="text/javascript">
 		function submitTest(){
 			var subinput = $("#submitinput").val();
 			var emailinput = $("#emailinput").val();
@@ -270,7 +285,7 @@
 			return true;
 			
 		}
-		</script> -->
+		</script> 
 <!--===============================================================================================-->
 	<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

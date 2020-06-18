@@ -6,6 +6,7 @@ public class BugsDTO {
 	private String song; //노래제목
 	private String singer; //가수
 	private String str; //가사
+	private String rank; //순위
 	
 	public String getCollect_time() {
 		return collect_time;
@@ -30,6 +31,12 @@ public class BugsDTO {
 	}
 	public void setStr(String str) {
 		this.str = str;
+	}
+	public String getRank() {
+		return rank;
+	}
+	public void setRank(String rank) {
+		this.rank = rank;
 	}
 	
 	

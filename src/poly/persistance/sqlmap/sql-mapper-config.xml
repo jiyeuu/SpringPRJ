@@ -8,5 +8,7 @@
 	<typeAlias type="poly.dto.MyJsonDTO" alias="MyJsonDTO" />
 	<typeAlias type="poly.dto.UserInfoDTO" alias="UserInfoDTO" />
 	<typeAlias type="poly.dto.BoardDTO" alias="BoardDTO"  />
+	<typeAlias type="poly.dto.NlpDTO" alias="NlpDTO"/>
+	<typeAlias  type="poly.dto.PagingDTO" alias="PagingDTO"/>
     </typeAliases>
 </configuration>
