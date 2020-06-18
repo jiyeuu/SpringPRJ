@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.rosuda.REngine.Rserve.RConnection;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,31 +16,29 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import poly.dto.BugsDTO;
 import poly.service.IBugsService;
 
-
 @Controller
 public class BugsController {
-	
+
 	private Logger log = Logger.getLogger(this.getClass());
 
-	@Resource(name="BugsService")
+	@Resource(name = "BugsService")
 	private IBugsService bugsService;
-	
-	
-	//멜론 top 수집
-	@RequestMapping(value="bugs/collectBugsRank")
+
+	// 멜론 top 수집
+	@RequestMapping(value = "bugs/collectBugsRank")
 	@ResponseBody
-	public String collectBugsRank(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		
+	public String collectBugsRank(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
 		log.info(this.getClass().getName() + ".collectBugsRank Start!");
-		
+
 		bugsService.collectBugsRank();
-		
+
 		log.info(this.getClass().getName() + ".collectBugsRank End!");
-		
+
 		return "success";
-		
+
 	}
-	
+
 	/**
 	 * 멜론 데이터 가져오는 일반 화면
 	 */
@@ -52,7 +51,7 @@ public class BugsController {
 
 		return "/bugs/bugsTop100";
 	}
-	
+
 	/**
 	 * 멜론 데이터 가져오기
 	 */
@@ -72,7 +71,7 @@ public class BugsController {
 
 		return rList;
 	}
-	
+
 	/**
 	 * 멜론 데이터 가져오는 일반 화면
 	 */
@@ -86,6 +85,28 @@ public class BugsController {
 
 		return "success";
 	}
+
+	@RequestMapping(value = "rTest1")
+	@ResponseBody
+	public String rTest1(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		log.info(this.getClass().getName() + ".rTest1 Start!");
+
+		RConnection c = new RConnection();
+
+		c.eval("library(KoNLP)");
+		c.eval("useNIADic()");
+		c.eval("library(stringr)");
+		c.eval("library(dplyr)");
 	
+		
+		
+		
+		c.close();
+		
+		log.info(this.getClass().getName() + ".rTest1 End!");
+
+		return "success";
+	}
 
 }

@@ -12,14 +12,26 @@
 
 <!-- meta character set -->
 <meta charset="UTF-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="Page description" name="description">
+<meta name="google" content="notranslate" />
+<meta content="Mashup templates have been developped by Orson.io team" name="author">
+<!-- Disable tap highlight on IE -->
+<meta name="msapplication-tap-highlight" content="no">
 <title>로그인</title>
 
 <!-- Site Title -->
 <!--===============================================================================================-->	
+	<link rel="apple-touch-icon" href="/img/assets/apple-icon-180x180.png">
+<!--===============================================================================================-->
+	<link rel="icon" href="/img/assets/favicon.ico" >	
+<!--===============================================================================================-->	
+	<link rel="stylesheet" href="/css/main82cfd66e.css" >
+<!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="/text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
@@ -65,6 +77,9 @@
 		}
 	%>
 
+<main class="" id="main-collapse">	
+	<!-- Add your site or app content here -->
+	<div class="hero-full-wrapper">
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-50 p-b-90">
@@ -111,11 +126,24 @@
 
 	<div id="dropDownSelect1"></div>
 	
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+     masonryBuild();
+  });
+</script>
 
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function (event) {
+  navbarToggleSidebar();
+  navActivePage();
+});
+</script>
 					
 
 	<!-- End callto-top Area -->
-
+	<script type="text/javascript" src="/css/main.85741bff.js"></script>
 <!--===============================================================================================-->
 	<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

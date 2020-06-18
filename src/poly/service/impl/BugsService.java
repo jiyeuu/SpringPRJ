@@ -1,7 +1,5 @@
 package poly.service.impl;
 
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,6 +12,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.rosuda.REngine.REXP;
+import org.rosuda.REngine.RList;
 import org.rosuda.REngine.Rserve.RConnection;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +27,7 @@ public class BugsService implements IBugsService {
 	@Resource(name = "BugsMapper")
 	private IBugsMapper bugsMapper;
 
-	@Resource(name="BugsService")
+	@Resource(name = "BugsService")
 	private IBugsService bugsService;
 
 	private Logger log = Logger.getLogger(this.getClass());
@@ -62,13 +61,13 @@ public class BugsService implements IBugsService {
 			Element songInfo = it.next();
 
 			// 크롤링을 통해 데이터 저장하기
-			
+
 			String lyric = songInfo.select("td").eq(3).select("a").attr("href");
 			// String song = songInfo.select("div.ellipsis a").eq(0).text();
 			// String singer = songInfo.select("div.ellipsis a").eq(1).text();
 			Document doc1 = Jsoup.connect(lyric).get();
 			Elements ele = doc1.select("article#container");
-			//String rank = ele.select("table > tbody > tr > td > div > strong").text();
+			// String rank = ele.select("table > tbody > tr > td > div > strong").text();
 			String song = ele.select("header > div.innerContainer > h1").text();
 			String singer = ele.select("section.summaryInfo > div.innerContainer > div.basicInfo > table > tbody > tr")
 					.eq(0).select("td").text();
@@ -79,7 +78,7 @@ public class BugsService implements IBugsService {
 
 			// MongoDB에 저장할 List 형태의 맞는 DTO 데이터 저장하기
 			BugsDTO pDTO = new BugsDTO();
-			//pDTO.setRank(rank);
+			// pDTO.setRank(rank);
 			pDTO.setCollect_time(DateUtil.getDateTime("yyyyMMddhhmmss"));
 			pDTO.setSong(song);
 			pDTO.setSinger(singer);
@@ -120,57 +119,45 @@ public class BugsService implements IBugsService {
 		return rList;
 	}
 
-	//R 연동하는 방법
+	// R 연동하는 방법
 	@Override
 	public void rTest() throws Exception {
 		// TODO Auto-generated method stub
-		
+		log.info("rTest 시작~");
 		List<BugsDTO> rList = bugsService.getRank();
 
 		if (rList == null) {
 			rList = new ArrayList<BugsDTO>();
 		}
-		
+		log.info("rList size : "+rList.size());
+
 		String[] str = new String[rList.size()];
-		for(int i = 0; i<rList.size();i++) {
-			str[i]=rList.get(i).getStr();
+		for (int i = 0; i < rList.size(); i++) {
+			str[i] = rList.get(i).getStr();
 		}
-		
-		RConnection c = new RConnection(); //r연결
-		
-		
-		c.eval("library(Rserve)");
-		c.eval("library(KoNLP)");
-		c.eval("library(stringr)");
-		c.eval("library(dplyr)");
-		
-		
-		c.assign("str", str); //"r내부 str", 이클립스 str
-		c.eval("a <- str"); //넣는거
-		
-		REXP x = c.eval("a"); //추출
-		String[] d = x.asStrings();
-		for(int i = 0; i<d.length;i++) {
-			log.info(d[i]);
-		}
-		
+
+		RConnection c = new RConnection(); // r연결
+
+		c.assign("str", str); // "r내부 str", 이클립스 str
+		c.eval("a <- str"); // 넣는거
+
 		c.eval("nouns <- extractNoun(a)");
 		c.eval("wordcount <- table(unlist(nouns))");
 		c.eval("df_word <- as.data.frame(wordcount, stringsAsFactors = F)");
 		c.eval("df_word <- rename(df_word, word = Var1, freq = Freq)");
 		c.eval("df_word <- filter(df_word, nchar(word) >= 2)");
-		c.eval("top_50 <- df_word %>% arrange(desc(freq)) %>% head(50)");
-		
-		REXP x1 = c.eval("top_50");
-		String[] d1 = x1.asStrings();
-		for(int i = 0; i<d1.length;i++) {
-			log.info(d1[i]);
-		}
-		
-	}
+		c.eval("top_50 <- df_word %>% arrange(desc(freq)) %>% head(10)");
 
-	
-	
-	
+		REXP x = c.eval("top_50$word");
+		REXP y = c.eval("top_50$freq");
+		
+		String strx[] = x.asStrings();
+		String stry[] = y.asStrings();
+		
+		for(int i = 0; i<strx.length;i++) {
+			log.info("word : "+strx[i]+" | freq : "+stry[i]);
+		}
+ 
+	}
 
 }
