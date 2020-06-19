@@ -1,7 +1,9 @@
 package poly.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -75,15 +77,31 @@ public class BugsController {
 	/**
 	 * 멜론 데이터 가져오는 일반 화면
 	 */
+	@RequestMapping(value = "test")
+	public String test(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		log.info(this.getClass().getName() + ".test Start!");
+
+		log.info(this.getClass().getName() + ".test End!");
+
+		return "/test";
+	}
+	/**
+	 * 멜론 데이터 가져오는 일반 화면
+	 */
 	@RequestMapping(value = "rTest")
 	@ResponseBody
-	public String rTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public Map<String,List<String>> rTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		log.info(this.getClass().getName() + ".rTest Start!");
-		bugsService.rTest();
+		Map<String, List<String>> pMap = bugsService.rTest();
+		if(pMap==null) {
+			pMap = new HashMap<String, List<String>>();
+		}
+		
 		log.info(this.getClass().getName() + ".rTest End!");
 
-		return "success";
+		return pMap;
 	}
 
 	@RequestMapping(value = "rTest1")

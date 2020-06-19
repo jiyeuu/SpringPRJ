@@ -1,8 +1,10 @@
 package poly.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -121,7 +123,7 @@ public class BugsService implements IBugsService {
 
 	// R 연동하는 방법
 	@Override
-	public void rTest() throws Exception {
+	public Map<String, List<String>> rTest() throws Exception {
 		// TODO Auto-generated method stub
 		log.info("rTest 시작~");
 		List<BugsDTO> rList = bugsService.getRank();
@@ -146,17 +148,25 @@ public class BugsService implements IBugsService {
 		c.eval("df_word <- as.data.frame(wordcount, stringsAsFactors = F)");
 		c.eval("df_word <- rename(df_word, word = Var1, freq = Freq)");
 		c.eval("df_word <- filter(df_word, nchar(word) >= 2)");
-		c.eval("top_50 <- df_word %>% arrange(desc(freq)) %>% head(10)");
+		c.eval("df_word <- filter(df_word, freq >= 2)");
+		c.eval("top_50 <- df_word %>% arrange(desc(freq))");
 
 		REXP x = c.eval("top_50$word");
 		REXP y = c.eval("top_50$freq");
 		
 		String strx[] = x.asStrings();
 		String stry[] = y.asStrings();
-		
+		Map<String, List<String>> pMap = new HashMap<String, List<String>>();
+		List<String> sList1 = new ArrayList<String>();
+		List<String> sList2 = new ArrayList<String>();
 		for(int i = 0; i<strx.length;i++) {
-			log.info("word : "+strx[i]+" | freq : "+stry[i]);
+			sList1.add(strx[i]);
+			sList2.add(stry[i]);
 		}
+		pMap.put("word", sList1);
+		pMap.put("count", sList2);
+		
+		return pMap;
  
 	}
 

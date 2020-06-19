@@ -1,6 +1,7 @@
 package poly.service;
 
 import java.util.List;
+import java.util.Map;
 
 import poly.dto.BugsDTO;
 
@@ -13,7 +14,7 @@ public interface IBugsService {
 	 */
 	public List<BugsDTO> getRank() throws Exception;
 
-	public void rTest() throws Exception;
+	public Map<String, List<String>> rTest() throws Exception;
 
 	
 }
