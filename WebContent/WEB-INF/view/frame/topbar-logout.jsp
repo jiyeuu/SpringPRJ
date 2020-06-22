@@ -10,7 +10,7 @@
 			      <span class="icon-bar"></span>
 			      <span class="icon-bar"></span>
 			    </button>
-			    <a href="/index.do" class="navbar-brand">Mashup Template</a>
+			    <a href="/index.do" class="navbar-brand"></a>
 			  </div>
 			
 			  <nav class="sidebar">
@@ -20,15 +20,15 @@
 			            <img class="img-responsive site-logo" alt="" src="./assets/images/mashup-logo.svg">
 			            index
 			          </a>
-			        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			        tempor.</p>
+			        <p>노래가사 분석하는 웹입니다.</p>
 			      </div>
 			      <ul class="nav">
-			        <li><a href="/index.do" >Home</a></li>
-			        <li><a href="/about.do" >About</a></li>
-			        <li><a href="/services.do" >Services</a></li>
-			        <li><a href="/contact.do" >Contact</a></li>
-			        <li><a href="/components.do" >Components</a></li>
+			        <li><a href="/index.do" >홈</a></li>
+			        <li><a href="/user/LoginForm.do" >로그인</a></li>
+			        <li><a href="/bugs/bugsTop100.do" >노래차트</a></li>
+			        <li><a href="/contact.do" >가사감정분석</a></li>
+			        <li><a href="/test.do" >텍스트마이닝</a></li>
+			        <li><a href="/board/boardList.do" >게시판</a></li>
 			
 			      </ul>
 			
@@ -44,7 +44,7 @@
 			            <i class="fa fa-twitter"></i>
 			          </a>
 			        </p>
-			        <p>© Untitled | Website created with <a href="http://www.mashup-template.com/" title="Create website with free html template">Mashup Template</a>/<a href="https://www.unsplash.com/" title="Beautiful Free Images">Unsplash</a></p>
+			        <p>© 1920110002 | 강지연  </p>
 			      </nav>  
 			    </div> 
 			  </nav>

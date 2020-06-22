@@ -77,7 +77,7 @@
 		}
 	%>
 
-<main class="" id="main-collapse">	
+<main class="" id="main-collapse">
 	<!-- Add your site or app content here -->
 	<div class="hero-full-wrapper">
 	<div class="limiter">
@@ -120,6 +120,7 @@
 					</div>
 				</form>
 			</div>
+		</div>
 		</div>
 	</div>
 	
