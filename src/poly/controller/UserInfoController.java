@@ -57,7 +57,7 @@ public class UserInfoController {
 	/* 아이디찾기 화면으로 이동 */
 	@RequestMapping(value = "/user/IDFindForm")
 	public String idfindForm() {
-		log.info(this.getClass().getName() + ".user/findIdForm ok!");
+		log.info(this.getClass().getName() + ".user/idfindForm ok!");
 
 		return "/user/IDFindForm";
 
@@ -66,7 +66,7 @@ public class UserInfoController {
 	/* 비밀번호찾기 화면으로 이동 */
 	@RequestMapping(value = "/user/PWFindForm")
 	public String pwfindForm() {
-		log.info(this.getClass().getName() + ".user/findIdForm ok!");
+		log.info(this.getClass().getName() + ".user/pwfindForm ok!");
 
 		return "/user/PWFindForm";
 
@@ -185,7 +185,7 @@ public class UserInfoController {
 		if (pDTO != null) {
 
 			model.addAttribute("msg", "로그인에 성공하였습니다");
-			model.addAttribute("url", "/MainForm.do");
+			model.addAttribute("url", "/user/MainForm.do");
 
 		} else {
 
@@ -267,7 +267,7 @@ public class UserInfoController {
 			} else {
 
 				model.addAttribute("msg", "입력하신 정보로 가입된 아이디가 없습니다.");
-				model.addAttribute("url", "/user/FindForm.do");
+				model.addAttribute("url", "/user/IDFindForm.do");
 			}
 
 			pDTO = null;
@@ -340,12 +340,12 @@ public class UserInfoController {
 
 			} else {
 				model.addAttribute("msg", "실패했습니다");
-				model.addAttribute("url", "/user/FindForm.do");
+				model.addAttribute("url", "/user/PWFindForm.do");
 			}
 
 		} else {
 			model.addAttribute("msg", "회원정보가 일치하지 않습니다.");
-			model.addAttribute("url", "/user/FindForm.do");
+			model.addAttribute("url", "/user/PWFindForm.do");
 		}
 
 		return "/redirect";

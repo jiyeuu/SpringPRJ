@@ -16,20 +16,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<!-- Mobile Specific Meta -->
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Favicon-->
-<link rel="shortcut icon" href="img/fav.png">
-<!-- Author Meta -->
-<meta name="author" content="codepixer">
-<!-- Meta Description -->
-<meta name="description" content="">
-<!-- Meta Keyword -->
-<meta name="keywords" content="">
+
 <!-- meta character set -->
 <meta charset="UTF-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="Page description" name="description">
+<meta name="google" content="notranslate" />
+<meta content="Mashup templates have been developped by Orson.io team" name="author">
+<!-- Disable tap highlight on IE -->
+<meta name="msapplication-tap-highlight" content="no">
 
 <title>공지사항 리스트</title>
 <link
@@ -119,20 +115,7 @@
 		}
 	%>
 	<!-- #header -->
-	<!-- start banner Area -->
-	<section class="banner-area relative" id="home">
-		<div class="container">
-			<div class="overlay overlay-bg"></div>
-			<div
-				class="row fullscreen d-flex align-items-center justify-content-start">
-				<div class="banner-content col-lg-8">
-					<h3 class="text-uppercase">
-						<br>
-					</h3>
-				</div>
-			</div>
-		</div>
-	</section>
+	
 	<!-- End banner Area -->
 
 	<%-- 	<%if(user_id!=null){ %>
@@ -142,12 +125,9 @@
 	<%}
 	}
 %> --%>
-	<div class="limiter">
-		<div class="container-table100">
-			<div class="wrap-table100">
-				<div class="table100 ver1 m-b-110">
-					<div class="table100-head">
-						<div class="formss" id="jb-content">
+
+						<div >
+						
 							<%
 								if (user_id != null) {
 							%>
@@ -162,7 +142,31 @@
 								}
 								}
 							%>
-							<div class="table_div"
+							
+							
+							
+<div style="border: 1px solid;">
+	<div>
+		<span style=" padding: 10px; text-align: left;">번호</span>
+		<span style=" padding: 100px; text-align: left;">제목</span>
+		<span style=" padding: 30px; text-align: left;">작성자</span>
+		<span style=" padding: 50px; text-align: left;">작성일</span>
+	</div>
+	<%
+		for (NoticeDTO bDTO : bList) {
+	%>
+	<div>
+		<span style=" padding: 10px; text-align: left;"><%=bDTO.getSeq()%></span>
+		<span style=" padding: 100px; text-align: left;"><a href="/notice/noticeDetail.do?seq=<%=bDTO.getSeq()%>"><%=bDTO.getTitle()%></a></span>
+		<span style=" padding: 30px; text-align: left;"><%=bDTO.getUser_name()%></span>
+		<span style=" padding: 50px; text-align: left;"><%=bDTO.getRead_cnt()%></span>
+	</div>
+	<%
+		}
+	%>
+</div>
+							
+							<%-- <div class="table_div"
 								style="display: table; table-layout: fixed; width: 100%;">
 								<ul style="display: table-row;">
 									<li class="list-table_li"
@@ -197,8 +201,9 @@
 								<%
 									}
 								%>
-							</div>
-							<!-- 페이징 -->
+							</div>--%>
+							
+							<!-- 페이징 -- >
 						<div style="display: inline-block; margin:auto;">
 							<!-- 1~5페이지 아닌 경우에 처음 찍기 -->
 							<ul class="pagination">
@@ -243,32 +248,8 @@
 
 							</ul>
 						</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- start footer Area -->
-	<footer class="footer-area">
-		<div class="container">
-			<!-- <div class="row pt-120 pb-80"></div> -->
-		</div>
-		<div class="copyright-text">
-			<div class="container">
-				<div class="row footer-bottom d-flex justify-content-between">
-					<p class="col-lg-8 col-sm-6 footer-text m-0 text-white">
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;<!-- <script>document.write(new Date().getFullYear());
-                                </script> --> 1920110002 |  by 강지연 <a href="https://colorlib.com" target="_blank"></a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</p>
+	
 
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- End footer Area -->
 
 	<script src="/js/vendor/jquery-2.2.4.min.js"></script>
 	<script

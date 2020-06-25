@@ -1,18 +1,11 @@
 package poly.persistance.mongo.impl;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.log4j.Logger;
-import org.rosuda.REngine.Rserve.RConnection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
@@ -22,7 +15,6 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 
 import poly.dto.BugsDTO;
-import poly.dto.UserInfoDTO;
 import poly.persistance.mongo.IBugsMapper;
 import poly.util.CmmUtil;
 
@@ -112,12 +104,14 @@ public class BugsMapper implements IBugsMapper {
 			final DBObject current = cursor.next();
 
 			String collect_time = CmmUtil.nvl((String) current.get("collect_time")); // 수집시간
+			String rank = CmmUtil.nvl((String) current.get("rank")); // 순위
 			String song = CmmUtil.nvl((String) current.get("song")); // 제목
 			String singer = CmmUtil.nvl((String) current.get("singer")); // 가수
 			String str = CmmUtil.nvl((String) current.get("str")); // 가사
 		
 
 			rDTO.setCollect_time(collect_time);
+			rDTO.setRank(rank);
 			rDTO.setSong(song);
 			rDTO.setSinger(singer);
 			rDTO.setStr(str);
@@ -133,34 +127,34 @@ public class BugsMapper implements IBugsMapper {
 		return rList;
 	}
 
-	@Override
-	public String FileInsert( HttpServletRequest request ) throws IOException  {
-		
-		log.info(this.getClass().getName() + ".FileInsert Start!");
-		
-		String str = CmmUtil.nvl(request.getParameter("str"));
-		BugsDTO tDTO = null;
-		tDTO = new BugsDTO();
-		
-        try{
-        	
-        	FileWriter fw = new FileWriter("c:\\out.txt");
-            for(int i=0; i<str.length(); i++) {
-            	
-            	tDTO.setStr(str);
-                String data = tDTO + "\r\n";
-                fw.write(data);
-            }
-            fw.close();
-             
-        }catch(Exception e){
-        }
-
-
-		
-		log.info(this.getClass().getName() + ".FileInsert End!");
-		return null;
-	}
+//	@Override
+//	public String FileInsert( HttpServletRequest request ) throws IOException  {
+//		
+//		log.info(this.getClass().getName() + ".FileInsert Start!");
+//		
+//		String str = CmmUtil.nvl(request.getParameter("str"));
+//		BugsDTO tDTO = null;
+//		tDTO = new BugsDTO();
+//		
+//        try{
+//        	
+//        	FileWriter fw = new FileWriter("c:\\out.txt");
+//            for(int i=0; i<str.length(); i++) {
+//            	
+//            	tDTO.setStr(str);
+//                String data = tDTO + "\r\n";
+//                fw.write(data);
+//            }
+//            fw.close();
+//             
+//        }catch(Exception e){
+//        }
+//
+//
+//		
+//		log.info(this.getClass().getName() + ".FileInsert End!");
+//		return null;
+//	}
 
 
 }

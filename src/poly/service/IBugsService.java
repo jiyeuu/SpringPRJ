@@ -15,6 +15,8 @@ public interface IBugsService {
 	public List<BugsDTO> getRank() throws Exception;
 
 	public Map<String, List<String>> rTest() throws Exception;
+	
+
 
 	
 }

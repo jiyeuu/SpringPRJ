@@ -246,15 +246,16 @@ public class NlpService implements INlpService {
 		int res = 0;
 
 		// 분석할 문장(특수문자 제거)
-		String text = CmmUtil.nvl(pDTO.getWord()).replaceAll("[^\\uAC00-\\uD7A3xfe0-9a-zA-Z\\\\s]", " ");
+		log.info(CmmUtil.nvl(pDTO.getWord()));
+		String str = CmmUtil.nvl(pDTO.getWord()).replaceAll("[^\\uAC00-\\uD7A3xfe0-9a-zA-Z\\\\s]", " ");
 
 		// 연속된 공백 제거
-		text = text.replaceAll("\\s{2,}", " ");
+		str = str.replaceAll("\\s{2,}", " ");
 
-		log.info("text : " + text);
+		log.info("str : " + str);
 
 		// 공백으로 단어를 나누기
-		String[] textArr = text.split(" ");
+		String[] textArr = str.split(" ");
 
 		log.info("textArr : " + textArr.length);
 
@@ -295,12 +296,12 @@ public class NlpService implements INlpService {
 		return res;
 	}
 
-	public int WordAnalysisForMind(String firstWord, String text) throws Exception {
+	public int WordAnalysisForMind(String firstWord, String str) throws Exception {
 
 		int res = 0;
 
 		log.info("firstWord : " + firstWord);
-		log.info("text : " + text);
+		log.info("str : " + str);
 
 		// 데이터 사전 종류
 		String dicType = StringUtil.getFirstWord(firstWord);
@@ -328,10 +329,10 @@ public class NlpService implements INlpService {
 				}
 
 				// 일치하는 값이 존재한다면,
-				if (text.indexOf(CmmUtil.nvl(rDTO.getWord())) > -1) {
+				if (str.indexOf(CmmUtil.nvl(rDTO.getWord())) > -1) {
 					log.info("DIC-word : " + CmmUtil.nvl(rDTO.getWord()));
 					log.info("DIC-word getPolarity : " + CmmUtil.nvl(rDTO.getWord()));
-					log.info("text : " + text);
+					log.info("str : " + str);
 
 					res += Integer.parseInt(CmmUtil.nvl(rDTO.getPolarity(), "0"));
 

@@ -65,11 +65,12 @@ public class BugsService implements IBugsService {
 			// 크롤링을 통해 데이터 저장하기
 
 			String lyric = songInfo.select("td").eq(3).select("a").attr("href");
-			// String song = songInfo.select("div.ellipsis a").eq(0).text();
-			// String singer = songInfo.select("div.ellipsis a").eq(1).text();
+			String rank = songInfo.select("td").eq(1).select("div.ranking > strong").text(); 
+			
 			Document doc1 = Jsoup.connect(lyric).get();
+			
 			Elements ele = doc1.select("article#container");
-			// String rank = ele.select("table > tbody > tr > td > div > strong").text();
+			
 			String song = ele.select("header > div.innerContainer > h1").text();
 			String singer = ele.select("section.summaryInfo > div.innerContainer > div.basicInfo > table > tbody > tr")
 					.eq(0).select("td").text();
@@ -80,7 +81,7 @@ public class BugsService implements IBugsService {
 
 			// MongoDB에 저장할 List 형태의 맞는 DTO 데이터 저장하기
 			BugsDTO pDTO = new BugsDTO();
-			// pDTO.setRank(rank);
+			pDTO.setRank(rank);
 			pDTO.setCollect_time(DateUtil.getDateTime("yyyyMMddhhmmss"));
 			pDTO.setSong(song);
 			pDTO.setSinger(singer);
@@ -142,9 +143,11 @@ public class BugsService implements IBugsService {
 
 		c.assign("str", str); // "r내부 str", 이클립스 str
 		c.eval("a <- str"); // 넣는거
-
+	
 		c.eval("nouns <- extractNoun(a)");
 		c.eval("wordcount <- table(unlist(nouns))");
+		//c.eval("pos_word <- table(unlist(nouns))");
+		//c.eval("neg_word <- table(unlist(nouns))");
 		c.eval("df_word <- as.data.frame(wordcount, stringsAsFactors = F)");
 		c.eval("df_word <- rename(df_word, word = Var1, freq = Freq)");
 		c.eval("df_word <- filter(df_word, nchar(word) >= 2)");
@@ -167,7 +170,11 @@ public class BugsService implements IBugsService {
 		pMap.put("count", sList2);
 		
 		return pMap;
- 
+		
 	}
+	
+	
+	
+	
 
 }

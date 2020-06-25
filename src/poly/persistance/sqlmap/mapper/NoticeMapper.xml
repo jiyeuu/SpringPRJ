@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="poly.persistance.mapper.NoticeMapper">
+
+	<insert id="insertNoticeInfo" parameterType="NoticeDTO">
+	INSERT INTO NOTICE(
+		TITLE, 
+		CONTENT, 
+		REG_DT, 
+		NOTICE_SEQ, 
+		READ_CNT,
+		USER_NAME,
+		STARCHECK
+	)VALUES(
+	#{title}, 
+	#{content}, 
+	SYSDATE, 
+	(SELECT NVL(MAX(NOTICE_SEQ),0)+1 FROM NOTICE),
+	0,
+	#{user_name},
+	#{starCheck}
+	)
+	</insert>
+	
+	<select id="getNoticeList" resultType="NoticeDTO">
+   <![CDATA[
+         SELECT
+          TITLE AS title,
+			CONTENT AS content,
+			REG_DT AS regDate,
+			NOTICE_SEQ AS seq,
+			READ_CNT AS read_cnt,
+			USER_NAME AS user_name,
+			STARCHECK AS starCheck 
+         FROM
+             (
+                 SELECT
+                     A.*,
+                     ROWNUM AS RNUM
+                 FROM
+                     (
+                         SELECT
+                             *
+                         FROM
+                             NOTICE
+                         ORDER BY
+                             NOTICE_SEQ DESC,REG_DT
+                      
+                     ) A
+                 WHERE
+                     ROWNUM <= #{endIndex}
+             )
+         WHERE
+             RNUM >= #{startIndex}
+   ]]>
+   </select>
+	
+	
+	
+	<select id="getNoticeDetail" parameterType="String" resultType="NoticeDTO">
+		SELECT
+			TITLE AS title,
+			CONTENT AS content,
+			REG_DT AS regDate,
+			NOTICE_SEQ AS seq,
+			READ_CNT AS read_cnt,
+			USER_NAME AS user_name,
+			STARCHECK AS starCheck 
+		FROM
+			NOTICE
+		WHERE
+			NOTICE_SEQ = #{seq}
+	</select>
+	
+		<select id="getNoticeDetail2" parameterType="UserInfoDTO" resultType="UserInfoDTO">
+		SELECT
+			USER_ID AS user_id
+		FROM
+			USER_INFO
+		WHERE
+			USER_NAME = #{user_name}
+	</select>
+	
+	
+	<update id="updateNotice" parameterType="NoticeDTO">
+		UPDATE
+			NOTICE
+		SET
+			TITLE = #{title},
+			CONTENT = #{content}
+		WHERE
+			NOTICE_SEQ =#{seq}
+	</update>
+	
+	<delete id="deleteNotice" parameterType="NoticeDTO">
+	
+		DELETE FROM NOTICE
+		WHERE NOTICE_SEQ = #{seq}	
+			
+	</delete>
+	
+	<update id="updateNoticeReadCnt" parameterType="NoticeDTO">
+		UPDATE NOTICE
+		SET read_cnt = read_cnt + 1
+		WHERE NOTICE_SEQ = #{seq}	
+	</update>
+	
+	  <!-- 공지사항 리스트 개수 -->
+   <select id="listall1" resultType="int">
+      SELECT COUNT(*) as count FROM NOTICE
+   </select>
+
+</mapper>

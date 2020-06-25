@@ -26,7 +26,7 @@
 
 				for (var i = 0; i < json.length; i++) {
 					bugs_rank += (json[i].rank + "위 | ");
-					bugs_rank += (" | " + json[i].song + " | ");
+					bugs_rank += ( json[i].song + " | ");
 					bugs_rank += (json[i].singer + " <br> ");
 					//bugs_rank += (json[i].str + "<br>");
 

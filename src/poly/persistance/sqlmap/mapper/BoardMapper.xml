@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="poly.persistance.mapper.BoardMapper">
+
+	<insert id="insertBoardInfo" parameterType="BoardDTO">
+	INSERT INTO BOARD(
+		TITLE, 
+		CONTENT, 
+		REG_DT, 
+		BOARD_SEQ, 
+		READ_CNT,
+		USER_NAME,
+		STARCHECK
+	)VALUES(
+	#{title}, 
+	#{content}, 
+	SYSDATE, 
+	(SELECT NVL(MAX(BOARD_SEQ),0)+1 FROM BOARD),
+	0,
+	#{user_name},
+	#{starCheck}
+	)
+	</insert>
+	
+	<select id="getBoardList" resultType="BoardDTO">
+   <![CDATA[
+         SELECT
+         TITLE AS title,
+			CONTENT AS content,
+			REG_DT AS regDate,
+			BOARD_SEQ AS seq,
+			READ_CNT AS read_cnt,
+			USER_NAME AS user_name,
+			STARCHECK AS starCheck 
+         FROM
+             (
+                 SELECT
+                     A.*,
+                     ROWNUM AS RNUM
+                 FROM
+                     (
+                         SELECT
+                             *
+                         FROM
+                             BOARD
+                         ORDER BY
+                             BOARD_SEQ DESC,REG_DT
+                      
+                     ) A
+                 WHERE
+                     ROWNUM <= #{endIndex}
+             )
+         WHERE
+             RNUM >= #{startIndex}
+   ]]>
+   </select>
+
+	
+	<select id="getBoardDetail" parameterType="String" resultType="BoardDTO">
+		SELECT
+			TITLE AS title,
+			CONTENT AS content,
+			REG_DT AS regDate,
+			BOARD_SEQ AS seq,
+			READ_CNT AS read_cnt,
+			USER_NAME AS user_name,
+			STARCHECK AS starCheck 
+		FROM
+			BOARD
+		WHERE
+			BOARD_SEQ = #{seq}
+	</select>
+	
+	<update id="updateBoard" parameterType="BoardDTO">
+		UPDATE
+			BOARD
+		SET
+			TITLE = #{title},
+			CONTENT = #{content}
+		WHERE
+			BOARD_SEQ =#{seq}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="BoardDTO">
+	
+		DELETE FROM BOARD
+		WHERE BOARD_SEQ = #{seq}	
+			
+	</delete>
+	
+	<update id="updateBoardReadCnt" parameterType="BoardDTO">
+		UPDATE BOARD
+		SET read_cnt = read_cnt + 1
+		WHERE BOARD_SEQ = #{seq}	
+	</update>
+	
+	
+	  <!-- 공지사항 리스트 개수 -->
+   <select id="listall" resultType="int">
+      SELECT COUNT(*) as count FROM BOARD
+   </select>
+   
+   
+<!-- 	
+	<delete id="UserBoardDelete" parameterType="String">
+		DELETE
+		FROM BOARD
+		WHERE USER_NAME = #{user_name}
+	</delete>
+ -->
+</mapper>

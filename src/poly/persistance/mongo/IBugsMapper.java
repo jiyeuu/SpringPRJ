@@ -18,5 +18,5 @@ public interface IBugsMapper {
 	
 	public List<BugsDTO> getRank(String colNm) throws Exception;
 	
-	public String FileInsert(HttpServletRequest request) throws IOException;
+	//public String FileInsert(HttpServletRequest request) throws IOException;
 }

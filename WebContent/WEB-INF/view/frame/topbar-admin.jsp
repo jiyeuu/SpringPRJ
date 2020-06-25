@@ -1,29 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<button type="button" id="mobile-nav-toggle">
-	<i class="lnr lnr-menu"></i>
-</button>
-<header id="header" id="home">
-	<div class="container main-menu">
-		<div class="row align-items-center justify-content-between d-flex">
-			<div id="logo">
-				<a href="/MainForm.do"><img src="/img/loogoo.png" alt="" title="" /></a>
-			</div>
-			<nav id="nav-menu-container">
-				<ul class="nav-menu">
-					<li class="menu-active"><a href="/MainForm.do">홈</a></li>
-					<li><a href="/logout.do">로그아웃</a></li>
-					<li><a href="/mypage/Mypage.do">마이페이지</a></li>
-					<li><a href="/map/MapForm1.do">동물병원 찾기</a></li>
-					<li class="menu-has-children"><a href="" class="sf-with-ul">게시판</a>
-						<ul>
-							<li><a href="/notice/noticeList.do">공지사항 관리</a></li>
-							<li><a href="/board/boardList.do">후기 관리</a></li>
-						</ul>
-					</li>
-				</ul>
-			</nav>
-			<!-- #nav-menu-container -->
-		</div>
-	</div>
-</header>
+
+ <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+
+      <h1 class="logo"><a href="index.html">Kelly</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="/MainForm.do">Home</a></li>
+          <li><a href="/logout.do">로그아웃</a></li>
+          <li><a href="/mypage/Mypage.do">마이페이지</a></li>
+          <li><a href="/bugs/bugsTop100.do">music chart</a></li>
+         <li><a href="/MainForm.do">가사감정분석</a></li>  <!-- Lyric emotion analysis -->
+          <li><a href="/test">텍스트마이닝</a></li>
+          <li><a href="/notice/noticeList.do">게시판</a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
+
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+        <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+        <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+      </div>
+
+    </div>
+
+  </header><!-- End Header -->
