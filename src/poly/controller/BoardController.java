@@ -65,18 +65,15 @@ public class BoardController {
 		String title = request.getParameter("title"); // 제목
 		String contents = request.getParameter("contents"); // 내용
 		String user_name = (String) session.getAttribute("user_name"); // 작성자
-		String starCheck = request.getParameter("starCheck"); // 별점
 
 		log.info(title);
 		log.info(contents);
 		log.info(user_name);
-		log.info(starCheck);
 
 		BoardDTO bDTO = new BoardDTO();
 		bDTO.setContent(contents);
 		bDTO.setTitle(title);
 		bDTO.setUser_name(user_name);
-		bDTO.setStarCheck(starCheck);
 
 		int result = 0;
 
@@ -85,7 +82,7 @@ public class BoardController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 		if (result > 0) {
 			model.addAttribute("url", "/board/boardList.do");
 			model.addAttribute("msg", "등록되었습니다");
@@ -156,22 +153,22 @@ public class BoardController {
 	@RequestMapping(value = "board/boardDetail")
 	public String BoardDetail(HttpServletRequest request, Model model, HttpSession session) throws Exception {
 		log.info(this.getClass().getName());
-
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@ 1번 @@@@@@@@@@@@@@@@@@@@@@@@");
 		if (session.getAttribute("SS_USER_ID") == null) {
 	         model.addAttribute("msg", "로그인 후 다시 시도해주세요");
 	         model.addAttribute("url", "/user/LoginForm.do");
 	         return "/redirect";
 	     }
-		
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@ 2번 @@@@@@@@@@@@@@@@@@@@@@@@");
 		String seq = request.getParameter("seq");
 
 		log.info("seq:" + seq);
 		BoardDTO bDTO = new BoardDTO();
 
 		bDTO.setSeq(seq);
-
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@ 3번 @@@@@@@@@@@@@@@@@@@@@@@@");
 		boardService.updateBoardReadCnt(bDTO);
-
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@ 4번 @@@@@@@@@@@@@@@@@@@@@@@@");
 		UserInfoDTO uDTO = new UserInfoDTO();
 
 		try {
@@ -179,12 +176,23 @@ public class BoardController {
 			bDTO = boardService.getBoardDetail(seq);
 
 			log.info(bDTO.getUser_name() + "네임");
-
+			
+			System.out.println("title" + bDTO.getTitle());
+			System.out.println("content"  + bDTO.getContent());
+			System.out.println("reg_dt" + bDTO.getRegDate());
+			System.out.println("board_seq" + bDTO.getBOARD_SEQ());
+			System.out.println("read_cnt" + bDTO.getRead_cnt());
+			System.out.println("user_name" + bDTO.getUser_name());
+			System.out.println("starcheck" + bDTO.getStarCheck());
+			
+			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@ 5번 @@@@@@@@@@@@@@@@@@@@@@@@");
+			System.out.println();
+			
 			uDTO.setUser_name(bDTO.getUser_name());
 			uDTO = noticeService.getNoticeDetail2(uDTO);
-
+			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@ 6번 @@@@@@@@@@@@@@@@@@@@@@@@");
 			log.info(uDTO.getUser_id() + "아이디");
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -48,7 +48,7 @@
 
 </head>
 <body>
-	<!-- #header -->
+
 	<%
 		if (user_id != null) {
 	%>

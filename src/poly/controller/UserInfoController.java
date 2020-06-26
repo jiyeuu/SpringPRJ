@@ -30,6 +30,16 @@ public class UserInfoController {
 	private IMailService mailService;
 
 
+	/* 메인 화면으로 이동 */
+	@RequestMapping(value = "user/MainForm")
+	public String MainForm() {
+		log.info(this.getClass().getName() + ".user/MainForm ok!");
+
+		return "/user/MainForm";
+
+	}
+
+	
 	/* 회원가입 화면으로 이동 */
 	@RequestMapping(value = "user/UserRegForm")
 	public String userRegForm() {
@@ -425,7 +435,7 @@ public class UserInfoController {
 		// 세션을 초기화 시킴
 		session.invalidate();
 		model.addAttribute("msg", "로그아웃하셨습니다");
-		model.addAttribute("url", "/MainForm.do");
+		model.addAttribute("url", "/user/MainForm.do");
 
 		return "/redirect";
 	}

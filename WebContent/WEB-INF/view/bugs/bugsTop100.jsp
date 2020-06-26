@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 	$(window).on("load", function() {
 

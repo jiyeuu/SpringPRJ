@@ -1,0 +1,44 @@
+@midea(min-width){}
+.table_div {
+   float:left;
+   text-align:center;
+   width: 900px;
+   position: relative;
+   border-spacing: 10px;
+   border-collapse: separate;
+   
+}
+
+.list-table_li{
+    border-top:2px solid #000033;
+    border-bottom:1px solid #CCC;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 200%;
+
+}
+.list-table_li_s{
+   text-align:center;
+   padding:10px 0;
+   border-bottom:1px solid #CCC;
+   height:20px;
+   
+}
+
+.formss {
+	background: #fff;
+	margin: 90px auto;
+	overflow: hidden;
+	position: relative;
+	max-width: 50%;
+}
+
+.formss form { padding: 30px; }
+
+button {
+	position: relative;
+	float: right;
+	
+}
+
+

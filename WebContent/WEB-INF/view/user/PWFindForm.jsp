@@ -46,16 +46,27 @@
 </head>
 <body>
 <!-- #header -->
-	<%if(user_id!=null){ %>
-		<%if(user_Author.equals("1")) {%>
-			<%@include file="/WEB-INF/view/frame/topbar-admin.jsp" %>
-		<%} else { %>
-			<%@include file="/WEB-INF/view/frame/topbar-login.jsp" %>
-		<%} %>
-	<%} else {%>
-		<%@include file="/WEB-INF/view/frame/topbar-logout.jsp" %>
-	<%} %>
-	
+	<%
+		if (user_id != null) {
+	%>
+	<%
+		if (user_Author.equals("1")) {
+	%>
+	<%@include file="/WEB-INF/view/frame/topbar-admin.jsp"%>
+	<%
+		} else {
+	%>
+	<%@include file="/WEB-INF/view/frame/topbar-login.jsp"%>
+	<%
+		}
+	%>
+	<%
+		} else {
+	%>
+	<%@include file="/WEB-INF/view/frame/topbar-logout.jsp"%>
+	<%
+		}
+	%>
 	<main id="main">
 
     <!-- ======= About Section ======= -->

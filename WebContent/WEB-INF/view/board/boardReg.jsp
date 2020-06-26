@@ -14,129 +14,47 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- Mobile Specific Meta -->
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Favicon-->
-<link rel="shortcut icon" href="img/fav.png">
-<!-- Author Meta -->
-<meta name="author" content="codepixer">
-<!-- Meta Description -->
-<meta name="description" content="">
-<!-- Meta Keyword -->
-<meta name="keywords" content="">
-<!-- meta character set -->
-<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>글 등록</title>
-<link
-	href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
-	rel="stylesheet">
-<!--CSS ============================================= -->
-<link rel="stylesheet" href="/css/linearicons.css">
-<link rel="stylesheet" href="/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/bootstrap.css">
-<link rel="stylesheet" href="/css/magnific-popup.css">
-<link rel="stylesheet" href="/css/nice-select.css">
-<link rel="stylesheet" href="/css/animate.min.css">
-<link rel="stylesheet" href="/css/owl.carousel.css">
+  <title>게시판</title>
+
+<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+		<link rel="shortcut icon" href="img/fav.png">
+		<!-- Author Meta -->
+		<meta name="author" content="codepixer">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+	
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/style_index.css" rel="stylesheet">
+ 
+
 <link rel="stylesheet" href="/css/main.css">
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/style1.css">
 <link rel="stylesheet" href="/css/style_list.css">
 <link rel="stylesheet" href="/css/style_star.css">
 <link rel="stylesheet" href="/css/bootstrap.min_table.css">
-  
-   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-    <!-- include summernote css/js-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">    
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Cookie">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
-    <!-- include summernote-ko-KR -->
-    <script src="/summernote/js/summernote-ko-KR.js"></script>
-    <script>
-    
-        $(document).ready(function () {
-            $('#summernote').summernote({
-                placeholder: '내용을 입력해 주세요.',
-                minHeight: 370,
-                maxHeight: null,
-                focus: true,
-                lang: 'ko-KR',
-                onImageUpload : function(files, editor, welEditable) {
-                    sendFile(files[0], editor, welEditable);
-                }
-            });
+<title>글 등록</title>
 
-            function sendFile(file, editor, welEditable) {
-                data = new FormData();
-                data.append("uploadFile", file);
-                $.ajax({
-                    data : data,
-                    type : "POST",
-                    url : "/imageUpload",
-                    cache : false,
-                    contentType : false,
-                    processData : false,
-                    success : function (data) {
-                        editor.insertImage(welEditable, data.url);
-                    }
-                })
-            }
-        });
-
-    </script>
-
-<!-- <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script> -->
-<script type="text/javascript">
-	function check(f) {
-		if($("#star5").hasClass("on")===true){
-			$("#starCheck").val('5');
-		} else if($("#star4").hasClass("on")===true){
-			$("#starCheck").val('4');
-		} else if($("#star3").hasClass("on")===true){
-			$("#starCheck").val('3');
-		} else if($("#star2").hasClass("on")===true){
-			$("#starCheck").val('2');
-		} else if($("#star1").hasClass("on")===true){
-			$("#starCheck").val('1');
-		}
-		/* if (f.title.value == "") {
-			alert("제목을 입력해주세요.");
-			f.title.focus();
-			return false;
-		}  */else {
-			return true;
-		}
-	}
-	
-	
-</script> 
-
-
-<style>
-.starR {
-	background:
-		url('http://miuu227.godohosting.com/images/icon/ico_review.png')
-		no-repeat right 0;
-	background-size: auto 100%;
-	width: 30px;
-	height: 30px;
-	display: inline-block;
-	text-indent: -9999px;
-	cursor: pointer;
-}
-
-.starR.on {
-	background-position: 0 0;
-}
-
-
-
-</style>
 
 </head>
 
@@ -166,21 +84,16 @@
 
 	<!-- #header -->
 
-	<!-- start banner Area -->
-	<section class="banner-area relative" id="home">
-		<div class="container">
-			<div class="overlay overlay-bg"></div>
-			<div
-				class="row fullscreen d-flex align-items-center justify-content-start">
-				<div class="banner-content col-lg-8">
-					<h3 class="text-uppercase">
-						<br>
-					</h3>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End banner Area -->
+	    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>게시판</h2>
+        </div>
+      </div>
+    </section><!-- End About Section -->
+    
 	<!-- Start callto-top Area -->
 	<section class="callto-top-area section-gap">
 		<div class="container">
@@ -192,22 +105,11 @@
 						<div class="form-group"></div>
 						<label for="text">제목</label>
 						 <input type="text" class="form-control" id="title" name="title" /> <br><!-- exampleInputEmail1 -->
-						<input type="hidden" id = "starCheck" name="starCheck">
-						<div class="form-group">
-							<label for="text">만족도</label><br>
-							<div class="starRev">
-								<span id="star1" class="starR on">별1</span> 
-								<span id="star2" class="starR">별2</span> 
-								<span id="star3" class="starR">별3</span> 
-								<span id="star4" class="starR">별4</span> 
-								<span id="star5" class="starR">별5</span> 
-							</div>
-
-							<br>
-						</div>
+				
+					
 
 						<div class="form-group">
-						<textarea class="table_textbox" id="summernote" name="contents"
+						<textarea class="table_textbox" name="contents"
 								style="width: 99%; height: 20em;" ></textarea>
 						</div>
 
@@ -233,33 +135,51 @@
         }
     });
 </script>
+
+
+
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- End callto-top Area -->
-	<!-- start footer Area -->
-	<footer class="footer-area">
-		<div class="container">
-			<!-- <div class="row pt-120 pb-80"></div> -->
-		</div>
-		<div class="copyright-text">
-			<div class="container">
-				<div class="row footer-bottom d-flex justify-content-between">
-					<p class="col-lg-8 col-sm-6 footer-text m-0 text-white">
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;<!-- <script>document.write(new Date().getFullYear());
-                                </script> --> 1920110002 |  by 강지연 <a href="https://colorlib.com" target="_blank"></a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</p>
-					
-				</div>
-			</div>
-		</div>
-	</footer>
+	<!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Kelly</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="/assets/vendor/php-email-form/validate.js"></script>
+  <script src="/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="/assets/vendor/counterup/counterup.min.js"></script>
+  <script src="/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="/assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/assets/js/main.js"></script>
+	
 	<!-- End footer Area -->
 
-	<!-- <script src="/js/vendor/jquery-2.2.4.min.js"></script> -->
+	<script src="/js/vendor/jquery-2.2.4.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -267,21 +187,8 @@
 	<script src="/js/vendor/bootstrap.min.js"></script>
 	<script type="text/javascript"
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-	<script src="/js/easing.min.js"></script>
-	<script src="/js/hoverIntent.js"></script>
-	<script src="/js/superfish.min.js"></script>
-	<script src="/js/jquery.ajaxchimp.min.js"></script>
-	<script src="/js/jquery.magnific-popup.min.js"></script>
-	<script src="/js/owl.carousel.min.js"></script>
-	<script src="/js/jquery.nice-select.min.js"></script>
-	<script src="/js/mail-script.js"></script>
-	<script src="/js/main.js"></script>
-	<script>
-		$('.starRev span').click(function() {
-			$(this).parent().children('span').removeClass('on');
-			$(this).addClass('on').prevAll('span').addClass('on');
-			return false;
-		});
-	</script> 
+	
+
+	
 </body>
 </html>

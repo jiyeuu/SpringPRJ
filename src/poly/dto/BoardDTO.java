@@ -10,12 +10,11 @@ public class BoardDTO {
 	private String userSeq;
 	private String user_name;
 	private String read_cnt;
-	private String board_satisfy;
+	private String starCheck;
+	private String BOARD_SEQ;
 	
 	private int startIndex;
 	private int endIndex;
-	
-	private String starCheck;
 	
 	public String getTitle() {
 		return title;
@@ -59,12 +58,13 @@ public class BoardDTO {
 	public void setRead_cnt(String read_cnt) {
 		this.read_cnt = read_cnt;
 	}
-	public String getBoard_satisfy() {
-		return board_satisfy;
+	public String getStarCheck() {
+		return starCheck;
 	}
-	public void setBoard_satisfy(String board_satisfy) {
-		this.board_satisfy = board_satisfy;
+	public void setStarCheck(String starCheck) {
+		this.starCheck = starCheck;
 	}
+	
 	public int getStartIndex() {
 		return startIndex;
 	}
@@ -77,12 +77,15 @@ public class BoardDTO {
 	public void setEndIndex(int endIndex) {
 		this.endIndex = endIndex;
 	}
-	public String getStarCheck() {
-		return starCheck;
+	public String getBOARD_SEQ() {
+		return BOARD_SEQ;
 	}
-	public void setStarCheck(String starCheck) {
-		this.starCheck = starCheck;
+	public void setBOARD_SEQ(String bOARD_SEQ) {
+		BOARD_SEQ = bOARD_SEQ;
 	}
+	
+
+
 	
 	
 	

@@ -17,34 +17,47 @@
 <html>
 <head>
 
-<!-- meta character set -->
 <meta charset="UTF-8">
-<meta content="IE=edge" http-equiv="X-UA-Compatible">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta content="Page description" name="description">
-<meta name="google" content="notranslate" />
-<meta content="Mashup templates have been developped by Orson.io team" name="author">
-<!-- Disable tap highlight on IE -->
-<meta name="msapplication-tap-highlight" content="no">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>공지사항 리스트</title>
-<link
-	href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
-	rel="stylesheet">
-<!--
-			CSS
-			============================================= -->
-<link rel="stylesheet" href="/css/linearicons.css">
-<link rel="stylesheet" href="/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/bootstrap.css">
-<link rel="stylesheet" href="/css/magnific-popup.css">
-<link rel="stylesheet" href="/css/nice-select.css">
-<link rel="stylesheet" href="/css/animate.min.css">
-<link rel="stylesheet" href="/css/owl.carousel.css">
-<link rel="stylesheet" href="/css/main.css">
-<link rel="stylesheet" href="/css/style.css">
+  <title>로그인</title>
+
+<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+		<link rel="shortcut icon" href="img/fav.png">
+		<!-- Author Meta -->
+		<meta name="author" content="codepixer">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+	
+<title>후기 리스트</title>
+
+
 <link rel="stylesheet" href="/css/style_list.css">
 <link rel="stylesheet" href="/css/bootstrap.min_table.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/style_index.css" rel="stylesheet">
+
+
+
 
 <script type="text/javascript">
 	function fn_paging(curPage) {
@@ -144,29 +157,9 @@
 							%>
 							
 							
+
 							
-<div style="border: 1px solid;">
-	<div>
-		<span style=" padding: 10px; text-align: left;">번호</span>
-		<span style=" padding: 100px; text-align: left;">제목</span>
-		<span style=" padding: 30px; text-align: left;">작성자</span>
-		<span style=" padding: 50px; text-align: left;">작성일</span>
-	</div>
-	<%
-		for (NoticeDTO bDTO : bList) {
-	%>
-	<div>
-		<span style=" padding: 10px; text-align: left;"><%=bDTO.getSeq()%></span>
-		<span style=" padding: 100px; text-align: left;"><a href="/notice/noticeDetail.do?seq=<%=bDTO.getSeq()%>"><%=bDTO.getTitle()%></a></span>
-		<span style=" padding: 30px; text-align: left;"><%=bDTO.getUser_name()%></span>
-		<span style=" padding: 50px; text-align: left;"><%=bDTO.getRead_cnt()%></span>
-	</div>
-	<%
-		}
-	%>
-</div>
-							
-							<%-- <div class="table_div"
+							 <div class="table_div"
 								style="display: table; table-layout: fixed; width: 100%;">
 								<ul style="display: table-row;">
 									<li class="list-table_li"
@@ -201,7 +194,7 @@
 								<%
 									}
 								%>
-							</div>--%>
+							</div>
 							
 							<!-- 페이징 -- >
 						<div style="display: inline-block; margin:auto;">

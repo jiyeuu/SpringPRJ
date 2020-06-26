@@ -10,33 +10,38 @@
 		BOARD_SEQ, 
 		READ_CNT,
 		USER_NAME,
-		STARCHECK
 	)VALUES(
 	#{title}, 
 	#{content}, 
-	SYSDATE, 
-	(SELECT NVL(MAX(BOARD_SEQ),0)+1 FROM BOARD),
+	CURDATE(), 
+	#{board_seq},
 	0,
-	#{user_name},
-	#{starCheck}
+	#{user_name}
+	
 	)
 	</insert>
 	
 	<select id="getBoardList" resultType="BoardDTO">
-   <![CDATA[
+SELECT *
+FROM BOARD
+ORDER BY BOARD_SEQ DESC, REG_DT
+LIMIT #{startIndex},#{endIndex}
+
+  
+  <!--  <![CDATA[
          SELECT
-         TITLE AS title,
-			CONTENT AS content,
-			REG_DT AS regDate,
-			BOARD_SEQ AS seq,
-			READ_CNT AS read_cnt,
-			USER_NAME AS user_name,
-			STARCHECK AS starCheck 
+         TITLE
+			CONTENT,
+			REG_DT,
+			BOARD_SEQ,
+			READ_CNT,
+			USER_NAME,
+			STARCHECK 
          FROM
              (
                  SELECT
                      A.*,
-                     ROWNUM AS RNUM
+                     ROWNUM
                  FROM
                      (
                          SELECT
@@ -52,19 +57,17 @@
              )
          WHERE
              RNUM >= #{startIndex}
-   ]]>
+   ]]> -->
    </select>
 
 	
-	<select id="getBoardDetail" parameterType="String" resultType="BoardDTO">
+	<select id="getBoardDetail" parameterType="BoardDTO" resultType="BoardDTO">
 		SELECT
-			TITLE AS title,
-			CONTENT AS content,
-			REG_DT AS regDate,
-			BOARD_SEQ AS seq,
-			READ_CNT AS read_cnt,
-			USER_NAME AS user_name,
-			STARCHECK AS starCheck 
+			TITLE,
+			CONTENT,
+			REG_DT,
+			READ_CNT,
+			USER_NAME
 		FROM
 			BOARD
 		WHERE

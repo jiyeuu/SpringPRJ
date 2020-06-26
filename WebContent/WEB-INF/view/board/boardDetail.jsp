@@ -5,7 +5,6 @@
 	pageEncoding="UTF-8"%>
 
 <%
-	List<BoardDTO> bList = (List<BoardDTO>) request.getAttribute("bList");
 	String user_id = (String) session.getAttribute("SS_USER_ID");
 	UserInfoDTO uDTO = (UserInfoDTO) request.getAttribute("uDTO");
 	String user_Author = (String) session.getAttribute("user_Author");
@@ -48,23 +47,7 @@
 <link rel="stylesheet" href="/css/style_list.css">
 
 <link rel="stylesheet" href="/css/bootstrap.min_table.css">
-<style>
-.starR {
-	background:
-		url('http://miuu227.godohosting.com/images/icon/ico_review.png')
-		no-repeat right 0;
-	background-size: auto 100%;
-	width: 30px;
-	height: 30px;
-	display: inline-block;
-	text-indent: -9999px;
-	cursor: pointer;
-}
 
-.starR.on {
-	background-position: 0 0;
-}
-</style>
 </head>
 <body>
 
@@ -91,21 +74,7 @@
 		}
 	%>
 
-	<!-- #header -->
-	<!-- start banner Area -->
-	<section class="banner-area relative" id="home">
-		<div class="container">
-			<div class="overlay overlay-bg"></div>
-			<div
-				class="row fullscreen d-flex align-items-center justify-content-start">
-				<div class="banner-content col-lg-8">
-					<h3 class="text-uppercase">
-						<br>
-					</h3>
-				</div>
-			</div>
-		</div>
-	</section>
+	
 	<!-- End banner Area -->
 	<!-- Start callto-top Area -->
 	<section class="callto-top-area section-gap">
@@ -118,42 +87,7 @@
             					<label for="text">제목</label> 
             					<%=bDTO.getTitle()%>
             					<br><br>
-           						<label for="text">만족도</label>
-								<div class="starRev">
-									<%if(bDTO.getStarCheck().equals("5")){ %>
-										<span id="star1" class="starR on">별1</span>
-										<span id="star2" class="starR on">별2</span>
-										<span id="star3" class="starR on">별3</span>
-										<span id="star4" class="starR on">별4</span>
-										<span id="star5" class="starR on">별5</span>
-									<%} else if(bDTO.getStarCheck().equals("4")){   %>
-									<span id="star1" class="starR on">별1</span>
-										<span id="star2" class="starR on">별2</span>
-										<span id="star3" class="starR on">별3</span>
-										<span id="star4" class="starR on">별4</span>
-										<span id="star5" class="starR ">별5</span>
-									<%} else if(bDTO.getStarCheck().equals("3")){   %>
-									<span id="star1" class="starR on">별1</span>
-										<span id="star2" class="starR on">별2</span>
-										<span id="star3" class="starR on">별3</span>
-										<span id="star4" class="starR ">별4</span>
-										<span id="star5" class="starR ">별5</span>
-									<%} else if(bDTO.getStarCheck().equals("2")){   %>
-									<span id="star1" class="starR on">별1</span>
-										<span id="star2" class="starR on">별2</span>
-										<span id="star3" class="starR ">별3</span>
-										<span id="star4" class="starR ">별4</span>
-										<span id="star5" class="starR ">별5</span>
-									<%} else if(bDTO.getStarCheck().equals("1")){   %>
-									<span id="star1" class="starR on">별1</span>
-										<span id="star2" class="starR ">별2</span>
-										<span id="star3" class="starR ">별3</span>
-										<span id="star4" class="starR ">별4</span>
-										<span id="star5" class="starR ">별5</span>
-									<%}%>
-									
-							</div>
-							<br><br>
+
 							<%=bDTO.getContent()%>
 							<br>
 							</div>
@@ -163,8 +97,8 @@
 							<%
 								if (user_id.equals(uDTO.getUser_id()) || user_Author.equals("1")) {
 							%>
-							<input type="submit" class="btn btn-primary" id="reg_btn" value="수정하기" style="float: right; width: 10%; margig-right: 10px;" /> 
-							<input type="button" class="btn btn-primary" id="reg_btn" style="float: right; width: 10%; margin-right: 10px;"
+							<input type="submit"  id="reg_btn" value="수정하기" style="float: right; width: 10%; margig-right: 10px;" /> 
+							<input type="button"  id="reg_btn" style="float: right; width: 10%; margin-right: 10px;"
 								onclick="location.href='/board/boardDelete.do?seq=<%=bDTO.getSeq()%>'"
 								value="삭제하기" />
 							<%

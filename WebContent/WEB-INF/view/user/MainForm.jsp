@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
 <%
 	String user_id = (String) session.getAttribute("SS_USER_ID");
@@ -12,7 +12,7 @@
  <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>�α���</title>
+  <title>로그인</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -62,7 +62,7 @@
     <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
       <h1>Kelly Adams</h1>
       <h2>I'm a professional illustrator from San Francisco</h2>
-      <a href="about.html" class="btn-about">About Me</a>
+      <a href="/user/LoginForm.do" class="btn-about">로그인 ㄱ</a>
     </div>
   </section><!-- End Hero -->
 

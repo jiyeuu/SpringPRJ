@@ -19,7 +19,7 @@
 	0,
 	#{user_name},
 	#{starCheck}
-	)
+	)A;
 	</insert>
 	
 	<select id="getNoticeList" resultType="NoticeDTO">

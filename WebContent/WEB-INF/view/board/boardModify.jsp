@@ -42,97 +42,10 @@
 <link rel="stylesheet" href="/css/style_list.css">
 <link rel="stylesheet" href="/css/style_star.css">
 <link rel="stylesheet" href="/css/bootstrap.min_table.css">
-<script
-	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<script
-	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-<!-- include summernote css/js-->
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Cookie">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Nanum+Gothic">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
-<!-- include summernote-ko-KR -->
-<!--   <script src="/summernote/js/summernote-ko-KR.js"></script> -->
-<script src="/summernote/lang/summernote-ko-KR.js"></script>
-<script>
-    
-        $(document).ready(function () {
-        	document.querySelector('#summernote').value='<%=bDTO.getContent()%>';
-		$('#summernote').summernote({
-			placeholder : '내용을 입력해 주세요.',
-			minHeight : 370,
-			maxHeight : null,
-			focus : true,
-			lang : 'ko-KR',
-			onImageUpload : function(files, editor, welEditable) {
-				sendFile(files[0], editor, welEditable);
-			}
-		});
 
-		function sendFile(file, editor, welEditable) {
-			data = new FormData();
-			data.append("uploadFile", file);
-			$.ajax({
-				data : data,
-				type : "POST",
-				url : "/imageUpload",
-				cache : false,
-				contentType : false,
-				processData : false,
-				success : function(data) {
-					editor.insertImage(welEditable, data.url);
-				}
-			})
-		}
-	});
-</script>
 
-<!-- <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script> -->
-<script type="text/javascript">
-	function check(f) {
-		if ($("#star5").hasClass("on") === true) {
-			$("#starCheck").val('5');
-		} else if ($("#star4").hasClass("on") === true) {
-			$("#starCheck").val('4');
-		} else if ($("#star3").hasClass("on") === true) {
-			$("#starCheck").val('3');
-		} else if ($("#star2").hasClass("on") === true) {
-			$("#starCheck").val('2');
-		} else if ($("#star1").hasClass("on") === true) {
-			$("#starCheck").val('1');
-		}
-		/* if (f.title.value == "") {
-			alert("제목을 입력해주세요.");
-			f.title.focus();
-			return false;
-		} */else {
-			return true;
-		}
-	}
-</script>
 
-<style>
-.starR {
-	background:
-		url('http://miuu227.godohosting.com/images/icon/ico_review.png')
-		no-repeat right 0;
-	background-size: auto 100%;
-	width: 30px;
-	height: 30px;
-	display: inline-block;
-	text-indent: -9999px;
-	cursor: pointer;
-}
 
-.starR.on {
-	background-position: 0 0;
-}
-</style>
 </head>
 
 <body>
@@ -188,54 +101,8 @@
 						<div class="form-group"></div>
 						<label for="text">제목</label> <input type="text"
 							class="form-control" id="title" name="title"
-							value='<%=bDTO.getTitle()%>' /> <br> <input type="hidden"
-							id="starCheck" name="starCheck">
-						<div class="form-group">
-							<label for="exampleSelect1">만족도</label><br>
-							<div class="starRev">
-								<%
-									if (bDTO.getStarCheck().equals("5")) {
-								%>
-								<span id="star1" class="starR on">별1</span> <span id="star2"
-									class="starR on">별2</span> <span id="star3" class="starR on">별3</span>
-								<span id="star4" class="starR on">별4</span> <span id="star5"
-									class="starR on">별5</span>
-								<%
-									} else if (bDTO.getStarCheck().equals("4")) {
-								%>
-								<span id="star1" class="starR on">별1</span> <span id="star2"
-									class="starR on">별2</span> <span id="star3" class="starR on">별3</span>
-								<span id="star4" class="starR on">별4</span> <span id="star5"
-									class="starR ">별5</span>
-								<%
-									} else if (bDTO.getStarCheck().equals("3")) {
-								%>
-								<span id="star1" class="starR on">별1</span> <span id="star2"
-									class="starR on">별2</span> <span id="star3" class="starR on">별3</span>
-								<span id="star4" class="starR ">별4</span> <span id="star5"
-									class="starR ">별5</span>
-								<%
-									} else if (bDTO.getStarCheck().equals("2")) {
-								%>
-								<span id="star1" class="starR on">별1</span> <span id="star2"
-									class="starR on">별2</span> <span id="star3" class="starR ">별3</span>
-								<span id="star4" class="starR ">별4</span> <span id="star5"
-									class="starR ">별5</span>
-								<%
-									} else if (bDTO.getStarCheck().equals("1")) {
-								%>
-								<span id="star1" class="starR on">별1</span> <span id="star2"
-									class="starR ">별2</span> <span id="star3" class="starR ">별3</span>
-								<span id="star4" class="starR ">별4</span> <span id="star5"
-									class="starR ">별5</span>
-								<%
-									}
-								%>
-
-							</div>
-
-							<br>
-						</div>
+							value='<%=bDTO.getTitle()%>' />
+					
 
 						<div class="form-group">
 							<textarea class="table_textbox" id="summernote" name="contents"
@@ -305,12 +172,6 @@
 	<script src="/js/jquery.nice-select.min.js"></script>
 	<script src="/js/mail-script.js"></script>
 	<script src="/js/main.js"></script>
-	<script>
-		$('.starRev span').click(function() {
-			$(this).parent().children('span').removeClass('on');
-			$(this).addClass('on').prevAll('span').addClass('on');
-			return false;
-		});
-	</script>
+	
 </body>
 </html>

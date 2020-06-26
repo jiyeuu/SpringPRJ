@@ -21,7 +21,7 @@
 
   <!-- Vendor CSS Files -->
   <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
- 
+  <link href="/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
   <link href="/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="/assets/vendor/venobox/venobox.css" rel="stylesheet">
@@ -158,16 +158,27 @@
 </head>
 <body>
 
-	<%if(user_id!=null){ %>
-		<%if(user_Author.equals("1")) {%>
-			<%@include file="/WEB-INF/view/frame/topbar-admin.jsp" %>
-		<%} else { %>
-			<%@include file="/WEB-INF/view/frame/topbar-login.jsp" %>
-		<%} %>
-	<%} else {%>
-		<%@include file="/WEB-INF/view/frame/topbar-logout.jsp" %>
-	<%} %>
-	
+	<%
+		if (user_id != null) {
+	%>
+	<%
+		if (user_Author.equals("1")) {
+	%>
+	<%@include file="/WEB-INF/view/frame/topbar-admin.jsp"%>
+	<%
+		} else {
+	%>
+	<%@include file="/WEB-INF/view/frame/topbar-login.jsp"%>
+	<%
+		}
+	%>
+	<%
+		} else {
+	%>
+	<%@include file="/WEB-INF/view/frame/topbar-logout.jsp"%>
+	<%
+		}
+	%>
   <main id="main">
 
     <!-- ======= About Section ======= -->

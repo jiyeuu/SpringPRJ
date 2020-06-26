@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import poly.dto.BoardDTO;
 import poly.dto.NoticeDTO;
-import poly.dto.PagingDTO;
+
 import poly.dto.UserInfoDTO;
 import poly.service.INoticeService;
 
@@ -120,21 +120,22 @@ public class NoticeController {
 		
 		int listCnt = noticeService.listall1();
 		
-		PagingDTO pagg1 = new PagingDTO(listCnt, curPage);
-		log.info("listCnt: "+listCnt);
-		log.info("curPage: "+curPage);
-		
-		int startIndex = pagg1.getStartIndex();
-		int endIndex = pagg1.getEndIndex();
-		log.info("startIndex: "+startIndex);
-		log.info("endIndex: "+endIndex);
+//		PagingDTO pagg1 = new PagingDTO(listCnt, curPage);
+//		log.info("listCnt: "+listCnt);
+//		log.info("curPage: "+curPage);
+//		
+//		int startIndex = pagg1.getStartIndex();
+//		int endIndex = pagg1.getEndIndex();
+//		log.info("startIndex: "+startIndex);
+//		log.info("endIndex: "+endIndex);
 		
 		NoticeDTO bDTO = new NoticeDTO();
-		bDTO.setStartIndex(startIndex);
-		bDTO.setEndIndex(endIndex);
-		
-		log.info("bDTO.setStartIndex(startIndex);"+bDTO.getStartIndex());
-		log.info("bDTO.setEndIndex(endIndex);"+bDTO.getEndIndex());
+		/*
+		 * bDTO.setStartIndex(startIndex); bDTO.setEndIndex(endIndex);
+		 * 
+		 * log.info("bDTO.setStartIndex(startIndex);"+bDTO.getStartIndex());
+		 * log.info("bDTO.setEndIndex(endIndex);"+bDTO.getEndIndex());
+		 */
 		
 		List<NoticeDTO> bList = new ArrayList<>();
 		
@@ -152,7 +153,7 @@ public class NoticeController {
 		}
 		
 		model.addAttribute("curPage", curPage);
-		model.addAttribute("pagg1", pagg1);
+		/* model.addAttribute("pagg1", pagg1); */
 		model.addAttribute("bList", bList);
 		model.addAttribute("user_name", user_name);
 		
