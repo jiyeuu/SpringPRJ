@@ -14,7 +14,8 @@
  <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>아이디찾기</title>
+  <title>Lyric analysis1
+</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -35,16 +36,12 @@
   <link href="/assets/css/style_index.css" rel="stylesheet">
 
  <style>
-.find_info {
-    font-size: 13px;
-    line-height: 14px;
-    padding-top: 20px;
-    text-align: center;
-    color: #8e8e8e;
-    border-top: 1px solid #e4e4e5;
-}
-
+.chart {float: left; width: 33.33%; height: 230px; text-align: center;}
+.chart span.title{position: relative; display: block; width: 100%; text-align: center; top: 110px;}
+  
  </style>
+ 
+
 <body>
 <%
 		if (user_id != null) {
@@ -68,14 +65,39 @@
 		}
 	%>
 	
-	<h2>감정 분석 결과</h2>
-	<hr />
-	<br/>
+	
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Lyric analysis1</h2>
+        </div>
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Skills Section ======= -->
+    <section id="skills" class="skills">
+      <div class="container" data-aos="fade-up">
+        <div class="login-page">
+          <div class="form">
+	
+  <!--  <div class="chart chart1" data-percent="55"><span class="title"></span></div>
+ -->
+	
+	MUSIC CHART의 노래 가사들을
+	 감정분석한 결과 <div style="color: red;"></div>
 	<%=res%>
+	
+	</div>
+	</div>
+	</div>
+	</section>
+	
 	
 	
 	  <!-- ======= Footer ======= -->
-  <footer id="footer">
+  <footer id="footer" style="margin-top: 21%">
     <div class="container">
       <div class="copyright">
         &copy; Copyright <strong><span>Kelly</span></strong>. All Rights Reserved
@@ -107,7 +129,22 @@
 
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
-	
+	 <script type="text/javascript">
+ 
+ $('.chart1').easyPieChart({
+     barColor: '#f16529',
+     trackColor: '#ccc',
+     scaleColor: '#fff',
+     lineCap: 'butt',
+     lineWidth: 30,
+     size: 200,
+     animate: 1000,
+     onStart: $.noop,
+     onStop: $.noop
+   });
+
+  
+ </script>
 </body>
 </html>
 

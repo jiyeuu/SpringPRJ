@@ -60,9 +60,8 @@
 	<!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Kelly Adams</h1>
-      <h2>I'm a professional illustrator from San Francisco</h2>
-      <a href="/user/LoginForm.do" class="btn-about">로그인 ㄱ</a>
+   		
+    <!--   <a href="#" class="btn-about">환영합니다~</a> -->
     </div>
   </section><!-- End Hero -->
 
@@ -70,7 +69,7 @@
   <footer id="footer">
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Kelly</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Lyric Aanalysis Page</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->

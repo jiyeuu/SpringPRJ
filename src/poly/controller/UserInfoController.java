@@ -25,10 +25,9 @@ public class UserInfoController {
 
 	@Resource(name = "UserInfoService")
 	private IUserInfoService userInfoService;
-	
+
 	@Resource(name = "MailService")
 	private IMailService mailService;
-
 
 	/* 메인 화면으로 이동 */
 	@RequestMapping(value = "user/MainForm")
@@ -39,7 +38,6 @@ public class UserInfoController {
 
 	}
 
-	
 	/* 회원가입 화면으로 이동 */
 	@RequestMapping(value = "user/UserRegForm")
 	public String userRegForm() {
@@ -72,7 +70,7 @@ public class UserInfoController {
 		return "/user/IDFindForm";
 
 	}
-	
+
 	/* 비밀번호찾기 화면으로 이동 */
 	@RequestMapping(value = "/user/PWFindForm")
 	public String pwfindForm() {
@@ -91,7 +89,7 @@ public class UserInfoController {
 
 	}
 
-	//회원가입
+	// 회원가입
 	@RequestMapping(value = "user/insertUserInfo")
 	public String insertUserInfo(HttpServletRequest request, HttpServletResponse response, ModelMap model)
 			throws Exception {
@@ -106,13 +104,11 @@ public class UserInfoController {
 			String user_name = CmmUtil.nvl(request.getParameter("user_name"));
 			String password = CmmUtil.nvl(request.getParameter("password"));
 			String email = CmmUtil.nvl(request.getParameter("email"));
-			
 
 			log.info("user_id : " + user_id);
 			log.info("user_name : " + user_name);
 			log.info("password : " + password);
 			log.info("email : " + email);
-		
 
 			pDTO = new UserInfoDTO();
 
@@ -120,7 +116,6 @@ public class UserInfoController {
 			pDTO.setUser_name(user_name);
 			pDTO.setPassword(EncryptUtil.encHashSHA256(password));
 			pDTO.setEmail(EncryptUtil.encAES128CBC(email));
-			
 
 			int res = userInfoService.insertUserInfo(pDTO);
 
@@ -128,7 +123,7 @@ public class UserInfoController {
 				msg = "회원가입되었습니다";
 
 			} else if (res == 2) {
-				//msg = "이미 가입된 이메일 주소입니다";
+				// msg = "이미 가입된 이메일 주소입니다";
 
 			} else {
 				msg = "오류로 인해 회원가입이 실패하였습니다";
@@ -151,7 +146,7 @@ public class UserInfoController {
 		return "/redirect";
 	}
 
-	//로그인
+	// 로그인
 	@RequestMapping(value = "user/getUserLoginCheck")
 	public String getUserLoginCheck(HttpSession session, HttpServletRequest request, HttpServletResponse response,
 			ModelMap model) throws Exception {
@@ -220,23 +215,21 @@ public class UserInfoController {
 		log.info("유효성 검사 종료");
 		return result;
 	}
-	
-	// 이메일 중복 체크
-		@RequestMapping(value = "user/checkEmail")
-		public @ResponseBody int checkEmail(HttpServletRequest request ) throws Exception {
-			log.info("유효성 검사 시작");
-			String email = request.getParameter("email");
 
-			UserInfoDTO pDTO = new UserInfoDTO();
-			pDTO.setEmail(EncryptUtil.encAES128CBC(email));
-			int result = 0;
-			result = userInfoService.checkEmail(pDTO);
-			log.info("유효성 검사 결과 : " + result);
-			log.info("유효성 검사 종료");
-			return result;
-		}
-			
-		
+	// 이메일 중복 체크
+	@RequestMapping(value = "user/checkEmail")
+	public @ResponseBody int checkEmail(HttpServletRequest request) throws Exception {
+		log.info("유효성 검사 시작");
+		String email = request.getParameter("email");
+
+		UserInfoDTO pDTO = new UserInfoDTO();
+		pDTO.setEmail(EncryptUtil.encAES128CBC(email));
+		int result = 0;
+		result = userInfoService.checkEmail(pDTO);
+		log.info("유효성 검사 결과 : " + result);
+		log.info("유효성 검사 종료");
+		return result;
+	}
 
 	// 아이디 찾기
 	@RequestMapping(value = "user/findingId")
@@ -251,7 +244,7 @@ public class UserInfoController {
 		log.info("user_name : " + user_name);
 		log.info("email : " + email);
 
-		// id값을 받아올 변수
+		// id값을 받아올 변수   
 		String user_id = "";
 
 		UserInfoDTO pDTO = null;
@@ -291,18 +284,14 @@ public class UserInfoController {
 
 		log.info(this.getClass().getName() + "findingPw start!");
 
-		
-		
 		String user_id = request.getParameter("user_id");
 		String email = EncryptUtil.encAES128CBC(request.getParameter("email"));
 
-		
 		MailDTO mDTO = new MailDTO();
 		String toMail = CmmUtil.nvl(request.getParameter("email"));
 		String contents = "";
 		String title = "임시 비밀번호 입니다";
-		
-		
+
 		UserInfoDTO pDTO = null;
 		pDTO = new UserInfoDTO();
 
@@ -333,31 +322,19 @@ public class UserInfoController {
 			log.info(this.getClass().getName() + "findingPw end!");
 
 			if (result > 0) {
-				
-				contents+="임시비밀번호는 "+password+" 입니다";
-				
-			
-				
-				mDTO.setToMail(toMail);
-				mDTO.setTitle(title);
-				mDTO.setContents(contents);
-				
-				int res = mailService.doSendMail(mDTO);
-				
 
-				model.addAttribute("msg", "임시 비밀번호가 이메일로 발송되었습니다.");
+				model.addAttribute("msg", "임시 비밀번호가 " + password + " 입니다.");
 				model.addAttribute("url", "/user/LoginForm.do");
 
-			} else {
-				model.addAttribute("msg", "실패했습니다");
-				model.addAttribute("url", "/user/PWFindForm.do");
 			}
 
-		} else {
+			pDTO = null;
+		} else if (pDTO == null) {
+
 			model.addAttribute("msg", "회원정보가 일치하지 않습니다.");
 			model.addAttribute("url", "/user/PWFindForm.do");
-		}
 
+		}
 		return "/redirect";
 
 	}
@@ -429,7 +406,7 @@ public class UserInfoController {
 		return "/redirect";
 	}
 
-	//로그아웃
+	// 로그아웃
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session, Model model) throws Exception {
 		// 세션을 초기화 시킴
@@ -440,7 +417,7 @@ public class UserInfoController {
 		return "/redirect";
 	}
 
-	//회원탈퇴
+	// 회원탈퇴
 	@RequestMapping(value = "mypage/DeleteUser")
 	public String DeleteUser(HttpServletRequest request, HttpServletResponse response, ModelMap model,
 			HttpSession session) throws Exception {

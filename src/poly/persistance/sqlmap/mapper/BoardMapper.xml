@@ -7,14 +7,12 @@
 		TITLE, 
 		CONTENT, 
 		REG_DT, 
-		BOARD_SEQ, 
 		READ_CNT,
-		USER_NAME,
+		USER_NAME
 	)VALUES(
 	#{title}, 
 	#{content}, 
 	CURDATE(), 
-	#{board_seq},
 	0,
 	#{user_name}
 	

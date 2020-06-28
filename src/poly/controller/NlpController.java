@@ -77,7 +77,7 @@ public class NlpController {
 			/* res = "\" " + str + "\" 문장의 분석 결과는 데이터 사전에 존재하지 않아 분석이 불가능 합니다"; */
 
 		} else {
-			res = "문장의 분석 결과는 " + point + "로 긍정적인 결과가 나왔습니다";
+			res =  point + "로 긍정적인 결과가 나왔습니다";
 
 		}
 

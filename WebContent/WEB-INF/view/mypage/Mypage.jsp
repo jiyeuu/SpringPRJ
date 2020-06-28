@@ -10,10 +10,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>아이디찾기</title>
+  <title>로그인</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -44,28 +44,40 @@
 }
 
  </style>
+   
 </head>
 <body>
  <!-- #header -->
-	<%if(user_id!=null){ %>
-		<%if(user_Author.equals("1")) {%>
-			<%@include file="/WEB-INF/view/frame/topbar-admin.jsp" %>
-		<%} else { %>
-			<%@include file="/WEB-INF/view/frame/topbar-login.jsp" %>
-		<%} %>
-	<%} else {%>
-		<%@include file="/WEB-INF/view/frame/topbar-logout.jsp" %>
-	<%} %>
+	<%
+		if (user_id != null) {
+	%>
+	<%
+		if (user_Author.equals("1")) {
+	%>
+	<%@include file="/WEB-INF/view/frame/topbar-admin.jsp"%>
+	<%
+		} else {
+	%>
+	<%@include file="/WEB-INF/view/frame/topbar-login.jsp"%>
+	<%
+		}
+	%>
+	<%
+		} else {
+	%>
+	<%@include file="/WEB-INF/view/frame/topbar-logout.jsp"%>
+	<%
+		}
+	%>
 	
-	
-   <main id="main">
+	<main id="main">
 
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>마이페이지</h2>
+          <h2>Mypage</h2>
         </div>
       </div>
     </section><!-- End About Section -->
@@ -73,24 +85,24 @@
     <!-- ======= Skills Section ======= -->
     <section id="skills" class="skills">
       <div class="container" data-aos="fade-up">
-		<div class="login-page">
-			<div class="form">
-				<form name="Regf" action="">
+        <div class="login-page">
+          <div class="form">
+   
+            <label for="user_id" class="input">아이디 : <%=user_id1%> </label>
+           	
+            <label for="email" class="input">Email :  <%=email%> </label> 
+           
+           
+            <input type="button" name="password" value="비밀번호 변경하기" class="button1"  onClick="location.href='/mypage/ChPwForm.do'" required/>
+         
+             <input type="button" value="탈퇴하기" class="button1" onclick="delUser()" style="margin-top: 10px" />
+    
 
-						<label for="user_id">아이디</label>
-						<%=user_id1%>
-						<label for="email">Email</label>
-						<%=email%>
-						
-						<input type="button" class="button1" name="password" value="변경하기" 
-							onClick="location.href='/mypage/ChPwForm.do'" required />
-							
-						<input type="button" class="button1" value="탈퇴하기" onclick="delUser()" />
+          </div>
+        </div>
+     
 
-					</form>
-				</div>
-			</div>
-				<div class="row skills-content">
+        <div class="row skills-content">
         </div>
 
       </div>
@@ -105,8 +117,8 @@
 
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
+<!-- ======= Footer ======= -->
+  <footer id="footer" style="margin-top: 18%">
     <div class="container">
       <div class="copyright">
         &copy; Copyright <strong><span>Kelly</span></strong>. All Rights Reserved
@@ -138,7 +150,17 @@
 
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
-	
-	
+
+			<script>
+			function delUser() {
+
+		         if (confirm("회원 탈퇴 하시겠습니까?") == true) {
+		            document.location.href = "/mypage/DeleteUser.do?user_id=<%=user_id %>";
+		         } else {
+		            return false;
+		         }
+		      }
+			</script>
+ 
 </body>
 </html>

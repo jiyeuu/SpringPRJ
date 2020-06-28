@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+	String user_id = (String) session.getAttribute("SS_USER_ID");
+	String user_Author = (String) session.getAttribute("user_Author");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +32,49 @@
   <link href="/assets/css/style.css" rel="stylesheet">
   <link href="/assets/css/style_index.css" rel="stylesheet">
 
+<script type="text/javascript">
+//비밀번호 일치 체크
+	function checkPw1() {
+		$("#alert-success").hide();
+		$("#alert-danger").hide();
+		$("input").keyup(function() {
+			var pwd1 = $("#pwd1").val();
+			var pwd2 = $("#pwd2").val();
+			var CheckForm = /^[a-z0-9]{8,16}$/;
+			if(pwd1==""){
+				$("#alert-danger1").hide();
+				$('#pwinput').val("0");
+			}
+			if(pwd1.length<8){
+				$("#alert-danger1").show();				
+				$('#pwinput').val("0");
+			}
+			if (!CheckForm.test(pwd1)) {
+				$("#alert-danger1").show();
+				$('#submitbtn').prop("disabled", true);	
+				$('#pwinput').val("0");
+			} else{
+			 	if (pwd1 != "" || pwd2 != "") {
+					if (pwd1 == pwd2) {
+						$("#alert-danger1").hide();
+						$("#alert-success").show();
+						$("#alert-danger").hide();
+						$("#submitbtn").removeAttr("disabled");
+						$('#pwinput').val("1");
+					} else {
+						$("#alert-danger1").hide();
+						$("#alert-success").hide();
+						$("#alert-danger").show();
+						$("#submitbtn").attr("disabled", "disabled");
+						$('#pwinput').val("0");
+					}
+			  	}
+			}
+		});
+	};
+
+</script>
+
  <style>
 .find_info {
     font-size: 13px;
@@ -41,6 +89,29 @@
 
 </head>
 <body>
+
+	<%
+		if (user_id != null) {
+	%>
+	<%
+		if (user_Author.equals("1")) {
+	%>
+	<%@include file="/WEB-INF/view/frame/topbar-admin.jsp"%>
+	<%
+		} else {
+	%>
+	<%@include file="/WEB-INF/view/frame/topbar-login.jsp"%>
+	<%
+		}
+	%>
+	<%
+		} else {
+	%>
+	<%@include file="/WEB-INF/view/frame/topbar-logout.jsp"%>
+	<%
+		}
+	%>
+
 <main id="main">
 
 	<!-- ======= About Section ======= -->
@@ -57,22 +128,25 @@
 	<!-- ======= Skills Section ======= -->
 	<section id="skills" class="skills">
 			<div class="container" data-aos="fade-up">
-				<div class="login-page">
+				<div class="login-page" style="width: 90%">
 					<div class="forms">
 
 						<form class="login-form" name="chpwdForm" id="login" action="/user/changePw.do">
-							<div id="alert-danger1" style="display: none;">형식 올바르지
-								않습니다(영문소문자, 숫자8~16)</div>
-							<input type="password" class="input" name="password" id="pwd1" required /> 
-							<input type="password" class="input" name="password" id="pwd2" oninput="checkPw1();" required />
-							<div id="alert-success" style="display: none;">비밀번호 사용가능</div>
-							<div id="alert-danger" style="display: none;">비밀번호가 일치하지 않습니다</div>
+							
+							<input type="password" class="input" placeholder="new password" name="password" id="pwd1" oninput="checkPw1()"  required/>
+              				<div id="alert-danger1" style="display: none;">영문소문자, 숫자8~16로 입력해주세요</div>
+              
+							  <input class="input"  id="pwd2" type="password" name="repeatpassword" oninput="checkPw1()" 
+						placeholder="new Password check" required>
+              				<div id="alert-success" style="display: none;">비밀번호 사용가능</div>
+			 				 <div id="alert-danger" style="display: none;">비밀번호가 일치하지 않습니다</div>
 	
-							<input type="hidden" class="input" id="submitinput" value="0"> <input
-								type="submit" value="변경하기" class="button1" id="submitbtn" />
+							 <input type="hidden" id="pwinput" value="0">
+							<input type="hidden"  id="submitinput" value="0">
+							<input type="submit" value="변경하기" class="button1" id="submitbtn" />
 			
 							 <div class="find_info" style="margin-left: 73%;">
-								<a target="_blank" id="idinquiry" href="/user/LoginForm.do">뒤로가기</a> 
+								<a target="_blank" id="idinquiry" href="/mypage/Mypage.do">뒤로가기</a> 
 								<span class="bar" aria-hidden="true">|</span> 
 							</div>
 						</form>
@@ -104,7 +178,7 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
+  <footer id="footer" style="margin-top: 18%">
     <div class="container">
       <div class="copyright">
         &copy; Copyright <strong><span>Kelly</span></strong>. All Rights Reserved

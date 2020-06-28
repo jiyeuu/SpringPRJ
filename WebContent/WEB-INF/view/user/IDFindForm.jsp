@@ -115,7 +115,7 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
+  <footer id="footer" style="margin-top: 18%">
     <div class="container">
       <div class="copyright">
         &copy; Copyright <strong><span>Kelly</span></strong>. All Rights Reserved
