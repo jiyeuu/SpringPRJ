@@ -1,12 +1,15 @@
 package poly.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import org.apache.commons.collections.map.HashedMap;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +19,6 @@ import poly.dto.BugsDTO;
 import poly.dto.NlpDTO;
 import poly.service.IBugsService;
 import poly.service.INlpService;
-import poly.util.CmmUtil;
 
 @Controller
 public class NlpController {
@@ -66,7 +68,14 @@ public class NlpController {
 
 		pDTO.setWord(str);
 
-		int point = nlpService.preProcessWordAnalysisForMind(pDTO);
+		Map<String,Integer> pMap = new HashMap<String, Integer>(); 
+		pMap = nlpService.preProcessWordAnalysisForMind(pDTO);
+		int point = pMap.get("res");
+		int pos = pMap.get("pos");
+		int neg = pMap.get("neg");
+		if(neg<0) {
+			neg *= -1;
+		}
 
 		if (point < 0) {
 			res = "문장의 분석 결과는" + point + "로 부정적인 결과가 나왔습니다";
@@ -83,6 +92,8 @@ public class NlpController {
 
 		// 분석 결과 넣어주기
 		model.addAttribute("res", res);
+		model.addAttribute("pos",pos);
+		model.addAttribute("neg",neg);
 
 		log.info(this.getClass().getName() + ".wordAnalysis end!");
 

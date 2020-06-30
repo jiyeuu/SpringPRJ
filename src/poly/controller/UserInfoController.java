@@ -261,20 +261,24 @@ public class UserInfoController {
 		} catch (Exception e) {
 			log.info(e.toString());
 			e.printStackTrace();
-		} finally {
+		} 
+		
+		if (pDTO != null) {
 			log.info(this.getClass().getName() + ".findingId end!");
+			
 			if (user_id != null) {
 				model.addAttribute("msg", "입력하신 정보로 가입된 아이디는" + user_id + " 입니다.");
 				model.addAttribute("url", "/user/LoginForm.do");
 
-			} else {
+			} 
+			
+			
+		}else {
 
 				model.addAttribute("msg", "입력하신 정보로 가입된 아이디가 없습니다.");
 				model.addAttribute("url", "/user/IDFindForm.do");
 			}
-
-			pDTO = null;
-		}
+		pDTO = null;
 		return "/redirect";
 	}
 

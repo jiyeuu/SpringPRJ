@@ -240,10 +240,13 @@ public class NlpService implements INlpService {
 	 * @return 감정 분석 평가 결과
 	 */
 
-	public int preProcessWordAnalysisForMind(NlpDTO pDTO) throws Exception {
+	public Map<String, Integer> preProcessWordAnalysisForMind(NlpDTO pDTO) throws Exception {
 		log.info(this.getClass().getName() + ".WordAnalysisForMind start!");
-
+		Map<String, Integer> pMap = new HashMap<String, Integer>();
 		int res = 0;
+		int pos = 0;
+		int neg = 0;
+		int tmp = 0;
 
 		// 분석할 문장(특수문자 제거)
 		log.info(CmmUtil.nvl(pDTO.getWord()));
@@ -273,27 +276,40 @@ public class NlpService implements INlpService {
 			String firstWord2 = textArr[i].substring(0, 1);
 
 			String text2 = " ";
-			
+
 			log.info("###반복횟수 : " + i);
-			
-			if(i == maxCnt - 1 ) {
+
+			if (i == maxCnt - 1) {
 				text2 = textArr[i];
-				
-			}else if(i == maxCnt - 2){
+
+			} else if (i == maxCnt - 2) {
 				text2 = textArr[i] + " " + textArr[i + 1];
-			}else {
+			} else {
 				text2 = textArr[i] + " " + textArr[i + 1] + " " + textArr[i + 2];
 
 			}
-			
-			res += WordAnalysisForMind(firstWord2, text2);
+			tmp = WordAnalysisForMind(firstWord2, text2);
+
+			res += tmp;
+
+			if (tmp < 0) {
+				neg += tmp;
+			} else {
+				pos += tmp;
+			}
 		}
 
 		log.info("Res : " + res);
-
+		log.info("Pos : " + pos);
+		log.info("Neg : " + neg);
+		
+		pMap.put("res", res);
+		pMap.put("pos", pos);
+		pMap.put("neg", neg);
+		
 		log.info(this.getClass().getName() + ".WordAnalysisForMind end!");
 
-		return res;
+		return pMap;
 	}
 
 	public int WordAnalysisForMind(String firstWord, String str) throws Exception {
