@@ -12,7 +12,7 @@
  <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>로그인</title>
+  <title>Lyric Aanalysis Page</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -69,14 +69,10 @@
   <footer id="footer">
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Lyric Aanalysis Page</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Lyric Aanalysis Page</span></strong>
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+     
       </div>
     </div>
   </footer><!-- End  Footer -->

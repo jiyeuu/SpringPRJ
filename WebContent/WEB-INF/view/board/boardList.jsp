@@ -46,7 +46,7 @@
 <link rel="stylesheet" href="/css/animate.min.css">
 <link rel="stylesheet" href="/css/owl.carousel.css">
 <link rel="stylesheet" href="/css/main.css">
-<link rel="stylesheet" href="/css/style.css">
+<!-- <link rel="stylesheet" href="/css/style.css"> -->
 <link rel="stylesheet" href="/css/style_list.css">
 <link rel="stylesheet" href="/css/bootstrap.min_table.css">
 
@@ -158,7 +158,7 @@
 									<li class="list-table_li_s"
 										style="display: table-cell; width: 12px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;"><%=bDTO.getRead_cnt() %></li>
 									<li class="list-table_li_s"
-										style="display: table-cell; width: 25px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;"><%=bDTO.getRegDate() %></li>
+										style="display: table-cell; width: 25px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;"><%=bDTO.getReg_date() %></li>
 								</ul>
 								<%} %>
 							</div>
@@ -239,7 +239,6 @@
 	</footer>
 	<!-- End footer Area -->
 
-	<script src="/js/vendor/jquery-2.2.4.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -247,15 +246,7 @@
 	<script src="/js/vendor/bootstrap.min.js"></script>
 	<script type="text/javascript"
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-	<script src="/js/easing.min.js"></script>
-	<script src="/js/hoverIntent.js"></script>
-	<script src="/js/superfish.min.js"></script>
-	<script src="/js/jquery.ajaxchimp.min.js"></script>
-	<script src="/js/jquery.magnific-popup.min.js"></script>
-	<script src="/js/owl.carousel.min.js"></script>
-	<script src="/js/jquery.nice-select.min.js"></script>
-	<script src="/js/mail-script.js"></script>
-	<script src="/js/main.js"></script>
+	
 			
 </body>
 </html>

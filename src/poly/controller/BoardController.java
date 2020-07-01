@@ -106,7 +106,7 @@ public class BoardController {
 	         return "/redirect";
 	     }
 		
-		String user_name = (String) session.getAttribute("SS_USER_NAME");
+		String user_name = (String) session.getAttribute("user_name");
 		log.info("user_name" + user_name);
 
 		int listCnt = boardService.listall();
@@ -179,7 +179,7 @@ public class BoardController {
 			
 			System.out.println("title" + bDTO.getTitle());
 			System.out.println("content"  + bDTO.getContent());
-			System.out.println("reg_dt" + bDTO.getRegDate());
+			System.out.println("reg_dt" + bDTO.getReg_date());
 			System.out.println("board_seq" + bDTO.getBOARD_SEQ());
 			System.out.println("read_cnt" + bDTO.getRead_cnt());
 			System.out.println("user_name" + bDTO.getUser_name());
@@ -287,6 +287,7 @@ public class BoardController {
 	     }
 		
 		String seq = request.getParameter("seq");
+		log.info("seq: "+seq);
 		
 		int result = 0;
 

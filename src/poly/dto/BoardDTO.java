@@ -4,7 +4,7 @@ public class BoardDTO {
 
 	private String title;
 	private String content;
-	private String regDate;
+	private String reg_date;
 	private String seq;
 	
 	private String userSeq;
@@ -28,11 +28,12 @@ public class BoardDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getRegDate() {
-		return regDate;
+
+	public String getReg_date() {
+		return reg_date;
 	}
-	public void setRegDate(String regDate) {
-		this.regDate = regDate;
+	public void setReg_date(String reg_date) {
+		this.reg_date = reg_date;
 	}
 	public String getSeq() {
 		return seq;

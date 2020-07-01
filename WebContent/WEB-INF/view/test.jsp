@@ -8,6 +8,8 @@
 <%
 	String user_id = (String) session.getAttribute("SS_USER_ID");
 	String user_Author = (String) session.getAttribute("user_Author");
+	List<String> pList = (List<String>) request.getAttribute("pList");
+	List<Integer> iList = (List<Integer>) request.getAttribute("iList");
 %>
 	
 <!DOCTYPE html>
@@ -55,45 +57,29 @@
 <script src="/js/jquery-3.5.1.min.js"></script>
 
 <script type="text/javascript">
-	$(window).on("load",function(){
-		getWordCloud();
-	})
 	
-	function getWordCloud() {
-
-		//Ajax 호출
-		$.ajax({
-			url : "/rTest.do",
-			type : "post",
-			dataType : "JSON",
-			success : function(json) {
-				console.log(json);
-				var str = [];
-				if(json.word.length>300){
-					for(var i = 0; i<300;i++){
-						str.push({'word':json.word[i],'count':json.count[i]});
-					}	
-				}
-				console.log(str);
-				am4core.ready(function() {
-					// Themes begin
-					am4core.useTheme(am4themes_frozen);
-					am4core.useTheme(am4themes_animated);
-				  	// Themes end
-					var chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
-					var series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
-					   series.randomness = 0.1;
-					   series.labels.template.tooltipText = "{word}: {value}";
-					   series.fontFamily = "Courier New";
-					   series.data = str;
-					   series.dataFields.word = "word";
-					   series.dataFields.value = "count";
-					   series.colors = new am4core.ColorSet();
-					   series.colors.passOptions = {}; // makes it loop
-				});
-			}
-		})
-	}
+	
+	var str =  [];
+	<%for(int i = 0 ; i<pList.size();i++){%>
+		str.push({"word":"<%=pList.get(i)%>","count" : "<%=iList.get(i)%>"});
+	<%}%>
+	
+	am4core.ready(function() {
+		// Themes begin
+		am4core.useTheme(am4themes_frozen);
+		am4core.useTheme(am4themes_animated);
+	  	// Themes end
+		var chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
+		var series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
+		   series.randomness = 0.1;
+		   series.labels.template.tooltipText = "{word}: {value}";
+		   series.fontFamily = "Courier New";
+		   series.data = str;
+		   series.dataFields.word = "word";
+		   series.dataFields.value = "count";
+		   series.colors = new am4core.ColorSet();
+		   series.colors.passOptions = {}; // makes it loop
+	});
 </script>
 </head>
 <body>
@@ -156,14 +142,10 @@
   <footer id="footer" style="margin-top: 18%">
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Kelly</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Lyric Aanalysis Page</span></strong>
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+   
       </div>
     </div>
   </footer><!-- End  Footer -->

@@ -6,7 +6,7 @@
 	INSERT INTO BOARD(
 		TITLE, 
 		CONTENT, 
-		REG_DT, 
+		REG_DATE, 
 		READ_CNT,
 		USER_NAME
 	)VALUES(
@@ -20,10 +20,9 @@
 	</insert>
 	
 	<select id="getBoardList" resultType="BoardDTO">
-SELECT *
+SELECT SEQ AS seq, TITLE, CONTENT, USER_NAME,REG_DATE,READ_CNT
 FROM BOARD
-ORDER BY BOARD_SEQ DESC, REG_DT
-LIMIT #{startIndex},#{endIndex}
+LIMIT #{startIndex},5
 
   
   <!--  <![CDATA[
@@ -61,6 +60,7 @@ LIMIT #{startIndex},#{endIndex}
 	
 	<select id="getBoardDetail" parameterType="BoardDTO" resultType="BoardDTO">
 		SELECT
+			SEQ as seq,
 			TITLE,
 			CONTENT,
 			REG_DT,
@@ -69,7 +69,7 @@ LIMIT #{startIndex},#{endIndex}
 		FROM
 			BOARD
 		WHERE
-			BOARD_SEQ = #{seq}
+			SEQ = #{seq}
 	</select>
 	
 	<update id="updateBoard" parameterType="BoardDTO">
@@ -79,20 +79,20 @@ LIMIT #{startIndex},#{endIndex}
 			TITLE = #{title},
 			CONTENT = #{content}
 		WHERE
-			BOARD_SEQ =#{seq}
+			SEQ =#{seq}
 	</update>
 	
 	<delete id="deleteBoard" parameterType="BoardDTO">
 	
 		DELETE FROM BOARD
-		WHERE BOARD_SEQ = #{seq}	
+		WHERE SEQ = #{seq}	
 			
 	</delete>
 	
 	<update id="updateBoardReadCnt" parameterType="BoardDTO">
 		UPDATE BOARD
 		SET read_cnt = read_cnt + 1
-		WHERE BOARD_SEQ = #{seq}	
+		WHERE SEQ = #{seq}	
 	</update>
 	
 	

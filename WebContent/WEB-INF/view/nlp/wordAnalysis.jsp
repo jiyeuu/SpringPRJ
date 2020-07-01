@@ -44,8 +44,8 @@ String user_Author = (String) session.getAttribute("user_Author");
 
 <style>
 #chartdiv {
-	width: 100%;
-	height: 500px;
+	width: 115%;
+	height: 200px;
 }
 </style>
 
@@ -166,9 +166,10 @@ String user_Author = (String) session.getAttribute("user_Author");
 				<div class="form">
 
 					<!--  <div class="chart chart1" data-percent="55"><span class="title"></span></div>
- -->
+ -->					
+ 					Bugs Music chart를 감정분석한 결과 긍정적인 결과를 퍼센트로 나타낸 결과입니다
 					<div id="chartdiv"></div>
-
+					
 				</div>
 			</div>
 		</div>
@@ -180,15 +181,11 @@ String user_Author = (String) session.getAttribute("user_Author");
 	<footer id="footer" style="margin-top: 21%">
 		<div class="container">
 			<div class="copyright">
-				&copy; Copyright <strong><span>Kelly</span></strong>. All Rights
+				&copy; Copyright <strong><span>Lyric Aanalysis Page</span></strong>
 				Reserved
 			</div>
 			<div class="credits">
-				<!-- All the links in the footer should remain intact. -->
-				<!-- You can delete the links only if you purchased the pro version. -->
-				<!-- Licensing information: https://bootstrapmade.com/license/ -->
-				<!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/ -->
-				Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+			
 			</div>
 		</div>
 	</footer>

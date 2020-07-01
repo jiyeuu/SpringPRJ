@@ -20,31 +20,43 @@
 	<!-- 오라클에서 메이븐 저장소에 제공을 하고 있지 않기 때문에, 메이븐 사설 저장소 사용함 -->
 	<!-- <repositories> <repository> <id>oracle</id> <name>ORACLE JDBC Repository</name> 
 		<url>http://maven.jahia.org/maven2</url> </repository> </repositories> -->
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 
 
 
 	<dependencies>
-	
+		<!-- 코모란 사용 -->
+		<dependency>
+			<groupId>com.github.shin285</groupId>
+			<artifactId>KOMORAN</artifactId>
+			<version>3.3.4</version>
+		</dependency>
+
 		<!-- R연동 -->
 		<dependency>
 			<groupId>com.github.jbytecode</groupId>
 			<artifactId>RCaller</artifactId>
 			<version>2.8</version>
 		</dependency>
-		
+
 		<!-- Rserve 사용을 위한 라이브러리 -->
-      <dependency>
-         <groupId>org.rosuda.REngine</groupId>
-         <artifactId>REngine</artifactId>
-         <version>2.1.0</version>
-      </dependency>
-      <dependency>
-         <groupId>org.rosuda.REngine</groupId>
-         <artifactId>Rserve</artifactId>
-         <version>1.8.1</version>
-      </dependency>
-		
-		
+		<dependency>
+			<groupId>org.rosuda.REngine</groupId>
+			<artifactId>REngine</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.rosuda.REngine</groupId>
+			<artifactId>Rserve</artifactId>
+			<version>1.8.1</version>
+		</dependency>
+
+
 		<!-- MySQL접속을 드라이버 외부라이브러리 -->
 		<dependency>
 			<groupId>mysql</groupId>

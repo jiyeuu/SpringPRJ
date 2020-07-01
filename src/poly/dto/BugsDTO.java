@@ -2,6 +2,7 @@ package poly.dto;
 
 public class BugsDTO {
 	
+	private String link;
 	private String collect_time; //수집시간
 	private String song; //노래제목
 	private String singer; //가수
@@ -37,6 +38,12 @@ public class BugsDTO {
 	}
 	public void setRank(String rank) {
 		this.rank = rank;
+	}
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
 	}
 	
 	

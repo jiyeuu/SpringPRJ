@@ -81,6 +81,7 @@ public class BugsService implements IBugsService {
 
 			// MongoDB에 저장할 List 형태의 맞는 DTO 데이터 저장하기
 			BugsDTO pDTO = new BugsDTO();
+			pDTO.setLink(lyric);
 			pDTO.setRank(rank);
 			pDTO.setCollect_time(DateUtil.getDateTime("yyyyMMddhhmmss"));
 			pDTO.setSong(song);

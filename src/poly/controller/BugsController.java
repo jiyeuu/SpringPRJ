@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.rosuda.REngine.Rserve.RConnection;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -59,7 +60,7 @@ public class BugsController {
 	 */
 	@RequestMapping(value = "bugs/getRank")
 	@ResponseBody
-	public List<BugsDTO> getRank(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public List<BugsDTO> getRank(HttpServletRequest request, HttpServletResponse response ) throws Exception {
 
 		log.info(this.getClass().getName() + ".getRank Start!");
 
@@ -70,7 +71,9 @@ public class BugsController {
 		}
 
 		log.info(this.getClass().getName() + ".getRank End!");
-
+	
+		
+		
 		return rList;
 	}
 

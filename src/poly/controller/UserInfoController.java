@@ -117,8 +117,13 @@ public class UserInfoController {
 			pDTO.setPassword(EncryptUtil.encHashSHA256(password));
 			pDTO.setEmail(EncryptUtil.encAES128CBC(email));
 
+			user_id = null;
+			user_name = null;
+			password = null;
+			email = null;
+			
 			int res = userInfoService.insertUserInfo(pDTO);
-
+			
 			if (res == 1) {
 				msg = "회원가입되었습니다";
 
@@ -152,8 +157,6 @@ public class UserInfoController {
 			ModelMap model) throws Exception {
 		log.info(this.getClass().getName() + "getUserLoginCheck start!");
 
-		int res = 0;
-
 		UserInfoDTO pDTO = null;
 
 		try {
@@ -170,7 +173,6 @@ public class UserInfoController {
 			pDTO = userInfoService.getUserLoginCheck(pDTO);
 
 			if (pDTO != null) {
-
 				session.setAttribute("SS_USER_ID", user_id);
 				session.setAttribute("SS_EMAIL", EncryptUtil.decAES128CBC(pDTO.getEmail()));
 				session.setAttribute("user_name", pDTO.getUser_name());
@@ -261,24 +263,20 @@ public class UserInfoController {
 		} catch (Exception e) {
 			log.info(e.toString());
 			e.printStackTrace();
-		} 
-		
-		if (pDTO != null) {
+		} finally {
 			log.info(this.getClass().getName() + ".findingId end!");
-			
 			if (user_id != null) {
 				model.addAttribute("msg", "입력하신 정보로 가입된 아이디는" + user_id + " 입니다.");
 				model.addAttribute("url", "/user/LoginForm.do");
 
-			} 
-			
-			
-		}else {
+			} else {
 
 				model.addAttribute("msg", "입력하신 정보로 가입된 아이디가 없습니다.");
 				model.addAttribute("url", "/user/IDFindForm.do");
 			}
-		pDTO = null;
+
+			pDTO = null;
+		}
 		return "/redirect";
 	}
 

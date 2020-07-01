@@ -23,18 +23,12 @@
           <li><a href="/mypage/Mypage.do">Mypage</a></li>
           <li><a href="/bugs/bugsTop100.do">Bugs Music chart</a></li>
           <li><a href="/nlp/wordAnalysis.do">Lyric analysis1</a></li>  <!-- Lyric emotion analysis -->
-          <li><a href="/test.do">Lyric analysis2</a></li>
+          <li><a href="/komoran_test.do">Lyric analysis2</a></li>
          
         </ul>
       </nav><!-- .nav-menu -->
 
-      <div class="header-social-links">
-        <button onclick="alert('(Twitter) 준비중입니다.')" class="twitter" style="border:0px; background-color: #e9e8e6;"><i class="icofont-twitter"></i></button>
-        <button onclick="alert('(Facebook) 준비중입니다.')" class="facebook" style="border:0px; background-color: #e9e8e6;"><i class="icofont-facebook"></i></button>
-        <button onclick="alert('(instagram) 준비중입니다.')" class="instagram" style="border:0px; background-color: #e9e8e6;"><i class="icofont-instagram"></i></button>
-        <button onclick="alert('(linkedin) 준비중입니다.')" class="linkedin" style="border:0px; background-color: #e9e8e6;"><i class="icofont-linkedin"></i></button>
-      </div>
-
+     
     </div>
 
   </header><!-- End Header -->

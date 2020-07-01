@@ -105,8 +105,7 @@
 					
 
 						<div class="form-group">
-							<textarea class="table_textbox" id="summernote" name="contents"
-								style="width: 99%; height: 20em;"></textarea>
+							<textarea  class="table_textbox" id="summernote" name="contents" style="width: 99%; height: 20em;"><%=bDTO.getContent() %></textarea>
 						</div>
 
 						<input type="submit" class="btn btn-primary" value="수정">
