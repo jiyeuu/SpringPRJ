@@ -61,7 +61,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.44</version>
+			<version>8.0.16</version>
 		</dependency>
 
 		<!-- MongoDB 연동을 위해 Driver 파일 다운로드 -->
