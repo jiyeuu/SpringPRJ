@@ -81,7 +81,7 @@ public class PagingDTO {
       
       //DB 조회를 위한 startIndex 설정
       public void setStartIndex(int curPage) {
-         this.startIndex = (curPage-1)*pageSize+1;
+         this.startIndex = (curPage-1)*pageSize;
       }
       
       

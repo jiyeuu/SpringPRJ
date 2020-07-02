@@ -100,10 +100,20 @@
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
+         <div class="section-title" style="padding-top: 30%;">
           <h2>Music chart</h2>
         </div>
       </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
     </section><!-- End About Section -->
 	<!-- ======= Skills Section ======= -->
     <section id="skills" class="skills">
@@ -122,17 +132,12 @@
 	</section>
 	
 	  <!-- ======= Footer ======= -->
-  <footer id="footer">
+ <footer id="footer" style="margin-top: 5%">
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Kelly</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Lyric Aanalysis Page</span></strong>
       </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+     
       </div>
     </div>
   </footer><!-- End  Footer -->

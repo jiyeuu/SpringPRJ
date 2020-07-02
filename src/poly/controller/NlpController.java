@@ -50,6 +50,7 @@ public class NlpController {
 			rList = new ArrayList<BugsDTO>();
 		}
 		
+		//코모란
 		List<String> sList = new ArrayList<String>();
 		for (int i = 0; i < rList.size(); i++) {
 			Komoran komoran = new Komoran(DEFAULT_MODEL.FULL);
@@ -60,8 +61,8 @@ public class NlpController {
 		}
 		rList = null;
 
-		List<String> pList = new ArrayList<String>();
-		List<Integer> iList = new ArrayList<Integer>();
+		List<String> pList = new ArrayList<String>(); //단어
+		List<Integer> iList = new ArrayList<Integer>();  //카운트
 		
 		for(int i=0; i<sList.size();i++) {
 			if(sList.get(i).length()>1) {
@@ -120,7 +121,7 @@ public class NlpController {
 		}
 
 		if (point < 0) {
-			res = "문장의 분석 결과는" + point + "로 부정적인 결과가 나왔습니다";
+			res =  point + "로 부정적인 결과가 나왔습니다";
 
 		} else if (point == 0) {
 			res = "문장의 분석 결과는 데이터 사전에 존재하지 않아 분석이 불가능 합니다";

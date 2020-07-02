@@ -22,7 +22,7 @@
 	<select id="getBoardList" resultType="BoardDTO">
 SELECT SEQ AS seq, TITLE, CONTENT, USER_NAME,REG_DATE,READ_CNT
 FROM BOARD
-LIMIT #{startIndex},5
+LIMIT #{startIndex},8
 
   
   <!--  <![CDATA[

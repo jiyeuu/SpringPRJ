@@ -1,6 +1,7 @@
 <%@page import="poly.dto.BoardDTO"%>
 <%@page import="poly.dto.PagingDTO"%>
 <%@page import="java.util.List"%>
+<%@page import="poly.util.DateUtil"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -14,41 +15,40 @@
 %>
 
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
 
-<!-- Mobile Specific Meta -->
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<!-- Favicon-->
-		<link rel="shortcut icon" href="img/fav.png">
-		<!-- Author Meta -->
-		<meta name="author" content="codepixer">
-		<!-- Meta Description -->
-		<meta name="description" content="">
-		<!-- Meta Keyword -->
-		<meta name="keywords" content="">
-		<!-- meta character set -->
-		<meta charset="UTF-8">
-	
-<title>후기 리스트</title>
-<link
-	href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
-	rel="stylesheet">
-<!--
-			CSS
-			============================================= -->
-<link rel="stylesheet" href="/css/linearicons.css">
-<link rel="stylesheet" href="/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/bootstrap.css">
-<link rel="stylesheet" href="/css/magnific-popup.css">
-<link rel="stylesheet" href="/css/nice-select.css">
-<link rel="stylesheet" href="/css/animate.min.css">
-<link rel="stylesheet" href="/css/owl.carousel.css">
-<link rel="stylesheet" href="/css/main.css">
+
+<html lang="UTF-8">
+<head>
+
+ <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>로그인</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/style_index.css" rel="stylesheet">
+  
+<!-- <link rel="stylesheet" href="/css/main.css"> -->
 <!-- <link rel="stylesheet" href="/css/style.css"> -->
 <link rel="stylesheet" href="/css/style_list.css">
 <link rel="stylesheet" href="/css/bootstrap.min_table.css">
+  <!-- Template Main JS File -->
+<!--   <script src="/assets/js/main.js"></script> -->
 
 
    <script type="text/javascript">
@@ -92,44 +92,65 @@
         }
        
       }
+      
+      
+.find_info {
+    font-size: 13px;
+    line-height: 14px;
+    padding-top: 20px;
+    text-align: center;
+    color: #8e8e8e;
+    border-top: 1px solid #e4e4e5;
+}
+
 
 </style>
 </head>
 <body>
-	 <!-- #header -->
-	<%if(user_id!=null){ %>
-		<%if(user_Author.equals("1")) {%>
-			<%@include file="/WEB-INF/view/frame/topbar-admin.jsp" %>
-		<%} else { %>
-			<%@include file="/WEB-INF/view/frame/topbar-login.jsp" %>
-		<%} %>
-	<%} else {%>
-		<%@include file="/WEB-INF/view/frame/topbar-logout.jsp" %>
-	<%} %>
+<%
+		if (user_id != null) {
+	%>
+	<%
+		if (user_Author.equals("1")) {
+	%>
+	<%@include file="/WEB-INF/view/frame/topbar-admin.jsp"%>
+	<%
+		} else {
+	%>
+	<%@include file="/WEB-INF/view/frame/topbar-login.jsp"%>
+	<%
+		}
+	%>
+	<%
+		} else {
+	%>
+	<%@include file="/WEB-INF/view/frame/topbar-logout.jsp"%>
+	<%
+		}
+	%>
 	
 	<!-- #header -->
 			  
-			  <!-- start banner Area -->
-			<section class="banner-area relative" id="home">
-				<div class="container">
-					<div class="overlay overlay-bg"></div>
-					<div class="row fullscreen d-flex align-items-center justify-content-start">
-						<div class="banner-content col-lg-8">
-							<h3 class="text-uppercase">
-								 <br>			
-							</h3>
-						</div>											
-					</div>
-				</div>
-			</section>
-			<!-- End banner Area -->
+<main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>게시판</h2>
+        </div>
+      </div>
+    </section><!-- End About Section -->
+			
 				<!-- <input type="button" value="글작성" class="button" onclick="window.location='/board/boardReg.do'"/> -->
-	<div class="container-table100">
-		<div class="wrap-table100">
-			<div class="table100 ver1 m-b-110">
-				<div class="table100-head">
-					<div class="formss" id="jb-content">
-							<button type="button" class="btn btn-primary"
+	<!-- ======= Skills Section ======= -->
+    <section id="skills" class="skills">
+      <div class="container" data-aos="fade-up">
+      
+         
+					
+							<button type="button" class="button1" style="width: 80px;"
 								onclick="window.location='/board/boardReg.do'">글쓰기</button>
 							<div class="table_div"
 								style="display: table; table-layout: fixed; width: 100%;">
@@ -213,31 +234,53 @@
 
 				</div>
 			</div>
-		</div>
-	</div>
-</div>
-	<!-- start footer Area -->
-	<footer class="footer-area">
-		<div class="container">
-			<!-- <div class="row pt-120 pb-80">
-	
-					</div> -->
-		</div>
-		<div class="copyright-text">
-			<div class="container">
-				<div class="row footer-bottom d-flex justify-content-between">
-					<p class="col-lg-8 col-sm-6 footer-text m-0 text-white">
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;<!-- <script>document.write(new Date().getFullYear());
-                                </script> --> 1920110002 |  by 강지연 <a href="https://colorlib.com" target="_blank"></a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</p>
+ 
+     
 
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- End footer Area -->
+        <div class="row skills-content">
+        </div>
+
+      </div>
+    </section><!-- End Skills Section -->
+
+    <!-- ======= Facts Section ======= -->
+   
+    <!-- End Facts Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <!-- End Testimonials Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" style="margin-top: 4%">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Lyric Aanalysis Page</span></strong>
+      </div>
+      <div class="credits">
+ 
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+  
+	 <div id="preloader"></div>
+  <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="/assets/vendor/php-email-form/validate.js"></script>
+  <script src="/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="/assets/vendor/counterup/counterup.min.js"></script>
+  <script src="/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="/assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/assets/js/main.js"></script>
 
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"

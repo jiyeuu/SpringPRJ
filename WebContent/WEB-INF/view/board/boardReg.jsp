@@ -48,7 +48,7 @@
   <link href="/assets/css/style_index.css" rel="stylesheet">
  
 
-<link rel="stylesheet" href="/css/main.css">
+<!-- <link rel="stylesheet" href="/css/main.css"> -->
 <link rel="stylesheet" href="/css/style1.css">
 <link rel="stylesheet" href="/css/style_list.css">
 <link rel="stylesheet" href="/css/style_star.css">
@@ -101,7 +101,7 @@
 				<div class="col-lg-12 callto-top">
 
 					<form name="f" method="POST" action="/board/boardRegProc.do"
-						id="regform" onsubmit="return check(this);">
+						id="regform" onsubmit="return submitTest();">
 						<div class="form-group"></div>
 						<label for="text">제목</label>
 						 <input type="text" class="form-control" id="title" name="title" /> <br><!-- exampleInputEmail1 -->
@@ -109,31 +109,32 @@
 					
 
 						<div class="form-group">
-						<textarea class="table_textbox" name="contents"
+						<textarea class="table_textbox" name="contents" id="contents"
 								style="width: 99%; height: 20em;" ></textarea>
 						</div>
 
-						<input type="submit" class="btn btn-primary" id="reg_btn1"
+						<input type="submit" class="button1" style="width: 80px;" id="reg_btn1"
 							value="등록">
 					</form>
 		
 					
 <script>
-    $('#reg_btn1').click(function () {
+	function submitTest(){
         var title = $('#title').val();
-        var content = $('#summernote').val();
+        var contents = $('#contents').val();
 
         if(title==""){
             alert("제목을 입력해 주세요.");
-            return false;
             $('#title').focus();
-        }
-        else if(content==""){
-            alert("내용을 입력해 주세요.");
             return false;
-            $('#content').focus();
+            
         }
-    });
+        else if(contents==""){
+            alert("내용을 입력해 주세요.");
+            $('#contents').focus();
+            return false;       
+        }
+    };
 </script>
 
 
@@ -147,15 +148,9 @@
   <footer id="footer">
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Kelly</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Lyric Aanalysis Page</span></strong>
       </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+      
     </div>
   </footer><!-- End  Footer -->
 

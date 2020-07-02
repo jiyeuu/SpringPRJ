@@ -16,8 +16,12 @@
         </ul>
       </nav><!-- .nav-menu -->
 
-  
-
+    <div class="header-social-links">
+        <a href="#"><i ></i></a>
+        <a href="#"><i></i></a>
+        <a href="#"><i ></i></a>
+        <a href="#"><i ></i></i></a>
+      </div>
     </div>
 
   </header><!-- End Header -->

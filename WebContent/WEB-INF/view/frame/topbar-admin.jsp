@@ -17,18 +17,19 @@
           <li><a href="/logout.do">Logout</a></li>
           <li><a href="/mypage/Mypage.do">Mypage</a></li>
           <li><a href="/bugs/bugsTop100.do">Bugs Music chart</a></li>
-         <li><a href="/nlp/wordAnalysis.do">Lyric analysis1</a></li>  <!-- Lyric emotion analysis -->
-          <li><a href="/test.do">Lyric analysis2</a></li>
-        
+           <li><a href="/nlp/wordAnalysis.do">Lyric analysis1</a></li>  <!-- Lyric emotion analysis -->
+           <li><a href="/komoran_test.do">Lyric analysis2</a></li>
+             <li><a href="/board/boardList.do">Table management</a></li>
+          
         </ul>
       </nav><!-- .nav-menu -->
-
-      <div class="header-social-links">
-        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
-        <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
-        <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+  	<div class="header-social-links">
+        <a href="#"><i ></i></a>
+        <a href="#"><i></i></a>
+        <a href="#"><i ></i></a>
+        <a href="#"><i ></i></i></a>
       </div>
+    
 
     </div>
 

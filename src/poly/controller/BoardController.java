@@ -74,6 +74,13 @@ public class BoardController {
 		bDTO.setContent(contents);
 		bDTO.setTitle(title);
 		bDTO.setUser_name(user_name);
+		
+
+	//	 bDTO = BoardFilter(bDTO);
+		
+		
+		log.info(bDTO.getContent()+"컨텐츠");
+		
 
 		int result = 0;
 
@@ -307,13 +314,18 @@ public class BoardController {
 		pDTO.setTitle(pDTO.getTitle().replaceAll("& lt;", "&lt;").replaceAll("& gt;", "&gt;"));
 		pDTO.setTitle(pDTO.getTitle().replaceAll("& #40;", "\\(").replaceAll("& #41;", "\\)"));
 		pDTO.setTitle(pDTO.getTitle().replaceAll("& #39;", "'"));
-		pDTO.setTitle(pDTO.getTitle().replaceAll("& #256;", "script"));
-		if (pDTO.getContent() != null) {
-			pDTO.setContent(pDTO.getContent().replaceAll("& lt;", "<").replaceAll("& gt;", ">"));
-			pDTO.setContent(pDTO.getContent().replaceAll("& #40;", "\\(").replaceAll("& #41;", "\\)"));
-			pDTO.setContent(pDTO.getContent().replaceAll("& #39;", "'"));
-			pDTO.setContent(pDTO.getContent().replaceAll("& #256;", "script"));
-		}
+		pDTO.setTitle(pDTO.getTitle().replaceAll("!스크립트", "script"));
+		
+		pDTO.setContent(pDTO.getContent().replaceAll("& lt;", "&lt").replaceAll("& gt;", "&gt"));
+		pDTO.setContent(pDTO.getContent().replaceAll("& #40;", "\\(").replaceAll("& #41;", "\\)"));
+		pDTO.setContent(pDTO.getContent().replaceAll("& #39;", "'"));
+		pDTO.setContent(pDTO.getContent().replaceAll("!스크립트", "script"));
+	
 		return pDTO;
+		
+		
+		
+		
+		
 	}
 }

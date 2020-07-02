@@ -152,7 +152,7 @@ String user_Author = (String) session.getAttribute("user_Author");
 	<section id="about" class="about">
 		<div class="container" data-aos="fade-up">
 
-			<div class="section-title">
+			<div class="section-title" style="padding-top: 10%;">
 				<h2>Lyric analysis1</h2>
 			</div>
 		</div>
@@ -165,8 +165,7 @@ String user_Author = (String) session.getAttribute("user_Author");
 			<div class="login-page">
 				<div class="form">
 
-					<!--  <div class="chart chart1" data-percent="55"><span class="title"></span></div>
- -->					
+					
  					Bugs Music chart를 감정분석한 결과 긍정적인 결과를 퍼센트로 나타낸 결과입니다
 					<div id="chartdiv"></div>
 					
@@ -182,7 +181,7 @@ String user_Author = (String) session.getAttribute("user_Author");
 		<div class="container">
 			<div class="copyright">
 				&copy; Copyright <strong><span>Lyric Aanalysis Page</span></strong>
-				Reserved
+			
 			</div>
 			<div class="credits">
 			

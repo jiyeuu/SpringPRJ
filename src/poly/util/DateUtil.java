@@ -20,4 +20,13 @@ public class DateUtil {
 		
 		return getDateTime("yyyy.mm.dd");
 	}
+	
+	
+    public static String cleanXSS2(String value) {
+
+    	value = value.replaceAll("script", "!스크립트");
+
+
+    	return value;
+    }
 }

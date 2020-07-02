@@ -185,7 +185,7 @@
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
+        <div class="section-title" style="padding-top: 10%;">
           <h2>회원가입</h2>
         </div>
       </div>
@@ -269,7 +269,7 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" style="margin-top: 18%">
+  <footer id="footer" style="margin-top: 5%">
     <div class="container">
       <div class="copyright">
         &copy; Copyright <strong><span>Lyric Aanalysis Page</span></strong>
