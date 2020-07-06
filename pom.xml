@@ -30,6 +30,13 @@
 
 
 	<dependencies>
+	
+		<dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.5.0</version>
+        </dependency>
+	
 		<!-- 코모란 사용 -->
 		<dependency>
 			<groupId>com.github.shin285</groupId>

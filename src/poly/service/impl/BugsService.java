@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import poly.dto.BugsDTO;
 import poly.persistance.mongo.IBugsMapper;
 import poly.service.IBugsService;
+import poly.util.CmmUtil;
 import poly.util.DateUtil;
 
 @Service("BugsService")
@@ -40,6 +41,7 @@ public class BugsService implements IBugsService {
 		log.info(this.getClass().getName() + ".collectBugsRank Start!");
 
 		int res = 0;
+
 
 		List<BugsDTO> pList = new ArrayList<BugsDTO>();
 
@@ -81,7 +83,6 @@ public class BugsService implements IBugsService {
 
 			// MongoDB에 저장할 List 형태의 맞는 DTO 데이터 저장하기
 			BugsDTO pDTO = new BugsDTO();
-			pDTO.setLink(lyric);
 			pDTO.setRank(rank);
 			pDTO.setCollect_time(DateUtil.getDateTime("yyyyMMddhhmmss"));
 			pDTO.setSong(song);
@@ -113,9 +114,11 @@ public class BugsService implements IBugsService {
 		String colNm = "BugsTOP100_" + DateUtil.getDateTime("yyyyMMdd"); // 생성할 컬렉션명
 
 		List<BugsDTO> rList = bugsMapper.getRank(colNm);
+	
 
 		if (rList == null) {
 			rList = new ArrayList<BugsDTO>();
+				
 		}
 
 		log.info(this.getClass().getName() + ".getRank End!");

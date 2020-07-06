@@ -58,23 +58,27 @@ public class BugsController {
 	/**
 	 * 멜론 데이터 가져오기
 	 */
+	/* @ResponseBody */
 	@RequestMapping(value = "bugs/getRank")
-	@ResponseBody
-	public List<BugsDTO> getRank(HttpServletRequest request, HttpServletResponse response ) throws Exception {
+	public String getRank(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 
 		log.info(this.getClass().getName() + ".getRank Start!");
 
 		List<BugsDTO> rList = bugsService.getRank();
 
+		
+		
 		if (rList == null) {
 			rList = new ArrayList<BugsDTO>();
 		}
 
 		log.info(this.getClass().getName() + ".getRank End!");
 	
+		model.addAttribute("rList",rList);
 		
+		log.info("rList 사이즈 : " + rList.size());
 		
-		return rList;
+		return "/bugs/bugsTop100";
 	}
 
 	/**
