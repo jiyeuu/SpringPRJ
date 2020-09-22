@@ -16,10 +16,10 @@
           <li class="active"><a href="/user/MainForm.do">Home</a></li>
           <li><a href="/logout.do">Logout</a></li>
           <li><a href="/mypage/Mypage.do">Mypage</a></li>
-          <li><a href="/bugs/bugsTop100.do">Bugs Music chart</a></li>
+          <li><a href="/bugs/getRank.do">Bugs Music chart</a></li>
            <li><a href="/nlp/wordAnalysis.do">Lyric analysis1</a></li>  <!-- Lyric emotion analysis -->
            <li><a href="/komoran_test.do">Lyric analysis2</a></li>
-             <li><a href="/board/boardList.do">Table management</a></li>
+             <li><a href="/board/boardList.do">notice management</a></li>
           
         </ul>
       </nav><!-- .nav-menu -->

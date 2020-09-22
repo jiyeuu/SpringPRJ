@@ -74,26 +74,36 @@
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
+        <div class="section-title" style="padding-top: 5%;">
           <h2>게시판</h2>
         </div>
       </div>
     </section><!-- End About Section -->
     
 	<!-- ======= Skills Section ======= -->
-    <section id="skills" class="skills">
-      <div class="container" data-aos="fade-up">
+   <section id="skills" class="skills">
+			<div class="container" data-aos="fade-up">
+				<div class="login-page" style="padding-right: 100px">
+					<div class="form" style="text-align: left;">
+
       
    					<form method="POST" action="/board/boardModify.do">
 						<input type="hidden" name="seq" value="<%=bDTO.getSeq()%>">
-							<div class="form-group">
-            					<label for="text">제목</label> 
-            					<%=bDTO.getTitle()%>
-            					<br><br>
-
-							<%=bDTO.getContent()%>
-							<br>
+							<div class="form-group" style="border: 1px solid gray; width: 500px; height:40px;  margin: 0 auto;">
+            					<span>
+            						<label for="text">제목</label> 
+            						<%=bDTO.getTitle()%>
+            					</span>
+            				</div>
+            				<br>
+							<div  style=" height: 500px; border: 1px solid gray; width: 500px; " >
+								<span>
+									<%=bDTO.getContent()%>
+								</span>
 							</div>
+							<br>
+							
+							<div style="width: 500px;">
 							<%
 								if (user_id == null) {
 							%>
@@ -103,8 +113,8 @@
 							
 							<%if (user_id.equals(uDTO.getUser_id()) || user_Author.equals("1")) {%>
 							
-							<input type="submit"  id="reg_btn" class="button1" value="수정하기" style="float: right; width: 10%; margig-right: 10px;" /> 
-							<input type="button"  id="reg_btn" class="button1" style="float: right; width: 10%; margin-right: 10px;"
+							<input type="submit"  id="reg_btn" class="button1" value="수정하기" style="float: right; width: 17%; margig-right: 10px;" /> 
+							<input type="button"  id="reg_btn" class="button1" style="float: right; width: 17%; margin-right: 10px;"
 								onclick="location.href='/board/boardDelete.do?seq=<%=bDTO.getSeq()%>'"
 								value="삭제하기" />
 							<%}%>
@@ -113,10 +123,12 @@
 							<%}%>
 							
 
-							<input type="button" class="button1"  style="float: right; width: 10%; margin-right: 10px;"
+							<input type="button" class="button1"  style="float: right; width: 17%; margin-right: 10px;"
 								onclick="location.href='/board/boardList.do'" value="돌아가기">
+							</div>
 						</form>
 				</div>
+		</div>
 		
         <div class="row skills-content">
         </div>

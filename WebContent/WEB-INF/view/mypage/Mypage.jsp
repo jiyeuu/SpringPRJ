@@ -76,7 +76,7 @@
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title" style="padding-top: 10%;">
+        <div class="section-title" style="padding-top: 29%;">
           <h2>Mypage</h2>
         </div>
       </div>

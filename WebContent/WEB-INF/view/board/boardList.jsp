@@ -137,7 +137,7 @@
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
+        <div class="section-title" style="padding-top: 10%;">
           <h2>게시판</h2>
         </div>
       </div>
@@ -145,12 +145,38 @@
 			
 				<!-- <input type="button" value="글작성" class="button" onclick="window.location='/board/boardReg.do'"/> -->
 	<!-- ======= Skills Section ======= -->
-    <section id="skills" class="skills">
-      <div class="container" data-aos="fade-up">
-      
-         
-					
-							<button type="button" class="button1" style="width: 80px;"
+		<button type="button" class="button1"
+			style="width: 80px; margin-right: 29%;"
+			onclick="window.location='/board/boardReg.do'">글쓰기</button>
+		
+		<br>
+		<section id="skills" class="skills">
+			<div class="container" data-aos="fade-up">
+				<div class="login-page" style="padding-right: 100px">
+					<div class="form" style="width: 150%; text-align: left;">
+
+						<div style="border: 1px solid gray; width: 600px; margin: 0 auto;">
+							<div style="border-bottom: 1px solid black;">
+								<span style="padding-left: 9px;">번호</span> 
+								<span style="padding-left: 50px;">제목</span> 
+								<span style="padding-left: 170px;">작성자</span> 
+								<span style="padding-left: 50px;">조회수</span> 
+								<span style="padding-left: 50px;">작성일</span>
+							</div>
+							<%for(BoardDTO bDTO : bList){ %>
+							<div style="border: 1px solid gray;">
+								<span style="padding-left: 10px;"><%=bDTO.getSeq() %></span> <span
+									style="padding-left: 50px;"> <a
+									href="/board/boardDetail.do?seq=<%=bDTO.getSeq()%>"> <%=bDTO.getTitle()%></a></span>
+								<span style="padding-left: 60px;"><%=bDTO.getUser_name() %></span>
+								<span style="padding-left: 60px"><%=bDTO.getRead_cnt() %></span>
+								<span style="padding-left: 70px"><%=bDTO.getReg_date() %></span>
+							</div>
+							<%} %>
+						</div>
+						<br>
+
+						<%-- <button type="button" class="button1" style="width: 80px;"
 								onclick="window.location='/board/boardReg.do'">글쓰기</button>
 							<div class="table_div"
 								style="display: table; table-layout: fixed; width: 100%;">
@@ -182,66 +208,65 @@
 										style="display: table-cell; width: 25px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;"><%=bDTO.getReg_date() %></li>
 								</ul>
 								<%} %>
-							</div>
+							</div> --%>
 
-							<!-- 페이징 -->
-							<div style="display: inline-block;">
-								<!-- 1~5페이지 아닌 경우에 처음 찍기 -->
-								<ul class="pagination">
-									<c:if test="${pagg.curRange ne 1 }">
-										<!-- 현재페이지가 1이 아닐때 -->
-										<a class="page-link" href="#" onClick="fn_paging(1)">처음</a>
-									</c:if>
-									<!-- 1페이지가 아닌 경우에 이전 찍기 -->
-									<c:if test="${pagg.curPage ne 1}">
-										<a class="page-link" href="#"
-											onClick="fn_paging('${pagg.prevPage }')">이전</a>
-									</c:if>
-
-
-									<c:forEach var="pageNum" begin="${pagg.startPage }"
-										end="${pagg.endPage }">
-										<c:choose>
-											<c:when test="${pageNum eq  pagg.curPage}">
-												<span style="font-weight: bold;"><a class="page-link"
-													href="#" onClick="fn_paging('${pageNum }')">${pageNum }</a></span>
-											</c:when>
-											<c:otherwise>
-												<a class="page-link" href="#"
-													onClick="fn_paging('${pageNum }')">${pageNum }</a>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
+						<!-- 페이징 -->
+						<div style="display: inline-block;">
+							<!-- 1~5페이지 아닌 경우에 처음 찍기 -->
+							<ul class="pagination">
+								<c:if test="${pagg.curRange ne 1 }">
+									<!-- 현재페이지가 1이 아닐때 -->
+									<a class="page-link" href="#" onClick="fn_paging(1)">처음</a>
+								</c:if>
+								<!-- 1페이지가 아닌 경우에 이전 찍기 -->
+								<c:if test="${pagg.curPage ne 1}">
+									<a class="page-link" href="#"
+										onClick="fn_paging('${pagg.prevPage }')">이전</a>
+								</c:if>
 
 
-									<!-- 마지막 페이지가 아닌 경우에 다음 찍기 -->
-									<c:if
-										test="${pagg.curPage ne pagg.pageCnt && pagg.pageCnt > 0}">
-										<a class="page-link" href="#"
-											onClick="fn_paging('${pagg.nextPage }')">다음</a>
-									</c:if>
+								<c:forEach var="pageNum" begin="${pagg.startPage }"
+									end="${pagg.endPage }">
+									<c:choose>
+										<c:when test="${pageNum eq  pagg.curPage}">
+											<span style="font-weight: bold;"><a class="page-link"
+												href="#" onClick="fn_paging('${pageNum }')">${pageNum }</a></span>
+										</c:when>
+										<c:otherwise>
+											<a class="page-link" href="#"
+												onClick="fn_paging('${pageNum }')">${pageNum }</a>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
 
-									<!-- 마지막 페이지 블록이 아닐때 끝 찍기 -->
-									<c:if
-										test="${pagg.curRange ne pagg.rangeCnt && pagg.rangeCnt > 0}">
-										<a class="page-link" href="#"
-											onClick="fn_paging('${pagg.pageCnt }')">끝</a>
-									</c:if>
 
-								</ul>
-							</div>
+								<!-- 마지막 페이지가 아닌 경우에 다음 찍기 -->
+								<c:if test="${pagg.curPage ne pagg.pageCnt && pagg.pageCnt > 0}">
+									<a class="page-link" href="#"
+										onClick="fn_paging('${pagg.nextPage }')">다음</a>
+								</c:if>
+
+								<!-- 마지막 페이지 블록이 아닐때 끝 찍기 -->
+								<c:if
+									test="${pagg.curRange ne pagg.rangeCnt && pagg.rangeCnt > 0}">
+									<a class="page-link" href="#"
+										onClick="fn_paging('${pagg.pageCnt }')">끝</a>
+								</c:if>
+
+							</ul>
+						</div>
 					</div>
 
 				</div>
 			</div>
- 
-     
 
-        <div class="row skills-content">
-        </div>
 
-      </div>
-    </section><!-- End Skills Section -->
+
+			<div class="row skills-content"></div>
+
+
+		</section>
+		<!-- End Skills Section -->
 
     <!-- ======= Facts Section ======= -->
    
@@ -253,7 +278,7 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" style="margin-top: 4%">
+  <footer id="footer" style="margin-top: 6%">
     <div class="container">
       <div class="copyright">
         &copy; Copyright <strong><span>Lyric Aanalysis Page</span></strong>

@@ -76,32 +76,40 @@
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
+        <div class="section-title" style="padding-top: 7%;">
           <h2>게시판</h2>
         </div>
       </div>
     </section><!-- End About Section -->
 			
 <section id="skills" class="skills">
-      <div class="container" data-aos="fade-up">
-			
+			<div class="container" data-aos="fade-up">
+				<div class="login-page" style="padding-right: 100px">
+					<div class="form" style="text-align: left; width: 150%;">
 
 					<form name="f" method="POST" action="/board/boardModifyProc.do"
 						id="regform" onsubmit="return goModify();">
 						<!-- onsubmit="return check(this);"> -->
 						<input type="hidden" name="seq" value="<%=bDTO.getSeq()%>">
-						<div class="form-group"></div>
-						<label for="text">제목</label> <input type="text"
+						
+						<label for="text">제목</label> 
+						<input type="text"  style="width:110%;"
 							class="form-control" id="title" name="title"
 							value='<%=bDTO.getTitle()%>' />
 					
-
+						<br>
 						<div class="form-group">
-							<textarea  class="table_textbox" id="summernote" name="contents" style="width: 99%; height: 20em;"><%=bDTO.getContent() %></textarea>
+							<textarea  class="table_textbox" id="summernote" name="contents" style="width: 150%; height: 20em;"><%=bDTO.getContent() %></textarea>
 						</div>
 
 						<input type="submit" class="button1" style="width: 80px;"  value="수정">
 					</form>
+					
+					</div>
+				</div>
+			</div>	
+		 </section><!-- End Skills Section -->
+					
 					<script>
 						function goModify() {
 							var title = $("#title").val();
@@ -118,13 +126,10 @@
 							return true;
 						}
 					</script>
-				</div>
-	
-        <div class="row skills-content">
-        </div>
+			
 
-    </section><!-- End Skills Section -->
 
+   
     <!-- ======= Facts Section ======= -->
    
     <!-- End Facts Section -->
@@ -135,7 +140,7 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" style="margin-top: 4%">
+  <footer id="footer" style="margin-top: 5%">
     <div class="container">
       <div class="copyright">
         &copy; Copyright <strong><span>Lyric Aanalysis Page</span></strong>

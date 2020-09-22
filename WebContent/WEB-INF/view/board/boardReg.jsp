@@ -88,35 +88,42 @@
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
+        <div class="section-title" style="padding-top: 15%;">
           <h2>게시판</h2>
         </div>
       </div>
     </section><!-- End About Section -->
     
 	<!-- Start callto-top Area -->
-	<section class="callto-top-area section-gap">
-		<div class="container">
-			<div class="row justify-content-between callto-top-wrap pt-40 pb-40">
-				<div class="col-lg-12 callto-top">
+	
+		<section id="skills" class="skills">
+			<div class="container" data-aos="fade-up">
+				<div class="login-page" style="padding-right: 100px">
+					<div class="form" style="width: 150%; text-align: left;">
 
-					<form name="f" method="POST" action="/board/boardRegProc.do"
+					<form name="f"  method="POST" action="/board/boardRegProc.do"
 						id="regform" onsubmit="return submitTest();">
-						<div class="form-group"></div>
-						<label for="text">제목</label>
-						 <input type="text" class="form-control" id="title" name="title" /> <br><!-- exampleInputEmail1 -->
+					
+						제목	
+						<input type="text"  style="width:110%;"
+						 id="title" name="title" /> <br><!-- exampleInputEmail1 -->
 				
 					
-
-						<div class="form-group">
+						 
+					
+						<br>
+						<div>
 						<textarea class="table_textbox" name="contents" id="contents"
-								style="width: 99%; height: 20em;" ></textarea>
+								style="width: 150%; height: 20em;" ></textarea>
 						</div>
 
 						<input type="submit" class="button1" style="width: 80px;" id="reg_btn1"
 							value="등록">
 					</form>
-		
+				</div>
+			</div>
+		</div>
+	</section>
 					
 <script>
 	function submitTest(){
@@ -139,13 +146,10 @@
 
 
 
-				</div>
-			</div>
-		</div>
-	</section>
+	
 	<!-- End callto-top Area -->
 	<!-- ======= Footer ======= -->
-  <footer id="footer">
+  <footer id="footer" style="margin-top: 5%">
     <div class="container">
       <div class="copyright">
         &copy; Copyright <strong><span>Lyric Aanalysis Page</span></strong>

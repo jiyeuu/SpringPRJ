@@ -152,7 +152,7 @@ String user_Author = (String) session.getAttribute("user_Author");
 	<section id="about" class="about">
 		<div class="container" data-aos="fade-up">
 
-			<div class="section-title" style="padding-top: 10%;">
+			<div class="section-title" style="padding-top: 50%;">
 				<h2>Lyric analysis1</h2>
 			</div>
 		</div>
@@ -177,7 +177,7 @@ String user_Author = (String) session.getAttribute("user_Author");
 
 
 	<!-- ======= Footer ======= -->
-	<footer id="footer" style="margin-top: 21%">
+	<footer id="footer" style="margin-top: 15%">
 		<div class="container">
 			<div class="copyright">
 				&copy; Copyright <strong><span>Lyric Aanalysis Page</span></strong>

@@ -1,16 +1,21 @@
 package poly.controller;
 
+import java.io.IOException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.JsonNode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import poly.dto.MailDTO;
 import poly.dto.UserInfoDTO;
@@ -37,6 +42,8 @@ public class UserInfoController {
 		return "/user/MainForm";
 
 	}
+	
+	
 
 	/* 회원가입 화면으로 이동 */
 	@RequestMapping(value = "user/UserRegForm")
@@ -185,9 +192,9 @@ public class UserInfoController {
 		} finally {
 			log.info(this.getClass().getName() + ".getUserLoginCheck end!");
 
-			/*
-			 * 로그인 처리 결과를 jsp에 전달하기 위해 변수 사용
-			 */
+			
+			  //로그인 처리 결과를 jsp에 전달하기 위해 변수 사용
+			 
 		}
 		if (pDTO != null) {
 

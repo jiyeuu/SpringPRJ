@@ -11,6 +11,7 @@
         <ul>
           <li class="active"><a href="/user/MainForm.do">Home</a></li>
           <li><a href="/user/LoginForm.do">Login</a></li>
+ 
         
           <!-- Lyric emotion analysis -->
         </ul>

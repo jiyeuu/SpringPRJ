@@ -77,7 +77,7 @@
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
 
-       <div class="section-title" style="padding-top: 10%;">
+       <div class="section-title" style="padding-top: 13%;">
           <h2>로그인</h2>
         </div>
       </div>
@@ -102,6 +102,9 @@
                 <span class="bar" aria-hidden="true">|</span> 
                 <a target="_blank" id="join" href="/user/UserRegForm.do">회원가입</a>
               </div>
+               <a href = "https://kauth.kakao.com/oauth/authorize?client_id=d303489174bf96c53786cce6e89f98f7&redirect_uri=http://localhost:8080/kakaologin.do&response_type=code">
+        로그인
+    </a>
             </form>
           </div>
         </div>
@@ -123,7 +126,7 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-<footer id="footer" style="margin-top: 15%">
+<footer id="footer" style="margin-top: 18%">
     <div class="container">
       <div class="copyright">
         &copy; Copyright <strong><span>Lyric Aanalysis Page</span></strong>
