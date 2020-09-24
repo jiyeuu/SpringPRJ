@@ -3,6 +3,7 @@
 <%
 	String user_id1 = (String)request.getAttribute("user_id");
 	String email = (String)request.getAttribute("email");
+	String user_mail = (String)request.getAttribute("user_mail");
 	String user_id = (String)session.getAttribute("SS_USER_ID");
 	String user_Author = (String)session.getAttribute("user_Author");
 %>    
@@ -88,14 +89,14 @@
         <div class="login-page">
           <div class="form">
    
-            <label for="user_id" class="input">아이디 : <%=user_id1%> </label>
+            <label for="user_id" class="input">이름 : <%=user_id1%> </label>
            	
-            <label for="email" class="input">Email :  <%=email%> </label> 
+            <label for="email" class="input">Email :  <%=session.getAttribute("user_mail")%> </label> 
            
            
             <input type="button" name="password" value="비밀번호 변경하기" class="button1"  onClick="location.href='/mypage/ChPwForm.do'" required/>
          
-             <input type="button" value="탈퇴하기" class="button1" onclick="delUser()" style="margin-top: 10px" />
+            <!--  <input type="button" value="탈퇴하기" class="button1" onclick="delUser()" style="margin-top: 10px" /> -->
     
 
           </div>

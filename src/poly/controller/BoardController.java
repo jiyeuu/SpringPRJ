@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -15,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import poly.dto.BoardDTO;
+import poly.dto.CommentDTO;
 import poly.dto.PagingDTO;
 import poly.dto.UserInfoDTO;
 import poly.service.IBoardService;
 import poly.service.INoticeService;
+import poly.service.impl.BoardService;
 
 @Controller
 public class BoardController {
@@ -323,9 +326,145 @@ public class BoardController {
 	
 		return pDTO;
 		
-		
-		
-		
-		
 	}
+	
+	//댓글작성
+		@RequestMapping(value = "/DExellent/board/CommentProc")
+		public String CommentProc(HttpSession session, HttpServletRequest request, HttpServletResponse response,
+				ModelMap model) throws Exception {
+			log.info(this.getClass().getName() + "######## 댓글 작성Proc 실행########");
+
+			try {
+
+				String content = request.getParameter("content");
+				String writer = (String) session.getAttribute("user_name");
+				String board_seq = request.getParameter("seq");
+				log.info("content : " + content);
+				log.info("writer : " + writer);
+				log.info("board_seq : " + board_seq);
+
+				// 여기부터
+				CommentDTO bDTO = new CommentDTO();
+				bDTO.setBoard_seq(board_seq);
+				bDTO.setContent(content);
+				bDTO.setWriter(writer);
+
+				
+				log.info("board_seq : " + board_seq);
+				log.info("content : " + content);
+				log.info("writer : " + writer);
+
+				int res = 0;
+
+				res = BoardService.InsertComment(bDTO);
+				log.info("res : " + res);
+
+				if (res > 0) {
+					model.addAttribute("url", "/board/boardList.do?Pno=1");
+					model.addAttribute("msg", "등록되었습니다.");
+				} else {
+					model.addAttribute("url", "/board/boardList.do?Pno=1");
+					model.addAttribute("msg", "등록에 실패했습니다.");
+				}
+				bDTO = null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return "/redirect";
+		}
+
+		// --------------------------댓글 수정 이동 전 권한 확인 및 댓글 삭제 실행-------------------
+		@RequestMapping(value = "/DExellent/board/CommentUpdate")
+		public String CommentUpdate(HttpSession session, HttpServletRequest request, HttpServletResponse response,
+				ModelMap model) throws Exception {
+			log.info(this.getClass().getName() + "댓글 수정 이동 전 권한 확인 및 댓글 삭제 실행");
+
+			String rno = request.getParameter("rno");
+			String User = (String) session.getAttribute("user_name");
+
+			/*
+			 * List<CommentDTO> bList = new ArrayList<>(); bList =
+			 * BoardService.UserCheck2(rno);
+			 */
+			CommentDTO cDTO = new CommentDTO();
+			cDTO = BoardService.UserCheck2(rno);
+			String UserCheck2 = cDTO.getWriter();
+
+			CommentDTO pDTO = new CommentDTO();
+			if (User.equals("조정규") || UserCheck2.equals(User)) {
+				try {
+					pDTO = new CommentDTO();
+					pDTO.setRno(rno);
+					pDTO = BoardService.CommentUpdate(pDTO);
+
+					model.addAttribute("pDTO", pDTO);
+					model.addAttribute("rno", rno);
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				pDTO = null;
+				cDTO = null;
+				
+				return "/DExellent/board/CommentUpdate";
+			} else {
+				model.addAttribute("url", "/board/boardList.do?Pno=1");
+				model.addAttribute("msg", "권한이 없습니다. 게시판 리스트로 이동합니다.");
+
+				pDTO = null;
+				cDTO = null;
+			}
+			return "/redirect";
+		}
+
+		// --------------------------댓글 삭제 이동 전 권한 확인 및 댓글 삭제 실행-------------------
+		@RequestMapping(value = "/DExellent/board/CommentDelete")
+		public String CommentDelete(HttpSession session, HttpServletRequest request, HttpServletResponse response,
+				ModelMap model) throws Exception {
+			log.info(this.getClass().getName() + "댓글 삭제 이동 전 권한 확인 및 댓글 삭제 실행");
+
+			String rno = request.getParameter("rno");
+			String User = (String) session.getAttribute("user_name");
+
+			/*
+			 * List<CommentDTO> bList = new ArrayList<>(); bList =
+			 * BoardService.UserCheck2(rno); String UserCheck2 = bList.get(0).toString();
+			 */
+			
+			CommentDTO cDTO = new CommentDTO();
+			cDTO = BoardService.UserCheck2(rno);
+			String UserCheck2 = cDTO.getWriter();
+
+			CommentDTO pDTO = new CommentDTO();
+			if (User.equals("조정규") || UserCheck2.equals(User)) {
+				try {
+
+					pDTO.setRno(rno);
+					log.info("rno : " + rno);
+
+					int res = BoardService.CommentDelete(pDTO);
+					log.info("res : " + res);
+
+					if (res > 0) {
+						model.addAttribute("url", "/board/boardList.do?Pno=1");
+						model.addAttribute("msg", "삭제되었습니다.");
+					} else {
+						model.addAttribute("url", "/board/boardList.do?Pno=1");
+						model.addAttribute("msg", "삭제에 실패했습니다. 다시 시도해주세요.");
+					}
+					pDTO = null;
+					cDTO = null;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return "/Redirect";
+			} else {
+				model.addAttribute("url", "/board/boardList.do?Pno=1");
+				model.addAttribute("msg", "권한이 없습니다. 게시판 리스트로 이동합니다.");
+
+				pDTO = null;
+				cDTO = null;
+			}
+			return "/redirect";
+		}
 }

@@ -20,6 +20,7 @@ import kr.co.shineware.nlp.komoran.core.Komoran;
 import kr.co.shineware.nlp.komoran.model.KomoranResult;
 import poly.dto.BugsDTO;
 import poly.dto.NlpDTO;
+import poly.dto.WordDTO;
 import poly.service.IBugsService;
 import poly.service.INlpService;
 
@@ -64,6 +65,7 @@ public class NlpController {
 		List<String> pList = new ArrayList<String>(); //단어
 		List<Integer> iList = new ArrayList<Integer>();  //카운트
 		
+		
 		for(int i=0; i<sList.size();i++) {
 			if(sList.get(i).length()>1) {
 				if(!pList.contains(sList.get(i))) {
@@ -77,6 +79,26 @@ public class NlpController {
 				}
 			}
 		}
+
+		List<WordDTO> wList = new ArrayList<WordDTO>();
+		
+		for(int j=0;j<pList.size();j++) {
+			WordDTO wDTO = new WordDTO();
+			
+			wDTO.setWord(pList.get(j));
+			wDTO.setCount(iList.get(j));
+			
+			wList.add(wDTO);
+			wDTO = null;
+		}
+		
+		if(wList == null) {
+			wList = new ArrayList<WordDTO>();
+		}else {
+			bugsService.insertRank1(wList, "testCol");
+		}
+	
+
 		model.addAttribute("pList",pList);
 		model.addAttribute("iList",iList);
 

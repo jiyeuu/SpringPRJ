@@ -19,6 +19,7 @@ import org.rosuda.REngine.Rserve.RConnection;
 import org.springframework.stereotype.Service;
 
 import poly.dto.BugsDTO;
+import poly.dto.WordDTO;
 import poly.persistance.mongo.IBugsMapper;
 import poly.service.IBugsService;
 import poly.util.CmmUtil;
@@ -99,11 +100,13 @@ public class BugsService implements IBugsService {
 		bugsMapper.createCollection(colNm);
 		// MongoDB에 데이터저장하기
 		bugsMapper.insertRank(pList, colNm);
+		
 
 		log.info(this.getClass().getName() + ".collectBugsRank End!");
 
 		return res;
 	}
+	
 
 	@Override
 	public List<BugsDTO> getRank() throws Exception {
@@ -176,6 +179,15 @@ public class BugsService implements IBugsService {
 		return pMap;
 		
 	}
+
+
+	@Override
+	public int insertRank1(List<WordDTO> wList, String colNm) throws Exception {
+		// TODO Auto-generated method stub
+		return bugsMapper.insertRank1(wList,colNm);
+	}
+
+
 	
 	
 	

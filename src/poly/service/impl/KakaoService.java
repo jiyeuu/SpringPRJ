@@ -74,6 +74,7 @@ public class KakaoService {
 
 	// 요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언함
 	public HashMap<String, Object> getUserInfo(String access_token, HttpSession session) throws Exception {
+		System.out.println("####################################################");
 		HashMap<String, Object> userInfo = new HashMap<>();
 		String reqUrl = "https://kapi.kakao.com/v2/user/me";
 
@@ -118,6 +119,7 @@ public class KakaoService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
 		return userInfo;
 	}

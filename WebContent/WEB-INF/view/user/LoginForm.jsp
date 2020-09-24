@@ -5,6 +5,8 @@
 <%
 	String user_id = (String) session.getAttribute("SS_USER_ID");
 	String user_Author = (String) session.getAttribute("user_Author");
+	String user_name = (String) session.getAttribute("user_name");
+
 %>
 <!DOCTYPE html>
 <html lang="UTF-8">
@@ -50,14 +52,14 @@
 <body>
 
 	<%
-		if (user_id != null) {
+		if (user_id != null ) {
 	%>
 	<%
-		if (user_Author.equals("1")) {
+		if (user_Author.equals("1") ) {
 	%>
 	<%@include file="/WEB-INF/view/frame/topbar-admin.jsp"%>
 	<%
-		} else {
+		} else if( user_name != null){
 	%>
 	<%@include file="/WEB-INF/view/frame/topbar-login.jsp"%>
 	<%
@@ -95,16 +97,22 @@
               <input type="password" class="input" name="password" placeholder="password"/>
               <input type="submit" value="로그인" class="button1" />
               
+              <div>
+                <a href = "https://kauth.kakao.com/oauth/authorize?client_id=d303489174bf96c53786cce6e89f98f7&redirect_uri=http://localhost:8080/kakaologin.do&response_type=code">
+			      <img src="/img/kakao_login.png">
+			    </a> 
+			</div>    
+              
               <div class="find_info" style="margin: auto auto; ">
                 <a target="_blank" id="idinquiry" href="/user/IDFindForm.do">아이디 찾기</a> 
                 <span class="bar" aria-hidden="true">|</span> 
                 <a target="_blank" id="pwinquiry" href="/user/PWFindForm.do">비밀번호 찾기</a> 
                 <span class="bar" aria-hidden="true">|</span> 
                 <a target="_blank" id="join" href="/user/UserRegForm.do">회원가입</a>
-              </div>
-               <a href = "https://kauth.kakao.com/oauth/authorize?client_id=d303489174bf96c53786cce6e89f98f7&redirect_uri=http://localhost:8080/kakaologin.do&response_type=code">
-        로그인
-    </a>
+             <br>
+
+		
+			  </div>
             </form>
           </div>
         </div>

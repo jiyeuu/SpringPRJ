@@ -28,6 +28,7 @@
               center: 'title',
               right: 'dayGridMonth,timeGridWeek,timeGridDay'
             },
+            locale:"ko",
             events: [
               {
                 title: 'All Day Event',
@@ -36,14 +37,22 @@
              ],
              selectable: true,
              selectHelper: true,
+             removeEvents: true,
             /*  dateClick: function(info) {
                  alert('clicked ' + info.dateStr);
                }, */
-             select: function(info) {
-            	 prompt(' Create an event from ' + info.startStr + ' to '
-            			 + info.endStr + " Enter a title: ", '');
-            	 
-             }
+             select: function(arg) {
+                 var title = prompt('Event Title:');
+                 if (title) {
+                   calendar.addEvent({
+                     title: title,
+                     start: arg.start,
+                     end: arg.end,
+                     allDay: arg.allDay
+                   })
+                 }
+                 calendar.unselect()
+               }
         
         });
         calendar.render();

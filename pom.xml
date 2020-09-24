@@ -31,7 +31,23 @@
 
 	<dependencies>
 	
+		
+		<!-- JSON 형태의 데이터 생성 및 내용 읽기을 위한 라이브러리 다운로드 -->
+		<!-- -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20190722</version>
+		</dependency>
 	
+	
+	
+	
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1</version>
+		</dependency>
 
 		<dependency>
             <groupId>org.codehaus.jackson</groupId>
@@ -95,6 +111,14 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.9.10.4</version>
 		</dependency>
+
+ 	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+		<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-core</artifactId>
+		<version>2.9.7</version>
+		</dependency>
+
 
 		<!-- redis 연동을 위해 Driver 파일 다운로드 -->
 		<dependency>

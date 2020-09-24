@@ -15,6 +15,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 
 import poly.dto.BugsDTO;
+import poly.dto.WordDTO;
 import poly.persistance.mongo.IBugsMapper;
 import poly.util.CmmUtil;
 
@@ -70,6 +71,36 @@ public class BugsMapper implements IBugsMapper {
 	         }
 
 	         mongodb.insert(pDTO, colNm);
+
+	      }
+
+	      res = 1;
+
+	      log.info(this.getClass().getName() + ".insertRank End!");
+
+	      return res;
+	}
+	
+	@Override
+	public int insertRank1(List<WordDTO> wList, String colNm) throws Exception {
+		 log.info(this.getClass().getName() + ".insertRank Start!");
+
+	      int res = 0;
+
+	      if (wList == null) {
+	    	  wList = new ArrayList<WordDTO>();
+	      }
+
+	      Iterator<WordDTO> it = wList.iterator();
+
+	      while (it.hasNext()) {
+	    	  WordDTO wDTO = (WordDTO) it.next();
+
+	         if (wDTO == null) {
+	        	 wDTO = new WordDTO();
+	         }
+
+	         mongodb.insert(wDTO, colNm);
 
 	      }
 

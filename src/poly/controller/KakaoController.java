@@ -36,6 +36,9 @@ public class KakaoController {
 
 		System.out.println("kakaologin controller : " + userInfo);
 
+		
+		
+		
 		if (userInfo.get("nickname") == null) {
 
 			model.addAttribute("msg", "로그인에 실패하였습니다. kakao에서 개인정보활용에 동의해주세요.");
@@ -43,6 +46,8 @@ public class KakaoController {
 
 		} else {
 			session.setAttribute("user_name", userInfo.get("nickname"));
+			session.setAttribute("SS_USER_ID", userInfo.get("nickname"));
+			session.setAttribute("user_Author", "0");
 			//-------------------------------------------------------------------------------------
 			if (userInfo.get("email") == null) {
 				session.setAttribute("user_mail", "비공개");
@@ -54,10 +59,13 @@ public class KakaoController {
 			System.out.println("카카오에서 받아온 정보 세션에 넣은 값");
 			System.out.println("user_name : " + session.getAttribute("user_name"));
 			System.out.println("user_mail : " + session.getAttribute("user_mail"));
+			System.out.println("SS_USER_ID : " + session.getAttribute("SS_USER_ID"));
 			System.out.println(this.getClass().getName() + ".kakaologin end!");
 
+			
+			
 			model.addAttribute("msg", "로그인 되었습니다!  \"" + session.getAttribute("user_name") + "\"님 환영합니다.");
-			model.addAttribute("url", "/user/LoginForm.do");
+			model.addAttribute("url", "/user/MainForm.do");
 		}
 
 		return "/redirect";

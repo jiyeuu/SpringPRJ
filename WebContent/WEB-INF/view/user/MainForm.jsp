@@ -4,6 +4,7 @@
 <%
 	String user_id = (String) session.getAttribute("SS_USER_ID");
 	String user_Author = (String) session.getAttribute("user_Author");
+	String user_name = (String) session.getAttribute("user_name");
 %>
 <!DOCTYPE html>
 <html>
@@ -36,14 +37,14 @@
 <body>
 <!-- #header -->
 	<%
-		if (user_id != null) {
+		if (user_id != null ) {
 	%>
 	<%
-		if (user_Author.equals("1")) {
+		if (user_Author.equals("1") ) {
 	%>
 	<%@include file="/WEB-INF/view/frame/topbar-admin.jsp"%>
 	<%
-		} else {
+		} else if( user_name != null){
 	%>
 	<%@include file="/WEB-INF/view/frame/topbar-login.jsp"%>
 	<%

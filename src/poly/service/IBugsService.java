@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import poly.dto.BugsDTO;
+import poly.dto.WordDTO;
 
 public interface IBugsService {
 	
@@ -16,7 +17,7 @@ public interface IBugsService {
 
 	public Map<String, List<String>> rTest() throws Exception;
 	
-
+	public int insertRank1(List<WordDTO> wList, String colNm) throws Exception;
 
 	
 }

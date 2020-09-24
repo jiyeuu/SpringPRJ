@@ -184,6 +184,7 @@ public class UserInfoController {
 				session.setAttribute("SS_EMAIL", EncryptUtil.decAES128CBC(pDTO.getEmail()));
 				session.setAttribute("user_name", pDTO.getUser_name());
 				session.setAttribute("user_Author", pDTO.getUser_author());
+				
 			}
 		} catch (Exception e) {
 
@@ -433,6 +434,7 @@ public class UserInfoController {
 
 		log.info(this.getClass().getName() + "DeleteUser start!");
 		String user_id = (String) request.getParameter("user_id");
+		
 		log.info(user_id);
 		int result = 0;
 

@@ -10,6 +10,8 @@
 	UserInfoDTO uDTO = (UserInfoDTO) request.getAttribute("uDTO");
 	String user_Author = (String) session.getAttribute("user_Author");
 	BoardDTO bDTO = (BoardDTO) request.getAttribute("bDTO");
+	String user_mail = (String) session.getAttribute("user_mail");
+	String user_name = (String) session.getAttribute("user_name");
 %>
 <!DOCTYPE html>
 <html>
@@ -47,14 +49,14 @@
 
 	<!-- #header -->
 	<%
-		if (user_id != null) {
+		if (user_id != null ) {
 	%>
 	<%
-		if (user_Author.equals("1")) {
+		if (user_Author.equals("1") ) {
 	%>
 	<%@include file="/WEB-INF/view/frame/topbar-admin.jsp"%>
 	<%
-		} else {
+		} else if( user_name != null){
 	%>
 	<%@include file="/WEB-INF/view/frame/topbar-login.jsp"%>
 	<%
@@ -111,7 +113,7 @@
 								
 							<%}else{%>
 							
-							<%if (user_id.equals(uDTO.getUser_id()) || user_Author.equals("1")) {%>
+							<%if (bDTO.getUser_name().equals(user_name) || user_Author.equals("1") ) {%>
 							
 							<input type="submit"  id="reg_btn" class="button1" value="수정하기" style="float: right; width: 17%; margig-right: 10px;" /> 
 							<input type="button"  id="reg_btn" class="button1" style="float: right; width: 17%; margin-right: 10px;"

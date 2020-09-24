@@ -108,14 +108,14 @@
 </head>
 <body>
 <%
-		if (user_id != null) {
+		if (user_id != null ) {
 	%>
 	<%
-		if (user_Author.equals("1")) {
+		if (user_Author.equals("1") ) {
 	%>
 	<%@include file="/WEB-INF/view/frame/topbar-admin.jsp"%>
 	<%
-		} else {
+		} else if( user_name != null){
 	%>
 	<%@include file="/WEB-INF/view/frame/topbar-login.jsp"%>
 	<%
@@ -128,7 +128,6 @@
 	<%
 		}
 	%>
-	
 	<!-- #header -->
 			  
 <main id="main">
